@@ -6,8 +6,26 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods:{
+    setsize(){
+        let docEl = document.documentElement,    
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+            recalc = function () {    
+            var clientWidth = docEl.clientWidth;    
+            if (!clientWidth) return;    
+            docEl.style.fontSize = clientWidth * (100 / 1280) + 'px';    
+        };    
+        if (!document.addEventListener) return;    
+        window.addEventListener(resizeEvt, recalc, false);    
+        document.addEventListener('DOMContentLoaded', recalc, false);   
+    }
+  },
+  mounted(){
+    this.setsize()
+  }
 }
+
 </script>
 
 <style>
@@ -116,14 +134,15 @@ html {
   font-family: '微软雅黑';
   background: #252c35;
   color:#fff;
+  
 }
+body{font-size: 14px;}
 .clearfix:after {
-content: '\20';
-display: block;
-height: 0;
-clear: both;
-visibility: hidden;
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
-html {font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5%*/}
-body {font-size: 1.4rem;/*1.4 × 10px = 14px */}
+
 </style>
