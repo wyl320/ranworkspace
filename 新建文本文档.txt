@@ -1,0 +1,54 @@
+{
+    "success":"0",
+    "message":"",
+    "data":[
+        {
+            "name":"zhangsan",
+            "age":"12"
+        },
+        {
+            "name":"lisi",
+            "age":"21"
+        }
+    ]
+}
+
+
+{
+    "success":"1",
+    "message":"用户已经注册过",
+    "data":[]
+}
+
+
+url user=jony,
+
+url user= 43snny5,
+
+
+
+
+
+
+{
+    "code":"0",
+    "message":"",
+    "data": {
+       chart_data:[
+          {qb_count:28434,name:"情报总数",creat_data:"2012-32-4"},
+          {qb_count:28434,name:"检测数据",creat_data:"2012-32-4"}
+       ],
+       data_count:344545,
+       update_count:456345,
+       free_count:234334
+    }
+}
+
+{
+    "success":"1",
+    "message":"服务器返回错误信息提示",
+    "data": [
+        {qb_count:28434,name:"情报总数",creat_data:"2012-32-4"},
+        {qb_count:28434,name:"检测数据",creat_data:"2012-32-4"}
+    ]
+}
