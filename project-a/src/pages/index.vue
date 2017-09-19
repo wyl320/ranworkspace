@@ -279,7 +279,7 @@
     .curver em.orange{background:#ff7214;border:0.01rem solid #ff7214;}
     .curver em.pink{background:#f82454;border:0.01rem solid #f82454;}
     /*设备监测情况*/
-    .sebeilist{width:4.42rem;border-right:0.01rem solid #424851;height:100%;background:#2e3540;float:left;}
+    .sebeilist{width:4.4rem;border-right:0.01rem solid #424851;height:100%;background:#2e3540;float:left;}
     .cpmessage{float:left;}
      /*搜索框*/
     .searchTb{height:0.21rem;padding:0.07rem 0.14rem;border-bottom:0.01rem solid #424851;}
