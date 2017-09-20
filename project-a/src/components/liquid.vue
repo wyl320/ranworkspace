@@ -5,24 +5,33 @@
 </template>
 <script>
 	export default{
+		props:{
+			liquidsoure:this.liquidsoure
+		},
 		data(){
 			return{
-				optionData:{
-					series: [{
+				option3 : {
+				    series: [{
 				        type: 'liquidFill',
-				        data: [0.6, 0.5, 0.4, 0.3],
-				        backgroundStyle: {
-				            borderWidth: 5,
-				            borderColor: 'red',
-				            color: 'yellow'
-				        }
-				    }]
-				}
+				        data: [0.6],
+				        name: 'Liquid Fill'
+				    }],
+				    tooltip: {
+				        show: true
+				    }
+				},
+				liquidsoure:""
 			}
+		},
+		watch:{
+            liquidsoure () {
+		      return this.liquidsoure
+		    }
 		},
 		mounted:function(){
 		 	this._vue_charts = echarts.init(document.getElementById('line'));
-            this._vue_charts.setOption(this.optionData.series);
+            this._vue_charts.setOption(this.option3);
+            console.log("eeeeee"+this.liquidsoure.maxNumber)
 		}
 	}
 </script>

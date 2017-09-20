@@ -8,7 +8,11 @@
 		 	 	<span class="rightname"><em></em></span>
 		 	 </div>
 		 	 <div class="mation">
-		 	 	<liquid v-for="item in listArrysoce.numList" :liquidsoure="item"></liquid>
+		 	    <!--<liquid v-for="item in listArrysoce.numList" :liquidsoure="item"></liquid>-->
+          <div class="echarts-cont">
+              <div id="line" :style="{width:'150px',height:'150px'}"></div>
+              <div id="line2" :style="{width:'150px',height:'150px'}"></div>
+           </div>
 		 	 </div>
 		 	 <div class="numlist">
 		 	 	<ul>
@@ -149,17 +153,53 @@
 	</div>
 </template>
 <script>
-    import liquid from '@/components/liquid'
-    import axios from 'axios'
+
+  import liquid from '@/components/liquid';
+  import axios from 'axios';
+  // import {liquidfillOption}  from '@/chart-data/chartData';
+
 	export default {
 		 components: {liquid},
 		 data(){
+       let liquidfillOption = {
+        series: [{
+            type: 'liquidFill',
+            data: [0.6, 0.5, 0.4, 0.3],
+            label: {
+                normal: {
+                    color: 'red',
+                    insideColor: 'yellow',
+                    fontSize: 15
+                }
+            },
+            itemStyle: {
+                normal: {
+                    shadowBlur: 0
+                }
+            },
+            outline: {
+                borderDistance: 0,
+                itemStyle: {
+                    borderWidth: 2,
+                    borderColor: '#156ACF'
+                }
+            }
+        }]
+      };
+
+      let countData = {
+          listArrysoce:"",//水球图模块数据变量
+          mationList:"" ,//威胁情报模块数据变量
+          loopholeList:"",//安全响应
+          sebeiList:"",//设备
+          chartDataOption:liquidfillOption,//图标一
+          chartUpdateOption:liquidfillOption//图标二
+      };//数据汇总数据源
+
 		 	return{
-                 listArrysoce:"",//水球图模块数据变量
-                 mationList:"" ,//威胁情报模块数据变量
-                 loopholeList:"",//安全响应
-                 sebeiList:""//设备
+        ...countData
 		 	}
+
 		 },
 		 methods:{
 		 	//设置窗口高度
@@ -267,7 +307,14 @@
             this.loadmationList();
             this.loadloopholeList();
             this.loadsebeiList()
-		 }
+		 },
+     mounted:function(){
+            this._vue_charts = echarts.init(document.getElementById('line'));
+            this._vue_charts.setOption(this.chartDataOption);
+
+            this._vue_charts2 = echarts.init(document.getElementById('line2'));
+            this._vue_charts2.setOption(this.chartUpdateOption);
+     }
 	}
 </script>
 <style scoped>
@@ -339,15 +386,15 @@
     .tabelist table{width:100%;}
     .tabelist td{padding:0.08rem  0rem 0.08rem 0.14rem;border-bottom:0.01rem solid #424851;}
     .tabelist th{padding:0.08rem 0rem 0.08rem 0.14rem;background:#3a4350;}
-    .tabelist table em{display:inline-block;width:0.1rem;height:0.1rem;margin-left:0.08rem;border:0.01rem solid #666666;margin-bottom:0.05rem;background:#666666;}
+    .tabelist table em{display:inline-block;width:0.1rem;height:0.1rem;margin-left:0.06rem;border:0.01rem solid #666666;margin-top:0.05rem;background:#666666;}
     .tabelist table em.blue{background:#0f9ec7;border:0.01rem solid #0f9ec7;}
     .tabelist table em.yellow{background:#ffe60f;border:0.01rem solid #ffe60f;}
     .tabelist table em.orange{background:#ff7214;border:0.01rem solid #ff7214;}
     .tabelist table em.pink{background:#f82454;border:0.01rem solid #f82454;}
     .tabelist table em.pers{background:#de00ff;border:0.01rem solid #f82454;}
     /*message*/
-    .mg_tab h2{color:#fff;font-size: 0.14rem;padding:0.1rem 0.14rem 0.1rem 0.14rem;}
-    .adress,.nomb,.banben,.nomb,.nusofte{padding:0rem 0.14rem 0rem 0.14rem;}
+    .mg_tab h2{color:#fff;font-size: 0.14rem;padding:0.1rem 0.12rem 0.1rem 0.12rem;}
+    .adress,.nomb,.banben,.nomb,.nusofte{padding:0rem 0.12rem 0rem 0.12rem;}
     .adress em{color:#0ba9b2;font-size:0.16rem;}
     .adress span{font-size:0.15rem;}
     .banben em{color:#0ba9b2;margin-left:0.05rem;}
@@ -390,4 +437,13 @@
     .st_gn{height:0.3rem;}
     /*自定义*/
     .sofelist a{display:inline-block;width:0.38rem;height:0.38rem;margin:0.24rem 0.2rem 0rem 0.2rem;}
+
+    .echarts-cont{
+      display:-webkit-box;
+    }
+
+    .echarts-cont>div{
+      -webkit-box-flex:1;
+      box-flex:1;
+    }
 </style>
