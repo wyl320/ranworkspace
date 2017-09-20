@@ -7,74 +7,42 @@
 		 	 	<span class="userame"><i>admin</i></span>
 		 	 	<span class="rightname"><em></em></span>
 		 	 </div>
-		 	 <div class="mation">图表</div>
+		 	 <div class="mation">
+		 	 	<liquid v-for="item in listArrysoce.numList" :liquidsoure="item"></liquid>
+		 	 </div>
 		 	 <div class="numlist">
 		 	 	<ul>
-		 	 		<li><span>数据源总量 - </span><em>{{numSource}}</em></li>
-		 	 		<li><span>更新总量 - </span><em>{{numUp}}</em></li>
-		 	 		<li><span>维护开源软件总量 - </span><em>{{numFree}}</em></li>
+		 	 		<li><span>数据源总量 - </span><em>{{listArrysoce.totalDatas}}</em></li>
+		 	 		<li><span>更新总量 - </span><em>{{listArrysoce.updatDatas}}</em></li>
+		 	 		<li><span>维护开源软件总量 - </span><em>{{listArrysoce.freeSoftware}}</em></li>
 		 	 	</ul>
 		 	 </div>
 		 	 <!--威协情报-->
 		 	 <div class="dangerlist" >
 		 	 	<h2><span>威协情报</span><router-link to="/">></router-link></h2>
 		 	 	<ul>
-		 	 		<li><span><router-link to="/">最新发布按全漏洞</router-link></span><em>2017-08-24</em></li>
-		 	 		<li><span><router-link to="/">最新发布按全漏洞</router-link></span><em>2017-08-24</em></li>
-		 	 		<li><span><router-link to="/">最新发布按全漏洞</router-link></span><em>2017-08-24</em></li>
-		 	 		<li><span><router-link to="/">最新发布按全漏洞</router-link></span><em>2017-08-24</em></li>
+		 	 		<li v-for="intem in mationList"><span><router-link to="/">{{intem.title}}</router-link></span><em>{{intem.currentTime}}</em></li>
 		 	 	</ul>
 		 	 </div>
 		 	 <!--安全响应-->
 		 	 <div class="safelist">
 		 	 	<h2><span>安全响应</span><router-link to="/">></router-link></h2>
-		 	 	<div class="lister clearfix">
+		 	 	<div class="lister clearfix"  v-for="item in loopholeList">
                    <div class="sebei">
                    	<router-link to="/">
                    		<p>安全漏洞</p>
-                   		<p>CNNVD-201708-983</p>
+                   		<p>{{item.loopholeNumber}}</p>
                    	</router-link>
                    </div>
                    <div class="curver">
-	                   	<p><em></em><em></em><em></em><em class="pink"></em></p>
-	                   	<p>2017-08-24</p>
-                   </div>       
-		 	 	</div>
-		 	 	<div class="lister clearfix">
-                   <div class="sebei">
-                   	<router-link to="/">
-                   		<p>安全漏洞</p>
-                   		<p>CNNVD-201708-983</p>
-                   	</router-link>
-                   </div>
-                   <div class="curver">
-	                   	<p><em class="blue"></em><em></em><em></em><em></em></p>
-	                   	<p>2017-08-24</p>
-                   </div>       
-		 	 	</div>
-		 	 	<div class="lister clearfix">
-                   <div class="sebei">
-                   	<router-link to="/">
-                   		<p>安全漏洞</p>
-                   		<p>CNNVD-201708-983</p>
-                   	</router-link>
-                   </div>
-                   <div class="curver">
-	                   	<p><em></em><em class="yellow"></em><em></em><em></em></p>
-	                   	<p>2017-08-24</p>
-                   </div>       
-		 	 	</div>
-		 	 	<div class="lister clearfix">
-                   <div class="sebei">
-                   	<router-link to="/">
-                   		<p>安全漏洞</p>
-                   		<p>CNNVD-201708-983</p>
-                   	</router-link>
-                   </div>
-                   <div class="curver">
-	                   	<p><em></em><em></em><em class="orange"></em><em></em></p>
-	                   	<p>2017-08-24</p>
-                   </div>       
+	                   	<p>
+	                   		<em :class="{yellow:item.levl=='diwei'}"></em>
+	                   		<em :class="{orange:item.levl=='zhongwei'}"></em>
+	                   		<em :class="{pink:item.levl=='gaowei'}"></em>
+	                   		<em :class="{pers:item.levl=='jingji'}"></em>
+	                   	</p>
+	                   	<p>{{item.currentTime}}</p>
+                   </div>     
 		 	 	</div>
 		 	 </div>
 		 </div>
@@ -102,48 +70,21 @@
 			 					<th>安全状态</th>
 			 					<th>时间</th>
 		 					</tr>
-		 					<tr>
-		 						<td>SB-01-101主机 </td>
-		 						<td>16</td>
-		 						<td>49</td>
-		 						<td><em></em><em></em><em></em><em class="pink"></em></td>
-		 						<td>2017-08-24</td>
-		 					</tr>
-		 					<tr>
-		 						<td>SB-01-101主机 </td>
-		 						<td>16</td>
-		 						<td>49</td>
-		 						<td><em class="blue"></em><em></em><em></em><em></em></td>
-		 						<td>2017-08-24</td>
-		 					</tr>
-		 					<tr>
-		 						<td>SB-01-101主机 </td>
-		 						<td>16</td>
-		 						<td>49</td>
-		 						<td><em class="blue"></em><em></em><em></em><em></em></td>
-		 						<td>2017-08-24</td>
-		 					</tr>
-		 					<tr>
-		 						<td>SB-01-101主机 </td>
-		 						<td>16</td>
-		 						<td>49</td>
-		 						<td><em></em><em></em><em class="orange"></em><em></em></td>
-		 						<td>2017-08-24</td>
-		 					</tr>
-		 					<tr>
-		 						<td>SB-01-101主机 </td>
-		 						<td>16</td>
-		 						<td>49</td>
-		 						<td><em></em><em></em><em></em><em class="pers"></em></td>
-		 						<td>2017-08-24</td>
-		 					</tr>
-		 					<tr>
-		 						<td>SB-01-101主机 </td>
-		 						<td>16</td>
-		 						<td>49</td>
-		 						<td><em></em><em class="yellow"></em><em></em><em></em></td>
-		 						<td>2017-08-24</td>
-		 					</tr>
+		 					<template v-for="item in sebeiList">
+		 						<tr>
+			 						<td>{{item.sebeiName}}</td>
+			 						<td>{{item.freeSoftware}}</td>
+			 						<td>{{item.loopholeNumber}}</td>
+			 						<td>
+			 							<em :class="{blue:item.levl=='anquan'}"></em>
+			 							<em :class="{yellow:item.levl=='diwei'}"></em>
+			 							<em :class="{orange:item.levl=='zhongwei'}"></em>
+			 							<em :class="{red:item.levl=='gaowei'}"></em>
+			 							<em :class="{pers:item.levl=='jingji'}"></em>
+			 						</td>
+			 						<td>{{item.timer}}</td>
+		 					    </tr>
+		 					</template>
 		 				</table>
 		 			</div>
 		 		</div>
@@ -165,61 +106,167 @@
 		 <div class="rightCt" :style="{height:setHeight+'px'}">
 		 	<!--代码检测-->
 		 	<div class="codeing">
-		 		<h2><span>代码检测</span><router-link to="/">></router-link></h2>
+		 		<h2><span>开源代码检测</span><router-link to="/">></router-link></h2>
 		 		<div class="code_area">
 		 			<em class="cort2"></em>
 		 			<em class="cort1"></em>
 		 			<textarea name="" id="" cols="30" rows="10"></textarea>
+		 			<div class="code_up"><span>源代码上传</span><input type="file"><button>检测源代码</button></div>
 		 		</div>
 		 	</div>
 		 	<!--修复情况-->
 		 	<div class="sofeset">
 		 		<h2><span>修复情况</span><router-link to="/">></router-link></h2>
 		 		<div class="cort_nums">
-		 			<p><span class="soft_img"></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></p>
+		 			<div class="st_gn clearfix"><span class="soft_img"><img src="../assets/images/softlog.png" alt=""></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></div>
 		 			<div class="ranges"><strong><b style="width:50%"></b></strong></div>
 		 			<div class="result"><span>已修复 62</span><i>未修复 30</i></div>
 		 		</div>
 		 		<div class="cort_nums">
-		 			<p><span class="soft_img"></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></p>
+		 			<div class="st_gn clearfix"><span class="soft_img"><img src="../assets/images/softlog.png" alt=""></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></div>
 		 			<div class="ranges"><strong><b style="width:50%"></b></strong></div>
 		 			<div class="result"><span>已修复 62</span><i>未修复 30</i></div>
 		 		</div>
 		 		<div class="cort_nums">
-		 			<p><span class="soft_img"></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></p>
+		 			<div class="st_gn clearfix"><span class="soft_img"><img src="../assets/images/softlog.png" alt=""></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></div>
 		 			<div class="ranges"><strong><b style="width:50%"></b></strong></div>
 		 			<div class="result"><span>已修复 62</span><i>未修复 30</i></div>
 		 		</div>
 		 	</div>
 		 	<!--自定义-->
-		 	<div class="sofelist">自定义</div>
+		 	<div class="sofelist">
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 	</div>
 		 </div>
 	</div>
 </template>
 <script>
+    import liquid from '@/components/liquid'
+    import axios from 'axios'
 	export default {
-		 components: {
-		 },
+		 components: {liquid},
 		 data(){
 		 	return{
-                 setHeight : "800px",
-                 numSource:354655,
-                 numUp:43455,
-                 numFree:34
+                 listArrysoce:"",//水球图模块数据变量
+                 mationList:"" ,//威胁情报模块数据变量
+                 loopholeList:"",//安全响应
+                 sebeiList:""//设备
 		 	}
 		 },
 		 methods:{
+		 	//设置窗口高度
             fullHeight:function (){
             	this.setHeight = $(window).height();
+            },
+            //请求水球图数据
+            loadList: function() {
+                console.log("初始化加载数据开始...");
+                let _this = this;
+                axios.get('http://www.mocky.io/v2/59c2206a130000880ad29f70', {
+                  params: {}
+                })
+                .then(function (response) {
+                  if(response.data.code=="0"){
+                      _this.listArrysoce = response.data.data;
+                      console.log(_this.listArrysoce)
+                  }else{
+                      console.log(response.data.message) 
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            },
+            //请求威协情报
+            loadmationList:function(){
+            	let _this = this;
+            	axios.get(' http://www.mocky.io/v2/59c22b4a130000440bd29f8d', {
+                  params: {}
+                })
+                .then(function (response) {
+                  if(response.data.code=="0"){
+                      _this.mationList = response.data.data.informationList;
+                      console.log(_this.mationList)
+                  }else{
+                      console.log(response.data.message) 
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            },
+            //请求安全响应数据
+            loadloopholeList:function(){
+            	let _this = this;
+            	axios.get(' http://www.mocky.io/v2/59c2334d1200008a009c0a0b', {
+                  params: {}
+                })
+                .then(function (response) {
+                  if(response.data.code=="0"){
+                      _this.loopholeList = response.data.data.loopholeList;
+                      console.log(_this.loopholeList)
+                  }else{
+                      console.log(response.data.message) 
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            },
+            //请求设备信息
+            loadsebeiList:function(){
+            	let _this = this;
+            	axios.get(' http://www.mocky.io/v2/59c23e47120000b9009c0a42', {
+                  params: {}
+                })
+                .then(function (response) {
+                  if(response.data.code=="0"){
+                      _this.sebeiList = response.data.data.sebeiList;
+                      console.log(_this.sebeiList)
+                  }else{
+                      console.log(response.data.message) 
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
             }
-		 },
+		},
 		 watch: {
+		 	//监控页面高度
 		    setHeight: function () {
-		        return this.setHeight
+		        return this.setHeight;
+		    },
+		    //监控水球图数据
+		    listArrysoce:function(){
+		    	return this.listArrysoce;
+		    },
+		    //监控威协情报数据
+		    mationList:function(){
+		    	return this.mationList;
+		    },
+		    //监控安全响应数据
+		    loopholeList:function(){
+		    	return this.loopholeList;
+		    },
+		    sebeiList:function(){
+		    	return this.sebeiList;
 		    }
          },
 		 created(){
             this.fullHeight();
+            this.loadList();
+            this.loadmationList();
+            this.loadloopholeList();
+            this.loadsebeiList()
 		 }
 	}
 </script>
@@ -241,10 +288,10 @@
     .severcont{height:43.1%;border-top:1px solid #424851;}
     .codeing{height:27%;background:#2e3540;margin:0 3.3% 3.3% 3.3%;}
     .sofeset{height:41.8%;background:#2e3540;margin:0 3.3% 3.3% 3.3%;}
-    .sofelist{height:28.3%;background:#2e3540;margin:0 3.3% 0 3.3%;}
+    .sofelist{height:28.3%;background:#2e3540;margin:0 3.3% 0 3.3%;padding-left:0.1rem;}
 
      /*用户名*/
-    .userlg{display:inline-block;width:12.5%;height:63%;background:red;border-radius:2rem;-webkit-border-radius:2rem;-moz-border-radius:2rem;text-align:center;margin-top:3%;margin-left:8.5%;position: relative;}
+    .userlg{display:inline-block;width:12.5%;height:63%;background:#2e3440;border-radius:2rem;-webkit-border-radius:2rem;-moz-border-radius:2rem;text-align:center;margin-top:3%;margin-left:8.5%;position: relative;}
     .userlg img{position:absolute;top:0.06rem;left:0.08rem;width:0.2rem;height:0.2rem;}
     .user span{display:inline-block;height:63%;float:left;}
     .userame{position:relative;}
@@ -278,6 +325,7 @@
     .curver em.yellow{background:#ffe60f;border:0.01rem solid #ffe60f;}
     .curver em.orange{background:#ff7214;border:0.01rem solid #ff7214;}
     .curver em.pink{background:#f82454;border:0.01rem solid #f82454;}
+    .curver em.pers{background:#de00ff;border:0.01rem solid #f82454;}
     /*设备监测情况*/
     .sebeilist{width:4.4rem;border-right:0.01rem solid #424851;height:100%;background:#2e3540;float:left;}
     .cpmessage{float:left;}
@@ -319,15 +367,27 @@
     .code_area em.cort1{top:0;left:0;}
     .code_area em.cort2{bottom:0;right:0;border-top:none;border-left:none;border-bottom:0.01rem solid #1f848b; border-right:0.01rem solid #1f848b;}
     .code_area textarea{background:#21262d;border:none;width:100%;height:100%;}
+    .code_up {position:relative;}
+    .code_up input{width:0.90rem; height:0.25rem;border:none;padding:0;position:absolute;top:0.05rem;left:0.05rem;opacity: 0}
+    .code_up span {display:inline-block;width:0.90rem; height:0.25rem;background:#495566;color:#fff;text-align: center;line-height: 0.25rem;border-radius: 0.03rem;vertical-align: middle;cursor: pointer;margin-top:0.07rem;margin-left:0.05rem;}
+    .code_up button{width:0.90rem; height:0.25rem;border-radius: 0.03rem;line-height: 0.25rem;background:#3a4350;color:#757c85;vertical-align: middle;margin-top:0.07rem;margin-left:0.23rem;}
     /*修复情况*/
     .sofeset h2 {height:0.32rem;border-bottom:1px solid #424851;}
     .sofeset h2 span{display:inline-block;color:#0ba9b2;width:86%;    padding-left: 0.14rem;line-height: 0.32rem;}
     .sofeset h2 a{color:#65758d;}
     .cort_nums{padding:0.1rem 0.12rem;border-bottom:1px solid #424851;}
-    .soft_img img{display:inline-block;width:0.3rem; height:0.3rem;}
-    .soft_img{margin-right:0.1rem;}
-    .soft_name{width:1.5rem;display:inline-block;}
-    .ranges{margin:0.11rem 0;    height: 0.06rem;}
+    .ranges{margin:0.05rem 0;    height: 0.06rem;}
     .ranges strong{display:inline-block;width:100%; height:0.06rem;background: #ff7214;border-radius: 0.1rem;}
     .ranges b{display:inline-block;height:100%;background: #0ba9b2;vertical-align: top;border-radius: 0.1rem;}
+    .result span{display:inline-block;width:1.2rem;color:#0ba9b2;margin-left:0.05rem;}
+    .result i{display:inline-block;width:1.1rem;text-align: right;color:#f8924e;}
+    
+    .soft_img{display:block;width:0.3rem; height:0.3rem;float:left;margin-right:0.1rem;}
+    .soft_img img{display:inline-block;width:0.3rem; height:0.3rem;}
+    .soft_name{width:1.6rem;display:block;float:left;margin-top:0.05rem;}
+    .st_gn i{float:left;}
+    .st_gn em{margin-top:0.05rem;display:block;float:left;}
+    .st_gn{height:0.3rem;}
+    /*自定义*/
+    .sofelist a{display:inline-block;width:0.38rem;height:0.38rem;margin:0.24rem 0.2rem 0rem 0.2rem;}
 </style>

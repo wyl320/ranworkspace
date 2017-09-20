@@ -82,7 +82,6 @@ input, button, textarea, select, optgroup, option {
 button {
   border: none 0;
   cursor: pointer;
-  font-size: 12px;
   vertical-align: middle
 }
 input[type=radio] {

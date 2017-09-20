@@ -1,0 +1,24 @@
+{
+    "code":"0",
+    "message":"",
+    "data":{
+        "numList":[
+                       {   
+                            "id":"01",
+                            "maxNumber":"60000",
+                            "currentNumber":"28374",
+                            "currentTime":"2017-08-24"
+
+                        },
+                        {   
+                            "id":"02",
+                            "maxNumber":"60000",
+                            "currentNumber":"315",
+                            "currentTime":"2017-07-24"
+                        }
+         ],
+        "totalDatas":354655,
+        "updatDatas":43455,
+        "freeSoftware":34
+    }
+}
