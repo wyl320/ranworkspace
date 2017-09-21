@@ -14,15 +14,15 @@ export default {
             recalc = function () {    
             var clientWidth = docEl.clientWidth;    
             if (!clientWidth) return;    
-            docEl.style.fontSize = clientWidth * (100 / 1280) + 'px';    
+            docEl.style.fontSize = clientWidth * (100 / 1280) + 'px';
         };    
         if (!document.addEventListener) return;    
         window.addEventListener(resizeEvt, recalc, false);    
-        document.addEventListener('DOMContentLoaded', recalc, false);   
+        document.addEventListener('DOMContentLoaded', recalc, false);          
     }
   },
   mounted(){
-    this.setsize()
+    this.setsize();
   }
 }
 

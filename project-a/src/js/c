@@ -85,7 +85,7 @@
                             "currentNoudong":"20"
                         },
                         {   
-                            "ip":"192.168.3.66",
+                            "ip":"192.168.3.67",
                             "sebeiName":"SB-02-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
@@ -101,7 +101,7 @@
                             "currentNoudong":"20"
                         },
                         {   
-                            "ip":"192.168.3.66",
+                            "ip":"192.168.3.68",
                             "sebeiName":"SB-03-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
@@ -117,7 +117,7 @@
                             "currentNoudong":"20"
                         },
                         {   
-                            "ip":"192.168.3.66",
+                            "ip":"192.168.3.69",
                             "sebeiName":"SB-04-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
@@ -133,7 +133,7 @@
                             "currentNoudong":"20"
                         },
                         {   
-                            "ip":"192.168.3.66",
+                            "ip":"192.168.3.70",
                             "sebeiName":"SB-05-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
@@ -147,6 +147,44 @@
                             "allNoudong":"100",
                             "repairNoudong":"80",
                             "currentNoudong":"20"
+                        }
+         ]
+    }
+}
+
+
+{
+    "code":"0",
+    "message":"",
+    "data":{
+        "repaireList":[
+                       {   
+                            "id":"01",
+                            "softIcon":"CNNVD-201708-983",
+                            "softName":"jquery",
+                            "repaired":"70",
+                            "unrepaired":"30",
+                            "expanded":true,
+                            "ulexpanded":false
+
+                        },
+                        {   
+                            "id":"01",
+                            "softIcon":"CNNVD-201708-983",
+                            "softName":"vue.js",
+                            "repaired":"10",
+                            "unrepaired":"90",
+                            "expanded":true,
+                            "ulexpanded":false
+                        },
+                        {   
+                            "id":"01",
+                            "softIcon":"CNNVD-201708-983",
+                            "softName":"GitHub",
+                            "repaired":"20",
+                            "unrepaired":"80",
+                            "expanded":true,
+                            "ulexpanded":false
                         }
          ]
     }

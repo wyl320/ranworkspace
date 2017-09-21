@@ -66,7 +66,7 @@
   		 			     <a href="javascript:;" v-show="ishow_seacher" @click="cleanValue"></a>
               </transition>
               <transition name="lider">
-  		 				   <input type="text" placeholder="请输入设备名称" v-show="ishow_seacher" v-model="searchValue">
+  		 				   <input type="text" placeholder="请输入设备名称" v-show="ishow_seacher" v-model="searchValue" @keyup="key_up">
               </transition>
             </em>
 		 				<button @click="search_list"></button>
@@ -96,19 +96,32 @@
 		 					    </tr>
 		 					</template>
 		 				</table>
+            <!--<Scroll class="vScrollbar1" @scroll="scrollFn">
+                    <h1>default</h1>
+                    <h1>default</h1>
+                    <h1>default</h1>
+                    <h1>default</h1>
+                    <h1>default</h1>
+                    <h1>default</h1>
+                    <h1>default</h1>
+            </Scroll>-->
 		 			</div>
 		 		</div>
 		 		<!--图表-->
 		 		<div class="cpmessage">
 		 			<div class="mg_tab">
 		 				<h2>主机名称</h2>
-		 				<div class="adress"><span>Mac地址 </span><em>00-01-6C-06-A6-29</em></div>
-		 				<div class="banben"><b>系统版本</b><em>win10 </em> <b class="N_heba">内核版本</b> <em>3.10.49</em></div>
+		 				<div class="adress"><span>Mac地址 </span><em>{{tubiao.macAdress}}</em></div>
+		 				<div class="banben"><b>系统版本</b><em>{{tubiao.system}} </em> <b class="N_heba">内核版本</b> <em>{{tubiao.core}}</em></div>
 		 				<div class="nomb">
-		 					<strong class="nusofte_a">漏洞总数量</strong><span class="nusofte_sa">14</span>
-		 					<strong class="nusofte_b">监测开源软件</strong><span class="nusofte_sb">6</span>
+		 					<strong class="nusofte_a">漏洞总数量</strong><span class="nusofte_sa">{{tubiao.totaLoophol}}</span>
+		 					<strong class="nusofte_b">监测开源软件</strong><span class="nusofte_sb">{{tubiao.watchSoft}}</span>
 		 				</div>
 		 			</div>
+          <!--柱状图-->
+          <div class="echarts">
+              <div id="line3" :style="{width:'300px',height:'300px'}"></div>
+          </div>
 		 		</div>
 		 	</div>
 		 </div>
@@ -127,20 +140,20 @@
 		 	<!--修复情况-->
 		 	<div class="sofeset">
 		 		<h2><span>修复情况</span><router-link to="/">></router-link></h2>
-		 		<div class="cort_nums">
-		 			<div class="st_gn clearfix"><span class="soft_img"><img src="../assets/images/softlog.png" alt=""></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></div>
+		 		<div class="cort_nums" v-for="(item,index) in repaireList">
+		 			<div class="st_gn clearfix">
+            <span class="soft_img"><img src="../assets/images/softlog.png" alt=""></span>
+            <div class="soft_name" v-if="item.expanded"><i>{{item.softName}}</i></div>
+            <div class="pulldown" v-else> 
+               <input type="text" value=""  @keydown="pullList(item)">
+               <ul v-show="item.ulexpanded">
+                 <li @click="addItem(item)">cccc</li>
+               </ul>
+            </div>
+            <em @click="modfined(item)">编辑</em>
+          </div>
 		 			<div class="ranges"><strong><b style="width:50%"></b></strong></div>
-		 			<div class="result"><span>已修复 62</span><i>未修复 30</i></div>
-		 		</div>
-		 		<div class="cort_nums">
-		 			<div class="st_gn clearfix"><span class="soft_img"><img src="../assets/images/softlog.png" alt=""></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></div>
-		 			<div class="ranges"><strong><b style="width:50%"></b></strong></div>
-		 			<div class="result"><span>已修复 62</span><i>未修复 30</i></div>
-		 		</div>
-		 		<div class="cort_nums">
-		 			<div class="st_gn clearfix"><span class="soft_img"><img src="../assets/images/softlog.png" alt=""></span><span class="soft_name"><i>gogle</i></span><em>编辑</em></div>
-		 			<div class="ranges"><strong><b style="width:50%"></b></strong></div>
-		 			<div class="result"><span>已修复 62</span><i>未修复 30</i></div>
+		 			<div class="result"><span>已修复 {{item.repaired}}</span><i>未修复 {{item.unrepaired}}</i></div>
 		 		</div>
 		 	</div>
 		 	<!--自定义-->
@@ -162,10 +175,12 @@
 
   import liquid from '@/components/liquid';
   import axios from 'axios';
+  import Scroll from '@/components/scroll'
+  import _ from 'lodash'
   // import {liquidfillOption}  from '@/chart-data/chartData';
 
 	export default {
-		 components: {liquid},
+		 components: {liquid,Scroll},
 		 data(){
        let liquidfillOption = {
         series: [{
@@ -193,8 +208,8 @@
               color: '#262d37'
            }
         }]
-      };
-      let liquidfillOption2 = {
+       };
+       let liquidfillOption2 = {
         series: [{
             type: 'liquidFill',
             data: [{name: '315'},0.4],
@@ -220,7 +235,90 @@
               color: '#262d37'
            }
         }]
-      };
+       };
+       let lineoptionData ={
+              title: {
+                    text: '',
+                    subtext: ''
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['最高气温','最低气温']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {readOnly: false},
+                        magicType: {type: ['line', 'bar']},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                xAxis:  {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一','周二','周三','周四','周五','周六','周日']
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} °C'
+                    }
+                },
+                series: [
+                    {
+                        name:'最高气温',
+                        type:'line',
+                        data:[11, 11, 15, 13, 12, 13, 10],
+                        markPoint: {
+                            data: [
+                                {type: 'max', name: '最大值'},
+                                {type: 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name:'最低气温',
+                        type:'line',
+                        data:[1, -2, 2, 5, 3, 2, 0],
+                        markPoint: {
+                            data: [
+                                {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'},
+                                [{
+                                    symbol: 'none',
+                                    x: '90%',
+                                    yAxis: 'max'
+                                }, {
+                                    symbol: 'circle',
+                                    label: {
+                                        normal: {
+                                            position: 'start',
+                                            formatter: '最大值'
+                                        }
+                                    },
+                                    type: 'max',
+                                    name: '最高点'
+                                }]
+                            ]
+                        }
+                    }
+                ]
+       };
       let countData = {
           listArrysoce:"",//水球图模块数据变量
           mationList:"" ,//威胁情报模块数据变量
@@ -228,8 +326,11 @@
           sebeiList:"",//设备
           chartDataOption:liquidfillOption,//图标一
           chartUpdateOption2:liquidfillOption2,//图标二
-          ishow_seacher:false,
-          searchValue:""
+          lineUptionDatas:lineoptionData,//图标三
+          ishow_seacher:false,//是否显示搜索框
+          searchValue:"",//搜索框输入值
+          tubiao:"", //图标三的头部
+          repaireList:"",//修复情况
       };//数据汇总数据源
 
 		 	return{
@@ -300,13 +401,33 @@
             //请求设备信息
             loadsebeiList:function(){
             	let _this = this;
-            	axios.get(' http://www.mocky.io/v2/59c23e47120000b9009c0a42', {
+            	axios.get(' http://www.mocky.io/v2/59c383e1120000040a9c0dc2', {
                   params: {}
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
                       _this.sebeiList = response.data.data.sebeiList;
                       console.log(_this.sebeiList)
+                      _this.tubiao = response.data.data.sebeiList[0]
+                       console.log("aaa"+_this.tubiao)
+                  }else{
+                      console.log(response.data.message) 
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            },
+            //请求修复情况
+            loadrepaireList:function(){
+              let _this = this;
+              axios.get(' http://www.mocky.io/v2/59c3a7d0110000080399cbe7', {
+                  params: {}
+                })
+                .then(function (response) {
+                  if(response.data.code=="0"){
+                      _this.repaireList = response.data.data.repaireList;
+                      console.log(_this.repaireList)
                   }else{
                       console.log(response.data.message) 
                   }
@@ -323,6 +444,27 @@
             //清除值
             cleanValue:function(){
                this.searchValue =""
+            },
+            scrollFn(e) {
+              console.log(e.target.className)
+              console.log(e.target.scrollTop)
+            },
+            key_up(){
+              //alert(this.searchValue)
+              this.sebeiList=_.remove(this.sebeiList,(idx)=>{
+                  if(this.searchValue == idx.sebeiName){
+                    return idx
+                  }
+              });             
+            },
+            modfined(item){
+              item.expanded = !item.expanded
+            },
+            pullList(item){
+              item.ulexpanded = !item.ulexpanded
+            },
+            addItem(item){
+              item.ulexpanded = !item.ulexpanded
             }
 		},
 		watch: {
@@ -344,14 +486,19 @@
 		    },
 		    sebeiList:function(){
 		    	return this.sebeiList;
-		    }
+		    },
+        //修复情况
+        repaireList:function(){
+          return this.repaireList;
+        }
      },
 		 created(){
             this.fullHeight();
             this.loadList();
             this.loadmationList();
             this.loadloopholeList();
-            this.loadsebeiList()
+            this.loadsebeiList();
+            this.loadrepaireList()
 		 },
      mounted:function(){
             this._vue_charts = echarts.init(document.getElementById('line'));
@@ -359,6 +506,9 @@
 
             this._vue_charts2 = echarts.init(document.getElementById('line2'));
             this._vue_charts2.setOption(this.chartUpdateOption2);
+            
+            this._vue_charts3 = echarts.init(document.getElementById('line3'));
+            this._vue_charts3.setOption(this.lineUptionDatas);
      }
 	}
 </script>
@@ -419,7 +569,7 @@
     .curver em.pink{background:#f82454;border:0.01rem solid #f82454;}
     .curver em.pers{background:#de00ff;border:0.01rem solid #f82454;}
     /*设备监测情况*/
-    .sebeilist{width:4.4rem;border-right:0.01rem solid #424851;height:100%;background:#2e3540;float:left;}
+    .sebeilist{width:4.4rem;height:100%;border-right:0.01rem solid #424851;height:100%;background:#2e3540;float:left;}
     .cpmessage{float:left;}
      /*搜索框*/
     .searchTb{height:0.21rem;padding:0.07rem 0.14rem;border-bottom:0.01rem solid #424851;}
@@ -492,8 +642,14 @@
     .soft_img img{display:inline-block;width:0.3rem; height:0.3rem;}
     .soft_name{width:1.6rem;display:block;float:left;margin-top:0.05rem;}
     .st_gn i{float:left;}
-    .st_gn em{margin-top:0.05rem;display:block;float:left;}
+    .st_gn em{margin-top:0.05rem;display:block;float:left;cursor:pointer;}
     .st_gn{height:0.3rem;}
+
+    .pulldown{position:relative;width:1.6rem;float:left;}
+    .pulldown ul{position:absolute;top:0.22rem;left:0;border:1px solid #424851;width:1.32rem; height:0.6rem;background:#21262d;}
+    .pulldown ul li{padding:0.03rem;border-bottom:1px solid #424851;}
+    .pulldown input {background:#2e3540;color:#fff;border:none;height: 0.15rem;
+    margin-top: 0.03rem;border:1px solid #424851;width:1.32rem;padding-left:0;padding-right:0;}
     /*自定义*/
     .sofelist a{display:inline-block;width:0.38rem;height:0.38rem;margin:0.24rem 0.2rem 0rem 0.2rem;}
     .echarts-cont{display:-webkit-box;}
