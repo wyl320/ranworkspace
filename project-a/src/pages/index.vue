@@ -114,7 +114,7 @@
 		 			</div>
           <!--柱状图-->
           <div class="echarts">
-              <div id="line3" :style="{width:'300px',height:'300px'}"></div>
+              <div id="line3" :style="{width:'260px',height:'200px'}"></div>
           </div>
 		 		</div>
 		 	</div>
@@ -231,88 +231,75 @@
         }]
        };
        let lineoptionData ={
-              title: {
-                    text: '',
-                    subtext: ''
-                },
-                tooltip: {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data:['最高气温','最低气温']
-                },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        dataZoom: {
-                            yAxisIndex: 'none'
-                        },
-                        dataView: {readOnly: false},
-                        magicType: {type: ['line', 'bar']},
-                        restore: {},
-                        saveAsImage: {}
-                    }
-                },
-                xAxis:  {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: ['周一','周二','周三','周四','周五','周六','周日']
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLabel: {
-                        formatter: '{value} °C'
-                    }
-                },
-                series: [
-                    {
-                        name:'最高气温',
-                        type:'line',
-                        data:[11, 11, 15, 13, 12, 13, 10],
-                        markPoint: {
-                            data: [
-                                {type: 'max', name: '最大值'},
-                                {type: 'min', name: '最小值'}
-                            ]
-                        },
-                        markLine: {
-                            data: [
-                                {type: 'average', name: '平均值'}
-                            ]
-                        }
-                    },
-                    {
-                        name:'最低气温',
-                        type:'line',
-                        data:[1, -2, 2, 5, 3, 2, 0],
-                        markPoint: {
-                            data: [
-                                {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
-                            ]
-                        },
-                        markLine: {
-                            data: [
-                                {type: 'average', name: '平均值'},
-                                [{
-                                    symbol: 'none',
-                                    x: '90%',
-                                    yAxis: 'max'
-                                }, {
-                                    symbol: 'circle',
-                                    label: {
-                                        normal: {
-                                            position: 'start',
-                                            formatter: '最大值'
-                                        }
-                                    },
-                                    type: 'max',
-                                    name: '最高点'
-                                }]
-                            ]
-                        }
-                    }
-                ]
-       };
+                 title: {
+                   x: "center"
+                              },
+                 tooltip: {
+                     trigger: "item",
+                     formatter: "{a} <br/>{b} : {c}"
+                 },
+                 legend: {
+                     x: 'left',
+                     data: ["2的指数", "3的指数"]
+                 },
+                 xAxis: [
+                     {
+                         type: "category",
+                         name: "x",
+                         splitLine: {show: false},
+                         data: ["六", "七", "八"],
+                         axisLine: {
+                            lineStyle: {
+                                color: '#fff'
+                             }
+                         },
+                     }
+                 ],
+                 yAxis: [
+                     {
+                         name: "y",
+                         data: ["0", "40", "20","60"],
+                         axisLine: {
+                            lineStyle: {
+                                color: '#fff'
+                             }
+                         },
+                     }
+                 ],
+                  toolbox: {
+                     show: false,
+                     feature: {
+                         mark: {
+                             show: true
+                         },
+                         dataView: {
+                             show: true,
+                             readOnly: true
+                         },
+                         restore: {
+                             show: true
+                         },
+                         saveAsImage: {
+                             show: true
+                         }
+                     }
+                 },
+                 calculable: true,
+                 series: [
+                     {
+                         name: "3的指数",
+                         type: "line",
+                         data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669]
+
+                     },
+                     {
+                         name: "2的指数",
+                         type: "line",
+                         data: [1, 2, 4, 8, 16, 32, 64, 128, 256]
+
+                     }
+                 ]
+      };
       let countData = {
           listArrysoce:"",//水球图模块数据变量
           mationList:"" ,//威胁情报模块数据变量
