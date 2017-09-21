@@ -10,8 +10,8 @@
 		 	 <div class="mation">
 		 	    <!--<liquid v-for="item in listArrysoce.numList" :liquidsoure="item"></liquid>-->
           <div class="echarts-cont">
-              <div id="line" :style="{width:'150px',height:'150px'}"></div>
-              <div id="line2" :style="{width:'150px',height:'150px'}"></div>
+              <div id="line" :style="{width:'180px',height:'180px'}"></div>
+              <div id="line2" :style="{width:'180px',height:'180px'}"></div>
            </div>
 		 	 </div>
 		 	 <div class="numlist">
@@ -61,22 +61,28 @@
 		 			<!--列表-->
 		 			<div class="searchTb">
 		 				<span>设备监测情况</span>
-		 				<a href="javascript:;"></a>
-		 				<input type="text">
-		 				<button></button>
+            <em class="emlg">
+              <transition name="fade">
+  		 			     <a href="javascript:;" v-show="ishow_seacher" @click="cleanValue"></a>
+              </transition>
+              <transition name="lider">
+  		 				   <input type="text" placeholder="请输入设备名称" v-show="ishow_seacher" v-model="searchValue">
+              </transition>
+            </em>
+		 				<button @click="search_list"></button>
 		 			</div>
 		 			<div class="tabelist">
 		 				<table>
 		 					<tr>
-		 						<th>设备名称</th>
-			 					<th>开源软件</th>
-			 					<th>漏洞</th>
-			 					<th>安全状态</th>
-			 					<th>时间</th>
+		 						<th :style="{width:'27%'}" class="setLf">设备名称</th>
+			 					<th :style="{width:'15%'}">开源软件</th>
+			 					<th :style="{width:'12%'}">漏洞</th>
+			 					<th :style="{width:'26%'}">安全状态</th>
+			 					<th :style="{width:'16%'}">时间</th>
 		 					</tr>
 		 					<template v-for="item in sebeiList">
 		 						<tr>
-			 						<td>{{item.sebeiName}}</td>
+			 						<td class="setLf">{{item.sebeiName}}</td>
 			 						<td>{{item.freeSoftware}}</td>
 			 						<td>{{item.loopholeNumber}}</td>
 			 						<td>
@@ -164,36 +170,66 @@
        let liquidfillOption = {
         series: [{
             type: 'liquidFill',
-            data: [0.6, 0.5, 0.4, 0.3],
+            data: [{name: '28374'},0.6],
+            color: ['#916f44'],
             label: {
                 normal: {
-                    color: 'red',
-                    insideColor: 'yellow',
-                    fontSize: 15
-                }
-            },
-            itemStyle: {
-                normal: {
-                    shadowBlur: 0
+                    color: '#ffffff',
+                    insideColor: '#ffffff',
+                    fontSize: 15,
+                    formatter: '{b}'
                 }
             },
             outline: {
-                borderDistance: 0,
+                borderDistance: 6,
                 itemStyle: {
                     borderWidth: 2,
-                    borderColor: '#156ACF'
+                    borderColor: '#383e47'
                 }
-            }
+            },
+            backgroundStyle: {
+              borderWidth: 3,
+              borderColor: '#fbb150',
+              color: '#262d37'
+           }
         }]
       };
-
+      let liquidfillOption2 = {
+        series: [{
+            type: 'liquidFill',
+            data: [{name: '315'},0.4],
+            color: ['#10a8ab'],
+            label: {
+                normal: {
+                    color: '#ffffff',
+                    insideColor: '#ffffff',
+                    fontSize: 15,
+                    formatter: '{b}'
+                }
+            },
+            outline: {
+                borderDistance: 6,
+                itemStyle: {
+                    borderWidth: 2,
+                    borderColor: '#383e47'
+                }
+            },
+            backgroundStyle: {
+              borderWidth: 3,
+              borderColor: '#10a8ab',
+              color: '#262d37'
+           }
+        }]
+      };
       let countData = {
           listArrysoce:"",//水球图模块数据变量
           mationList:"" ,//威胁情报模块数据变量
           loopholeList:"",//安全响应
           sebeiList:"",//设备
           chartDataOption:liquidfillOption,//图标一
-          chartUpdateOption:liquidfillOption//图标二
+          chartUpdateOption2:liquidfillOption2,//图标二
+          ishow_seacher:false,
+          searchValue:""
       };//数据汇总数据源
 
 		 	return{
@@ -278,9 +314,18 @@
                 .catch(function (error) {
                   console.log(error);
                 });
+            },
+            //搜索框
+            search_list:function(){
+                 this.ishow_seacher = !this.ishow_seacher;
+                 $(".emlg input").focus();
+            },
+            //清除值
+            cleanValue:function(){
+               this.searchValue =""
             }
 		},
-		 watch: {
+		watch: {
 		 	//监控页面高度
 		    setHeight: function () {
 		        return this.setHeight;
@@ -300,7 +345,7 @@
 		    sebeiList:function(){
 		    	return this.sebeiList;
 		    }
-         },
+     },
 		 created(){
             this.fullHeight();
             this.loadList();
@@ -313,7 +358,7 @@
             this._vue_charts.setOption(this.chartDataOption);
 
             this._vue_charts2 = echarts.init(document.getElementById('line2'));
-            this._vue_charts2.setOption(this.chartUpdateOption);
+            this._vue_charts2.setOption(this.chartUpdateOption2);
      }
 	}
 </script>
@@ -367,7 +412,7 @@
     .sebei{padding-right:0.01rem;line-height: 0.24rem;line-height: 0.18rem;width:63%;}
     .curver{color:#7e848c;font-size: 0.01rem;text-align:right;}
     .sebei a{color:#fff;}
-    .curver em{display:inline-block;width:0.1rem;height:0.1rem;margin-left:0.08rem;border:0.01rem solid #424852;margin-bottom:0.05rem;}
+    .curver em{display:inline-block;width:0.1rem;height:0.1rem;margin-left:0.05rem;border:0.01rem solid #424852;margin-bottom:0.05rem;}
     .curver em.blue{background:#0f9ec7;border:0.01rem solid #0f9ec7;}
     .curver em.yellow{background:#ffe60f;border:0.01rem solid #ffe60f;}
     .curver em.orange{background:#ff7214;border:0.01rem solid #ff7214;}
@@ -380,18 +425,32 @@
     .searchTb{height:0.21rem;padding:0.07rem 0.14rem;border-bottom:0.01rem solid #424851;}
     .searchTb input {border:none;width:2.0rem;margin-right:0.1rem;margin-left:0.1rem;background:#2e3540;}
     .searchTb span{display:inline-block;width:1.4rem;}
-    .searchTb a{display:inline-block; width:0.12rem;height:0.12rem;background:url(../assets/images/det.png) top center;background-repeat: no-repeat;}
+    .searchTb a{vertical-align:middle;display:inline-block; width:0.12rem;height:0.12rem;background:url(../assets/images/det.png) top center;background-repeat: no-repeat;}
     .searchTb button{width:0.21rem;height:0.21rem;background:url(../assets/images/seach.png) top center;background-repeat: no-repeat;}
+    .emlg{display:inline-block;width:2.4rem;}
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0
+    }
+    .lider-enter-active, .lider-leave-active {
+      transition: width .3s
+    }
+    .lider-enter, .lider-leave-to {
+      width: 0
+    }
     /*table*/
     .tabelist table{width:100%;}
-    .tabelist td{padding:0.08rem  0rem 0.08rem 0.14rem;border-bottom:0.01rem solid #424851;}
-    .tabelist th{padding:0.08rem 0rem 0.08rem 0.14rem;background:#3a4350;}
-    .tabelist table em{display:inline-block;width:0.1rem;height:0.1rem;margin-left:0.06rem;border:0.01rem solid #666666;margin-top:0.05rem;background:#666666;}
+    .tabelist td{padding:0.08rem  0rem 0.08rem 0rem;border-bottom:0.01rem solid #424851;text-align: center;}
+    .tabelist th{padding:0.08rem 0rem 0.08rem 0rem;background:#3a4350;text-align: center;}
+    .tabelist table em{display:inline-block;width:0.1rem;height:0.1rem;margin-left:0.03rem;border:0.01rem solid #666666;margin-top:0.05rem;background:#666666;}
     .tabelist table em.blue{background:#0f9ec7;border:0.01rem solid #0f9ec7;}
     .tabelist table em.yellow{background:#ffe60f;border:0.01rem solid #ffe60f;}
     .tabelist table em.orange{background:#ff7214;border:0.01rem solid #ff7214;}
     .tabelist table em.pink{background:#f82454;border:0.01rem solid #f82454;}
     .tabelist table em.pers{background:#de00ff;border:0.01rem solid #f82454;}
+    .tabelist td.setLf,.tabelist th.setLf{padding-left:0.12rem;text-align: left;}
     /*message*/
     .mg_tab h2{color:#fff;font-size: 0.14rem;padding:0.1rem 0.12rem 0.1rem 0.12rem;}
     .adress,.nomb,.banben,.nomb,.nusofte{padding:0rem 0.12rem 0rem 0.12rem;}
@@ -437,13 +496,6 @@
     .st_gn{height:0.3rem;}
     /*自定义*/
     .sofelist a{display:inline-block;width:0.38rem;height:0.38rem;margin:0.24rem 0.2rem 0rem 0.2rem;}
-
-    .echarts-cont{
-      display:-webkit-box;
-    }
-
-    .echarts-cont>div{
-      -webkit-box-flex:1;
-      box-flex:1;
-    }
+    .echarts-cont{display:-webkit-box;}
+    .echarts-cont>div{ -webkit-box-flex:1; box-flex:1;}
 </style>

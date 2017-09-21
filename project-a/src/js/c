@@ -86,7 +86,7 @@
                         },
                         {   
                             "ip":"192.168.3.66",
-                            "sebeiName":"SB-01-101主机",
+                            "sebeiName":"SB-02-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
                             "levl":"zhongwei",
@@ -102,7 +102,7 @@
                         },
                         {   
                             "ip":"192.168.3.66",
-                            "sebeiName":"SB-01-101主机",
+                            "sebeiName":"SB-03-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
                             "levl":"gaowei",
@@ -118,7 +118,7 @@
                         },
                         {   
                             "ip":"192.168.3.66",
-                            "sebeiName":"SB-01-101主机",
+                            "sebeiName":"SB-04-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
                             "levl":"jingji",
@@ -134,7 +134,7 @@
                         },
                         {   
                             "ip":"192.168.3.66",
-                            "sebeiName":"SB-01-101主机",
+                            "sebeiName":"SB-05-101主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
                             "levl":"anquan",
