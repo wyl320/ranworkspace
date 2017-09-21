@@ -8,7 +8,6 @@
 		 	 	<span class="rightname"><em></em></span>
 		 	 </div>
 		 	 <div class="mation">
-		 	    <!--<liquid v-for="item in listArrysoce.numList" :liquidsoure="item"></liquid>-->
           <div class="echarts-cont">
               <div id="line" :style="{width:'180px',height:'180px'}"></div>
               <div id="line2" :style="{width:'180px',height:'180px'}"></div>
@@ -80,31 +79,26 @@
 			 					<th :style="{width:'26%'}">安全状态</th>
 			 					<th :style="{width:'16%'}">时间</th>
 		 					</tr>
-		 					<template v-for="item in sebeiList">
-		 						<tr>
-			 						<td class="setLf">{{item.sebeiName}}</td>
-			 						<td>{{item.freeSoftware}}</td>
-			 						<td>{{item.loopholeNumber}}</td>
-			 						<td>
-			 							<em :class="{blue:item.levl=='anquan'}"></em>
-			 							<em :class="{yellow:item.levl=='diwei'}"></em>
-			 							<em :class="{orange:item.levl=='zhongwei'}"></em>
-			 							<em :class="{red:item.levl=='gaowei'}"></em>
-			 							<em :class="{pers:item.levl=='jingji'}"></em>
-			 						</td>
-			 						<td>{{item.timer}}</td>
-		 					    </tr>
-		 					</template>
-		 				</table>
-            <!--<Scroll class="vScrollbar1" @scroll="scrollFn">
-                    <h1>default</h1>
-                    <h1>default</h1>
-                    <h1>default</h1>
-                    <h1>default</h1>
-                    <h1>default</h1>
-                    <h1>default</h1>
-                    <h1>default</h1>
-            </Scroll>-->
+            </table>
+            <div class="carvbar">
+            <table>
+                    <template v-for="item in newSebeiList">
+                      <tr>
+                        <td class="setLf">{{item.sebeiName}}</td>
+                        <td>{{item.freeSoftware}}</td>
+                        <td>{{item.loopholeNumber}}</td>
+                        <td>
+                          <em :class="{blue:item.levl=='anquan'}"></em>
+                          <em :class="{yellow:item.levl=='diwei'}"></em>
+                          <em :class="{orange:item.levl=='zhongwei'}"></em>
+                          <em :class="{red:item.levl=='gaowei'}"></em>
+                          <em :class="{pers:item.levl=='jingji'}"></em>
+                        </td>
+                        <td>{{item.timer}}</td>
+                        </tr>
+                    </template>
+            </table>
+            </div>
 		 			</div>
 		 		</div>
 		 		<!--图表-->
@@ -324,6 +318,7 @@
           mationList:"" ,//威胁情报模块数据变量
           loopholeList:"",//安全响应
           sebeiList:"",//设备
+          newSebeiList:"",//新设备数据
           chartDataOption:liquidfillOption,//图标一
           chartUpdateOption2:liquidfillOption2,//图标二
           lineUptionDatas:lineoptionData,//图标三
@@ -334,7 +329,8 @@
       };//数据汇总数据源
 
 		 	return{
-        ...countData
+        ...countData,
+        time:null
 		 	}
 
 		 },
@@ -401,12 +397,13 @@
             //请求设备信息
             loadsebeiList:function(){
             	let _this = this;
-            	axios.get(' http://www.mocky.io/v2/59c383e1120000040a9c0dc2', {
+            	axios.get(' http://www.mocky.io/v2/59c3f3b4110000660399cd0c', {
                   params: {}
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
                       _this.sebeiList = response.data.data.sebeiList;
+                      _this.newSebeiList = response.data.data.sebeiList
                       console.log(_this.sebeiList)
                       _this.tubiao = response.data.data.sebeiList[0]
                        console.log("aaa"+_this.tubiao)
@@ -450,12 +447,32 @@
               console.log(e.target.scrollTop)
             },
             key_up(){
-              //alert(this.searchValue)
-              this.sebeiList=_.remove(this.sebeiList,(idx)=>{
-                  if(this.searchValue == idx.sebeiName){
-                    return idx
+                let self = this;
+                if(this.time != null ){
+                  clearTimeout(this.time);
+                  this.time = null;
+                }
+                this.time = setTimeout(function(){
+                  self.getSearch();
+                },1000);          
+            },
+            // 清除两边的空格 
+            // StringTrim(){ 
+            //   return this.replace(/(^\s*)|(\s*$)/g, ''); 
+            // },
+            getSearch(){
+              if(!this.sebeiList)return;
+              this.newSebeiList = [];
+              if(this.searchValue == ""){
+                Object.assign(this.newSebeiList, this.sebeiList);
+              }else{
+                for(var i=0;i<this.sebeiList.length;i++){
+                  let da = this.sebeiList[i];
+                  if(da.sebeiName.indexOf(this.searchValue) != -1){
+                      this.newSebeiList.push(da);
                   }
-              });             
+                }
+              }
             },
             modfined(item){
               item.expanded = !item.expanded
@@ -501,6 +518,8 @@
             this.loadrepaireList()
 		 },
      mounted:function(){
+            // $('#scrollbar-main').jscrollbar();
+
             this._vue_charts = echarts.init(document.getElementById('line'));
             this._vue_charts.setOption(this.chartDataOption);
 
@@ -509,6 +528,8 @@
             
             this._vue_charts3 = echarts.init(document.getElementById('line3'));
             this._vue_charts3.setOption(this.lineUptionDatas);
+
+            $('#test3').jscrollbar();
      }
 	}
 </script>
@@ -601,6 +622,7 @@
     .tabelist table em.pink{background:#f82454;border:0.01rem solid #f82454;}
     .tabelist table em.pers{background:#de00ff;border:0.01rem solid #f82454;}
     .tabelist td.setLf,.tabelist th.setLf{padding-left:0.12rem;text-align: left;}
+    .carvbar{width:433px;height:433px;overflow-y:auto;}
     /*message*/
     .mg_tab h2{color:#fff;font-size: 0.14rem;padding:0.1rem 0.12rem 0.1rem 0.12rem;}
     .adress,.nomb,.banben,.nomb,.nusofte{padding:0rem 0.12rem 0rem 0.12rem;}
