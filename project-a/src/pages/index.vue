@@ -714,6 +714,8 @@
                    $("#line2 canvas").css({"width":"190px","height":"190px"});
                    $("#line3 canvas").css({"width":"325px","height":"180px","marginLeft":"10px"});
                   }else if ((screen.width == 1280) && (screen.height == 800)){
+                      $("#line canvas").css({"width":"190px","height":"190px"});
+                   $("#line2 canvas").css({"left":"30px","height":"190px"});
                       $("#line3").css({"width":"300px","height":"180px"});
                       $("#line3 canvas").css({"width":"300px","height":"180px","marginLeft":"0px"});
                   }else{
