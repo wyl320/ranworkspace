@@ -80,9 +80,12 @@
                             "core":"3.10.49",
                             "totaLoophol":"14",
                             "watchSoft":"6",
-                            "allNoudong":"100",
-                            "repairNoudong":"80",
-                            "currentNoudong":"20"
+                            
+                             "mounthA":{"allNoudong":"100","repairNoudong":"80"},
+                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+                                 
+
                         },
                         {   
                             "ip":"192.168.3.67",
@@ -94,15 +97,16 @@
                             "macAdress":"00-01-6C-06-A6-29",
                             "system":"win10",
                             "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"6",
-                            "allNoudong":"100",
-                            "repairNoudong":"80",
-                            "currentNoudong":"20"
+                            "totaLoophol":"24",
+                            "watchSoft":"16",
+                             "mounthA":{"allNoudong":"80","repairNoudong":"0"},
+                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+
                         },
                         {   
                             "ip":"192.168.3.68",
-                            "sebeiName":"SB-03-101主机",
+                            "sebeiName":"SB-03-108主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
                             "levl":"gaowei",
@@ -111,14 +115,15 @@
                             "system":"win10",
                             "core":"3.10.49",
                             "totaLoophol":"14",
-                            "watchSoft":"6",
-                            "allNoudong":"100",
-                            "repairNoudong":"80",
-                            "currentNoudong":"20"
+                            "watchSoft":"9",
+                             "mounthA":{"allNoudong":"40","repairNoudong":"0"},
+                             "mounthB":{"allNoudong":"70","repairNoudong":"20"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+
                         },
                         {   
                             "ip":"192.168.3.69",
-                            "sebeiName":"SB-04-101主机",
+                            "sebeiName":"SB-04-107主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
                             "levl":"jingji",
@@ -128,13 +133,14 @@
                             "core":"3.10.49",
                             "totaLoophol":"14",
                             "watchSoft":"6",
-                            "allNoudong":"100",
-                            "repairNoudong":"80",
-                            "currentNoudong":"20"
+                             "mounthA":{"allNoudong":"70","repairNoudong":"0"},
+                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+
                         },
                         {   
                             "ip":"192.168.3.70",
-                            "sebeiName":"SB-05-101主机",
+                            "sebeiName":"SB-05-106主机",
                             "freeSoftware":"16",
                             "loopholeNumber":"22",
                             "levl":"anquan",
@@ -144,9 +150,61 @@
                             "core":"3.10.49",
                             "totaLoophol":"14",
                             "watchSoft":"6",
-                            "allNoudong":"100",
-                            "repairNoudong":"80",
-                            "currentNoudong":"20"
+                             "mounthA":{"allNoudong":"10","repairNoudong":"0"},
+                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+
+                        },
+                        {   
+                            "ip":"192.168.3.71",
+                            "sebeiName":"SB-03-208主机",
+                            "freeSoftware":"16",
+                            "loopholeNumber":"22",
+                            "levl":"gaowei",
+                            "timer":"2017-08-24",
+                            "macAdress":"00-01-6C-06-A6-29",
+                            "system":"win10",
+                            "core":"3.10.49",
+                            "totaLoophol":"14",
+                            "watchSoft":"9",
+                             "mounthA":{"allNoudong":"40","repairNoudong":"0"},
+                             "mounthB":{"allNoudong":"70","repairNoudong":"30"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+
+                        },
+                        {   
+                            "ip":"192.168.3.72",
+                            "sebeiName":"SB-05-107主机",
+                            "freeSoftware":"16",
+                            "loopholeNumber":"22",
+                            "levl":"jingji",
+                            "timer":"2017-08-24",
+                            "macAdress":"00-01-6C-06-A6-29",
+                            "system":"win10",
+                            "core":"3.10.49",
+                            "totaLoophol":"14",
+                            "watchSoft":"6",
+                             "mounthA":{"allNoudong":"70","repairNoudong":"0"},
+                             "mounthB":{"allNoudong":"10","repairNoudong":"20"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+
+                        },
+                        {   
+                            "ip":"192.168.3.73",
+                            "sebeiName":"SB-05-109主机",
+                            "freeSoftware":"16",
+                            "loopholeNumber":"22",
+                            "levl":"anquan",
+                            "timer":"2017-08-24",
+                            "macAdress":"00-01-6C-06-A6-29",
+                            "system":"win10",
+                            "core":"3.10.49",
+                            "totaLoophol":"14",
+                            "watchSoft":"6",
+                             "mounthA":{"allNoudong":"10","repairNoudong":"0"},
+                             "mounthB":{"allNoudong":"20","repairNoudong":"20"},
+                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
+
                         }
          ]
     }

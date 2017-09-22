@@ -3,18 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>project-a</title>
+    <link rel="stylesheet" href="/static/auto.css" />
+    <link rel="stylesheet" type="text/css" id="medquie">
   </head>
   <body>
   	
   	<script src="/static/jquery-1.8.1.min.js" type="text/javascript"></script>
-    
     <script src="static/echarts-3.7.0.js"></script>
     <script src="static/echarts-liquidfill.js"></script>
-     <!---->
     <script src="/static/jquery.jscrollbar-2.0.0.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="/static/jquery.jscrollbar.css" />
+    
 
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <script type="text/javascript">
+      window.onload = function(){
+          if((screen.width == 1680) && (screen.height == 1050)){
+              document.getElementById('medquie').href = 'static/bigscreen.css';
+               //$("#line canvas").css({"width":"200px","height":"200px"});
+               //$("#line2 canvas").css({"width":"200px","height":"200px"});
+          }else if ((screen.width == 800) && (screen.height == 600)){
+              document.getElementById('medquie').href = 'static/auto.css' ;
+          }else{
+              document.getElementById('medquie').href = 'static/auto.css';
+          }
+      }
+    </script>
   </body>
 </html>
