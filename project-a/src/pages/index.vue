@@ -88,17 +88,17 @@
                   <table>
                           <template v-for="item in newSebeiList">
                             <tr @click="changeDatas(item)">
-                              <td :style="{width:'27%'}" class="setLf">{{item.sebeiName}}</td>
-                              <td :style="{width:'15%'}">{{item.freeSoftware}}</td>
-                              <td :style="{width:'12%'}">{{item.loopholeNumber}}</td>
-                              <td :style="{width:'26%'}">
+                              <td :style="{width:'25%'}" class="setLf">{{item.sebeiName}}</td>
+                              <td :style="{width:'13%'}">{{item.freeSoftware}}</td>
+                              <td :style="{width:'13%'}">{{item.loopholeNumber}}</td>
+                              <td :style="{width:'20%'}">
                                 <em :class="{blue:item.levl=='anquan'}"></em>
                                 <em :class="{yellow:item.levl=='diwei'}"></em>
                                 <em :class="{orange:item.levl=='zhongwei'}"></em>
                                 <em :class="{red:item.levl=='gaowei'}"></em>
                                 <em :class="{pers:item.levl=='jingji'}"></em>
                               </td>
-                              <td :style="{width:'16%'}">{{item.timer}}</td>
+                              <td :style="{width:'21%'}">{{item.timer}}</td>
                               </tr>
                           </template>
                   </table>
@@ -153,9 +153,9 @@
                <autocomplate v-on:increment="lognt"></autocomplate>
             </div> -->
            <div class="pulldown" v-else> 
-               <input type="text" value="" v-model="sofevalue" @focus="Allpulldown(item)" @keyup="Softkey_up(item)">
+               <input type="text" value="" v-model="sofevalue" @blur="Hidepulldown(item)" @focus="Allpulldown(item)" @keyup="Softkey_up(item)">
                <ul v-show="item.ulexpanded">
-                 <li @click="addItem(item)" v-for="its in newsoftseach">{{its.name}}</li>
+                 <li @click="addItem(item)" v-for="its in newsoftseach">{{its.sofeName}}</li>
                </ul>
             </div>
             <em @click="modfined(item)">编辑</em>
@@ -247,90 +247,7 @@
            }
         }]
        };
-       // let lineoptionData ={
-       //           tooltip: {
-       //               trigger: 'axis'
-       //           },
-       //           legend: {
-       //               x: 'left',
-       //               data: ["2的指数", "3的指数"]
-       //           },
-       //           xAxis: [
-       //               {
-       //                   type: "category",
-       //                   name: "x",
-       //                   boundaryGap : false,
-       //                   splitLine: {show: false},
-       //                   data: ["6月", "7月", "8月"],
-       //                   axisLine: {
-       //                      show:false,
-       //                      onZero:true,
-       //                      lineStyle:{
-       //                         color:'#424851',
-       //                         type:'solid',
-       //                         width:2
-       //                      }
-       //                   },
-       //                  axisLabel:{
-       //                        show:true,
-       //                        textStyle:{
-       //                             color:'#fff',
-       //                             baseline:'top',
-       //                             fontSize:12
-       //                        }
-       //                   }
-       //               }
-       //           ],
-       //           yAxis: [
-       //               {
-       //                   name: "y",
-       //                   data: ["0", "40", "20","60"],
-       //                   axisLine: {
-       //                      show:false,
-       //                      onZero:true,
-       //                      lineStyle:{
-       //                         color:'#424851',
-       //                         type:'solid',
-       //                         width:2
-       //                      }
-       //                   },
-       //                  axisLabel:{
-       //                        show:true,
-       //                        textStyle:{
-       //                             color:'#fff',
-       //                             baseline:'top',
-       //                             fontSize:12
-       //                        }
-       //                   }
-       //               }
-       //           ],
-       //           toolbox: {
-       //              show : false,
-       //              feature : {
-       //                  mark : {show: true},
-       //                  dataView : {show: true, readOnly: false},
-       //                  magicType : {show: true, type: ['line', 'bar']},
-       //                  restore : {show: true},
-       //                  saveAsImage : {show: true}
-       //              }
-       //           },
-       //          calculable : true,
-       //           series: [
-       //               {
-       //                   name: "3的指数",
-       //                   type: "line",
-       //                   data: [1, 3, 9, 27, 81]
-
-       //               },
-       //               {
-       //                   name: "2的指数",
-       //                   type: "line",
-       //                   data: [1, 2, 4, 8, 16]
-
-       //               }
-       //           ]
-       // };
-      let lineoptionData = {
+       let lineoptionData = {
                       tooltip : {
                           trigger: 'axis',
                           axisPointer:{
@@ -476,8 +393,8 @@
                               data:[14, 35, 2]
                           }
                       ]
-      };
-      let countData = {
+       };
+       let countData = {
           listArrysoce:"",//水球图模块数据变量
           mationList:"" ,//威胁情报模块数据变量
           loopholeList:"",//安全响应
@@ -495,23 +412,21 @@
           mounthBdata:[],//第二个月数据情况
           mounthCdata:[],//第三个月数据情况
           softseach:[
-               {"name":"jquery"},
-               {"name":"ps"},
-               {"name":"js"}
+               // {"name":"jquery"},
+               // {"name":"ps"},
+               // {"name":"js"}
           ],
           newsoftseach:[
-               {"name":"jquery"},
-               {"name":"ps"},
-               {"name":"js"}
+               // {"name":"jquery"},
+               // {"name":"ps"},
+               // {"name":"js"}
           ],
           sofevalue:""
-      };//数据汇总数据源
-
-		 	return{
+       };//数据汇总数据源
+		   return{
         ...countData,
         time:null
-		 	}
-
+		 	 }
 		 },
 		 methods:{
 		 	//设置窗口高度
@@ -528,7 +443,7 @@
                 .then(function (response) {
                   if(response.data.code=="0"){
                       _this.listArrysoce = response.data.data;
-                      console.log(_this.listArrysoce)
+                      //console.log(_this.listArrysoce)
                   }else{
                       console.log(response.data.message) 
                   }
@@ -546,7 +461,7 @@
                 .then(function (response) {
                   if(response.data.code=="0"){
                       _this.mationList = response.data.data.informationList;
-                      console.log(_this.mationList)
+                      //console.log(_this.mationList)
                   }else{
                       console.log(response.data.message) 
                   }
@@ -564,7 +479,7 @@
                 .then(function (response) {
                   if(response.data.code=="0"){
                       _this.loopholeList = response.data.data.loopholeList;
-                      console.log(_this.loopholeList)
+                      //console.log(_this.loopholeList)
                   }else{
                       console.log(response.data.message) 
                   }
@@ -587,7 +502,7 @@
                       _this.mounthAdata.push(response.data.data.sebeiList[0].mounthA);
                       _this.mounthBdata.push(response.data.data.sebeiList[0].mounthB);
                       _this.mounthCdata.push(response.data.data.sebeiList[0].mounthC)
-                       console.log(_this.mounthAdata);
+                       //console.log(_this.mounthAdata);
                   }else{
                       console.log(response.data.message);
                   }
@@ -605,7 +520,7 @@
                 .then(function (response) {
                   if(response.data.code=="0"){
                       _this.repaireList = response.data.data.repaireList;
-                      console.log(_this.repaireList)
+                      //console.log(_this.repaireList)
                   }else{
                       console.log(response.data.message) 
                   }
@@ -652,7 +567,6 @@
                 }
               }
             },
-
             Softkey_up(){
                 let self = this;
                 if(this.time != null ){
@@ -663,21 +577,48 @@
                   self.getSoft();
                 },1000);          
             },
-            getSoft(){
-               this.newsoftseach = [];
-               if(this.sofevalue == ""){
-                  Object.assign(this.newsoftseach, this.softseach);
-                }else{
-                  for(var i=0;i<this.softseach.length;i++){
-                    let da = this.softseach[i];
-                    if(da.name.indexOf(this.sofevalue) != -1){
-                        this.newsoftseach.push(da);
-                    }
+            //焦点取数据
+            getlist(){
+               let _this = this;
+               let promise = $.Deferred();
+               axios.get('http://www.mocky.io/v2/59c668ae4000008d02afe81f', {
+                   params: {}
+               })
+               .then(function (response) {
+                  if(response.data.code=="0"){
+                     _this.softseach = response.data.data.softlist;
+                    promise.resolve();
+                  }else{
+                      console.log(response.data.message);
+                      promise.reject();
                   }
-                  console.log(this.newsoftseach)
+               })
+               .catch(function (error) {
+                 console.log(error);
+                  promise.reject();
+                });
+               return promise;
+            },
+            getSoft(){
+               let self = this;
+               self.newsoftseach = [];
+               if(self.sofevalue == ""){
+                  Object.assign(self.newsoftseach, self.softseach);
+                }else{
+                  let promise = self.getlist();
+                  promise.done(function(){
+                      console.log(" --- ")
+                      //console.log(self.softseach)
+                      for(var i=0;i<self.softseach.length;i++){
+                        let da = self.softseach[i];
+                        if(da.sofeName.indexOf(self.sofevalue) != -1){
+                            self.newsoftseach.push(da);
+                        }
+                      }
+                      console.log(self.newsoftseach)
+                  })
                 }
             },
-            
             modfined(item){
               item.expanded = !item.expanded
             },
@@ -688,6 +629,10 @@
             },
             Allpulldown(item){
                 item.ulexpanded = true
+            },
+            Hidepulldown(item){
+                item.ulexpanded = false;
+                item.expanded = true;
             },
             //点击列表切换数据
             changeDatas(item){
@@ -708,16 +653,17 @@
                  console.log("dddddss")
             },
             setRound(){
-                   if((screen.width == 1680) && (screen.height == 1050)){
-                  document.getElementById('medquie').href = 'static/bigscreen.css';
-                   $("#line canvas").css({"width":"190px","height":"190px"});
-                   $("#line2 canvas").css({"width":"190px","height":"190px"});
-                   $("#line3 canvas").css({"width":"325px","height":"180px","marginLeft":"10px"});
+                  if((screen.width == 1680) && (screen.height == 1050)){
+                     $("#line canvas").css({"width":"190px","height":"190px"});
+                     $("#line2 canvas").css({"width":"190px","height":"190px"});
+                     $("#line3 canvas").css({"width":"325px","height":"180px","marginLeft":"10px"});
                   }else if ((screen.width == 1280) && (screen.height == 800)){
-                      $("#line3").css({"width":"300px","height":"180px"});
-                      $("#line3 canvas").css({"width":"300px","height":"180px","marginLeft":"0px"});
+                     $("#line canvas").css({"top":"-16px"});
+                     $("#line2 canvas").css({"left":"11px","top":"-16px"});
+                     $("#line3").css({"width":"300px","height":"180px"});
+                     $("#line3 canvas").css({"width":"260px","height":"165px","top":"-13px","left":"3px"});
                   }else{
-                      document.getElementById('medquie').href = 'static/auto.css';
+                      console.log(screen.height)
                   }
             }
 		},

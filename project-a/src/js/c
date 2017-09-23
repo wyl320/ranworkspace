@@ -247,3 +247,34 @@
          ]
     }
 }
+
+
+{
+    "code":"0",
+    "message":"",
+    "data":{
+        "softlist":[
+                       {   
+                            "id":"01",
+                            "sofeName":"jquery",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg"
+
+                        },
+                        {   
+                            "id":"02",
+                            "sofeName":"css",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/22/04/20/165719ab05c30d4.jpg"
+                        },
+                        {   
+                            "id":"03",
+                            "sofeName":"js",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/00/93/24/0956f27ddba2a20.jpg"
+                        },
+                        {   
+                            "id":"04",
+                            "sofeName":"ai",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg"
+                        }
+         ]
+    }
+}

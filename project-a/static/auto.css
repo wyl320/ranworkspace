@@ -60,7 +60,7 @@
      /*搜索框*/
     .searchTb{height:0.21rem;padding:0.07rem 0.14rem;border-bottom:0.01rem solid #424851;}
     .searchTb input {border:none;width:2.0rem;margin-right:0.1rem;margin-left:0.1rem;background:#2e3540;}
-    .searchTb span{display:inline-block;width:1.4rem;}
+    .searchTb span{display:inline-block;width:1.4rem;color:#0ba9b2;}
     .searchTb a{vertical-align:middle;display:inline-block; width:0.12rem;height:0.12rem;background:url(../assets/images/det.png) top center;background-repeat: no-repeat;}
     .searchTb button{width:0.21rem;height:0.21rem;background:url(../assets/images/seach.png) top center;background-repeat: no-repeat;}
     .emlg{display:inline-block;width:2.4rem;}
@@ -87,7 +87,7 @@
     .tabelist table em.pink{background:#f82454;border:0.01rem solid #f82454;}
     .tabelist table em.pers{background:#de00ff;border:0.01rem solid #f82454;}
     .tabelist td.setLf,.tabelist th.setLf{padding-left:0.12rem;text-align: left;}
-    .carvbar{width:100%;height:317px;overflow-y:auto;}
+    .carvbar{width:4.4rem;height:317px;overflow-y:auto;}
     ::-webkit-scrollbar{width:8px;}
     ::-webkit-scrollbar-track{background-color:#2e3540;}
     ::-webkit-scrollbar-thumb{background-color:#cfd7e2;}
@@ -106,6 +106,7 @@
     .nusofte_b,.nusofte_sb{color:#0ba9b2;}
     .nusofte_sa,.nusofte_sb{font-size:0.2rem;}
     .nusofte_b{margin-left:0.2rem;}
+    .echarts{width:2.7rem;}
     /*代码检测*/
     .codeing h2 {height:0.32rem;border-bottom:1px solid #424851;}
     .codeing h2 span{display:inline-block;color:#0ba9b2;width:86%;    padding-left: 0.14rem;line-height: 0.32rem;}
@@ -1116,3 +1117,10 @@ margin-top: 0.03rem;border:1px solid #424851;width:1.32rem;padding-left:0;paddin
 .tuli li em.blue{background:#4fc5f7;}
 .tuli li em.yellow{background:#fbb150;}
 .tuli li em.pink{background:#fa4833;}
+/*水球图图例*/
+.rightNm{position: absolute; left: 33px;top: 144px;color:#7e848c;}
+.leftNm{position: absolute;}
+.leftNm{top:120px;left:54px;color:#7e848c;}
+.rightNm{left:46px;}
+.ln{left:222px;top:119px;}
+.ln2{left: 228px;top:141px;}
