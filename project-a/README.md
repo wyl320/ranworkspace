@@ -134,3 +134,10 @@ option = {
 };
 
 ``` 
+
+插件列表
+
+http://www.jianshu.com/p/011d308d7dd7
+
+滚动条组件
+https://github.com/BosNaufal/vue-scrollbar

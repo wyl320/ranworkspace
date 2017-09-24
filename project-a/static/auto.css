@@ -61,8 +61,8 @@
     .searchTb{height:0.21rem;padding:0.07rem 0.14rem;border-bottom:0.01rem solid #424851;}
     .searchTb input {border:none;width:2.0rem;margin-right:0.1rem;margin-left:0.1rem;background:#2e3540;}
     .searchTb span{display:inline-block;width:1.4rem;color:#0ba9b2;}
-    .searchTb a{vertical-align:middle;display:inline-block; width:0.12rem;height:0.12rem;background:url(../assets/images/det.png) top center;background-repeat: no-repeat;}
-    .searchTb button{width:0.21rem;height:0.21rem;background:url(../assets/images/seach.png) top center;background-repeat: no-repeat;}
+    .searchTb a{vertical-align:middle;display:inline-block; width:0.12rem;height:0.12rem;background:url(../../src/assets/images/det.png) top center;background-repeat: no-repeat;}
+    .searchTb button{width:0.21rem;height:0.21rem;background:url(../../src/assets/images/seach.png) top center;background-repeat: no-repeat;}
     .emlg{display:inline-block;width:2.4rem;}
     .fade-enter-active, .fade-leave-active {
       transition: opacity .5s
@@ -106,7 +106,7 @@
     .nusofte_b,.nusofte_sb{color:#0ba9b2;}
     .nusofte_sa,.nusofte_sb{font-size:0.2rem;}
     .nusofte_b{margin-left:0.2rem;}
-    .echarts{width:2.7rem;}
+    .echarts{width:2.6rem;}
     /*代码检测*/
     .codeing h2 {height:0.32rem;border-bottom:1px solid #424851;}
     .codeing h2 span{display:inline-block;color:#0ba9b2;width:86%;    padding-left: 0.14rem;line-height: 0.32rem;}
@@ -132,7 +132,7 @@
     .result i{display:inline-block;width:1.1rem;text-align: right;color:#f8924e;}
     
     .soft_img{display:block;width:0.3rem; height:0.3rem;float:left;margin-right:0.1rem;}
-    .soft_img img{display:inline-block;width:0.3rem; height:0.3rem;}
+    .soft_img img{display:inline-block;width:0.3rem; height:0.3rem;border-radius: 0.3rem;}
     .soft_name{width:1.6rem;display:block;float:left;margin-top:0.05rem;}
     .st_gn i{float:left;}
     .st_gn em{margin-top:0.05rem;display:block;float:left;cursor:pointer;}
