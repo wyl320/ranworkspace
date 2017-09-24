@@ -292,12 +292,14 @@
               if(this.searchValue == ""){
                 Object.assign(this.newSebeiList, this.sebeiList);
               }else{
+                let _istData = [];
                 for(var i=0;i<this.sebeiList.length;i++){
                   let da = this.sebeiList[i];
                   if(da.sebeiName.indexOf(this.searchValue) != -1){
-                      this.newSebeiList.push(da);
+                      _istData.push(da);
                   }
                 }
+                this.newSebeiList = _istData;
               }
             },
             //点击列表切换数据

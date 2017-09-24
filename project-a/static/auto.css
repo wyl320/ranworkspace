@@ -141,6 +141,7 @@
     .pulldown{position:relative;width:1.6rem;float:left;}
     .pulldown ul{position:absolute;top:0.22rem;left:0;border:1px solid #424851;width:1.32rem; height:auto;background:#21262d;}
     .pulldown ul li{padding:0.03rem;border-bottom:1px solid #424851;}
+    .pulldown ul li:hover{background-color:#424851;}
     .pulldown input {background:#2e3540;color:#fff;border:none;height: 0.15rem;
     margin-top: 0.03rem;border:1px solid #424851;width:1.32rem;padding-left:0;padding-right:0;}
     /*自定义*/
