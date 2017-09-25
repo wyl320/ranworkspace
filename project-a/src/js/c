@@ -1,3 +1,63 @@
+// {
+//     "code":"0",
+//     "message":"",
+//     "data":{
+//         "list":[
+//             {
+//                 "id":"101",
+//                 "icon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg",
+//                 "name":"jquery",
+//                 "repaired":"70",
+//                 "unrepaired":"30",
+//                 "pcent":"70%",
+//                 "expanded":true,
+//                 "ulexpanded":false
+//             },
+//             {
+//                 "id":"102",
+//                 "icon":"http://bpic.588ku.com/element_origin_min_pic/22/04/20/165719ab05c30d4.jpg",
+//                 "name":"vue.js",
+//                 "repaired":"10",
+//                 "unrepaired":"90",
+//                 "pcent":"10%",
+//                 "expanded":true,
+//                 "ulexpanded":false
+//             },
+//             {
+//                 "id":"103",
+//                 "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
+//                 "name":"GitHub",
+//                 "repaired":"20",
+//                 "unrepaired":"80",
+//                 "pcent":"20%",
+//                 "expanded":true,
+//                 "ulexpanded":false
+//             },
+//             {
+//                 "id":"105",
+//                 "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
+//                 "name":"js1001",
+//                 "repaired":"20",
+//                 "unrepaired":"80",
+//                 "pcent":"20%",
+//                 "expanded":true,
+//                 "ulexpanded":false
+//             },
+//             {
+//                 "id":"106",
+//                 "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
+//                 "name":"js1001",
+//                 "repaired":"20",
+//                 "unrepaired":"80",
+//                 "pcent":"20%",
+//                 "expanded":true,
+//                 "ulexpanded":false
+//             }
+//         ]
+//     }
+// }
+
+
 {
     "code":"0",
     "message":"",
@@ -8,21 +68,6 @@
                             "title":"最新发布按全漏洞01",
                             "currentTime":"2017-08-24"
 
-                        },
-                        {   
-                            "id":"02",
-                            "title":"最新发布按全漏洞02",
-                            "currentTime":"2017-07-24"
-                        },
-                        {   
-                            "id":"03",
-                            "title":"最新发布按全漏洞03",
-                            "currentTime":"2017-07-24"
-                        },
-                        {   
-                            "id":"04",
-                            "title":"最新发布按全漏洞04",
-                            "currentTime":"2017-07-24"
                         }
          ]
     }
@@ -69,6 +114,7 @@
     "data":{
         "sebeiList":[
                        {   
+                            "id":"1001",
                             "ip":"192.168.3.66",
                             "sebeiName":"SB-01-101主机",
                             "freeSoftware":"16",
@@ -80,14 +126,18 @@
                             "core":"3.10.49",
                             "totaLoophol":"14",
                             "watchSoft":"6",
-                            
-                             "mounthA":{"allNoudong":"100","repairNoudong":"80"},
-                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-                                 
-
+                            "charData":{
+                                "seriesType":["所有漏洞数量","已修复漏洞数量","存在漏洞数量"]
+                                "list":[
+                                    {"id":"2001","month":"1月","allNoudong":"100","repairNoudong":"23"},
+                                    {"id":"2002","month":"2月","allNoudong":"10","repairNoudong":"25"},
+                                    {"id":"2003","month":"3月","allNoudong":"50","repairNoudong":"12"},
+                                    {"id":"2004","month":"4月","allNoudong":"80","repairNoudong":"32"}
+                                ]
+                            }
                         },
                         {   
+                            "id":"1002",
                             "ip":"192.168.3.67",
                             "sebeiName":"SB-02-101主机",
                             "freeSoftware":"16",
@@ -99,10 +149,15 @@
                             "core":"3.10.49",
                             "totaLoophol":"24",
                             "watchSoft":"16",
-                             "mounthA":{"allNoudong":"80","repairNoudong":"0"},
-                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-
+                            "charData":{
+                                "seriesType":["所有漏洞数量","已修复漏洞数量","存在漏洞数量"]
+                                "list":[
+                                    {"id":"2001","month":"5月","allNoudong":"100","repairNoudong":"23"},
+                                    {"id":"2002","month":"7月","allNoudong":"10","repairNoudong":"25"},
+                                    {"id":"2003","month":"9月","allNoudong":"50","repairNoudong":"12"},
+                                    {"id":"2004","month":"5月","allNoudong":"80","repairNoudong":"32"}
+                                ]
+                            }
                         },
                         {   
                             "ip":"192.168.3.68",
@@ -215,35 +270,104 @@
     "code":"0",
     "message":"",
     "data":{
-        "repaireList":[
+        "list":[
+            {
+                "id":"101",
+                "icon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg",
+                "name":"jquery",
+                "repaired":"70",
+                "unrepaired":"30",
+                "pcent":"70%",
+                "expanded":true,
+                "ulexpanded":false
+            },
+            {
+                "id":"102",
+                "icon":"http://bpic.588ku.com/element_origin_min_pic/22/04/20/165719ab05c30d4.jpg",
+                "name":"vue.js",
+                "repaired":"10",
+                "unrepaired":"90",
+                "pcent":"10%",
+                "expanded":true,
+                "ulexpanded":false
+            },
+            {
+                "id":"103",
+                "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
+                "name":"GitHub",
+                "repaired":"20",
+                "unrepaired":"80",
+                "pcent":"20%",
+                "expanded":true,
+                "ulexpanded":false
+            },
+            {
+                "id":"105",
+                "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
+                "name":"js1001",
+                "repaired":"20",
+                "unrepaired":"80",
+                "pcent":"20%",
+                "expanded":true,
+                "ulexpanded":false
+            },
+            {
+                "id":"106",
+                "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
+                "name":"js1001",
+                "repaired":"20",
+                "unrepaired":"80",
+                "pcent":"20%",
+                "expanded":true,
+                "ulexpanded":false
+            }
+        ]
+    }
+}
+
+
+{
+    "code":"0",
+    "message":"",
+    "data":{
+        "softlist":[
                        {   
                             "id":"01",
-                            "softIcon":"CNNVD-201708-983",
-                            "softName":"jquery",
-                            "repaired":"70",
-                            "unrepaired":"30",
-                            "expanded":true,
-                            "ulexpanded":false
+                            "sofeName":"jquery",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg"
 
                         },
                         {   
-                            "id":"01",
-                            "softIcon":"CNNVD-201708-983",
-                            "softName":"vue.js",
-                            "repaired":"10",
-                            "unrepaired":"90",
-                            "expanded":true,
-                            "ulexpanded":false
+                            "id":"02",
+                            "sofeName":"css",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/22/04/20/165719ab05c30d4.jpg"
                         },
                         {   
-                            "id":"01",
-                            "softIcon":"CNNVD-201708-983",
-                            "softName":"GitHub",
-                            "repaired":"20",
-                            "unrepaired":"80",
-                            "expanded":true,
-                            "ulexpanded":false
+                            "id":"03",
+                            "sofeName":"js",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/00/93/24/0956f27ddba2a20.jpg"
+                        },
+                        {   
+                            "id":"04",
+                            "sofeName":"ai",
+                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg"
                         }
          ]
     }
 }
+
+{
+    "code":"0",
+    "message":"",
+    "data":{
+        "userMation":[
+                       {   
+                            "id":"01",
+                            "userName":"admin",
+                            "useIcon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg"
+
+                        }
+         ]
+    }
+}
+
