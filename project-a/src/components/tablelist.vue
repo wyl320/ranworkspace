@@ -18,11 +18,11 @@
             <div  class="toptb">
   		 				 <table>
   		 					<tr>
-  		 						<th :style="{width:'27%'}" class="setLf">设备名称</th>
-  			 					<th :style="{width:'15%'}">开源软件</th>
-  			 					<th :style="{width:'12%'}">漏洞</th>
-  			 					<th :style="{width:'26%'}">安全状态</th>
-  			 					<th :style="{width:'16%'}">时间</th>
+  		 						<th :style="{width:'35%'}" class="setLf">设备名称</th>
+  			 					<th :style="{width:'12%'}">开源软件</th>
+  			 					<th :style="{width:'13%'}">漏洞</th>
+  			 					<th :style="{width:'14%'}">安全状态</th>
+  			 					<th :style="{width:'21%'}">时间</th>
   		 					</tr>
                </table> 
              </div>
@@ -31,10 +31,10 @@
     	                  <table>
     	                          <template v-for="item in newSebeiList">
     	                            <tr @click="changeDatas(item)">
-    	                              <td :style="{width:'25%'}" class="setLf">{{item.sebeiName}}</td>
-    	                              <td :style="{width:'13%'}">{{item.freeSoftware}}</td>
+    	                              <td :style="{width:'35%'}" class="setLf">{{item.sebeiName}}</td>
+    	                              <td :style="{width:'12%'}">{{item.freeSoftware}}</td>
     	                              <td :style="{width:'13%'}">{{item.loopholeNumber}}</td>
-    	                              <td :style="{width:'20%'}">
+    	                              <td :style="{width:'14%'}">
     	                                <em :class="{blue:item.levl=='anquan'}"></em>
     	                                <em :class="{yellow:item.levl=='diwei'}"></em>
     	                                <em :class="{orange:item.levl=='zhongwei'}"></em>
@@ -238,8 +238,8 @@
              };
  
 			return {
-           sebeiList:"",//设备
-           newSebeiList:"",//新设备数据
+           sebeiList:[],//设备
+           newSebeiList:[],//新设备数据
            lineUptionDatas:lineoptionData,//图表三
            ishow_seacher:false,//是否显示搜索框
 		       searchValue:"",//搜索框输入值
@@ -252,7 +252,7 @@
             //请求设备信息
             loadsebeiList:function(){
             	let _this = this;
-            	axios.get('http://www.mocky.io/v2/59c85de7110000e306c39c32', {
+            	axios.get(' http://www.mocky.io/v2/59c9cd293f0000210583f824', {
                   params: {}
                 })
                 .then(function (response) {

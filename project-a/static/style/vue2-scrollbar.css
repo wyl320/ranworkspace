@@ -31,7 +31,7 @@
 .vue-scrollbar__scrollbar-vertical .scrollbar, .vue-scrollbar__scrollbar-horizontal .scrollbar {
   position: relative;
   /*background: rgba(0, 0, 0, 0.5);*/
-  background:#cfd7e2;
+  background:#565e69;
   cursor: default;
 }
 .vue-scrollbar__scrollbar-vertical {

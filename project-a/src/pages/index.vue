@@ -40,7 +40,12 @@
 		 <!--中间-->
 		 <div class="centerCt" :style="{height:setHeight+'px'}">
 		 	<div class="cavemove">
-		 		cave
+		 		<div class="toolBars">
+           <span><i>230</i>台设备已监测</span><em>|</em><span><i>43</i>受威胁</span><em>|</em><span><i>16</i>紧急修复</span><em>|</em> 
+        </div>
+        <div class="listSbeict">
+            <Seblist></Seblist>
+        </div>
 		 	</div>
 		 	<div class="severcont clearfix">
 		 		<!--设备监测情况-->
@@ -52,12 +57,11 @@
 		 	<!--代码检测-->
 		 	<div class="codeing">
 		 		<h2><span>开源代码检测</span><router-link to="/">></router-link></h2>
-		 		<div class="code_area">
-		 			<em class="cort2"></em>
-		 			<em class="cort1"></em>
-		 			<textarea name="" id="" cols="30" rows="10"></textarea>
-		 			<div class="code_up"><span>源代码上传</span><input type="file"><button>检测源代码</button></div>
-		 		</div>
+        <div class="solerg">
+    		 		<input type="text" class="titlePut" placeholder="请输入标题">
+            <textarea class="areas" placeholder="请输入内容信息"></textarea>
+    		 		<div class="code_up"><span>提交</span><!-- <input type="file"> --><button>重置</button></div>
+        </div>
 		 	</div>
 		 	<!--修复情况-->
 		 	<div class="sofeset">
@@ -87,10 +91,11 @@
   import Safelist from '@/components/safelist'
   import Dangerlist from '@/components/dangerlist'
   import Liquid from '@/components/liquid'
+  import Seblist from '@/components/seblist'
   // import {liquidfillOption}  from '@/chart-data/chartData';
 
 	export default {
-		 components: {Repaircondition,Tablelist,Safelist,Dangerlist,Liquid},
+		 components: {Repaircondition,Tablelist,Safelist,Dangerlist,Liquid,Seblist},
 		 data(){
        let liquidfillOption = {
         series: [{
@@ -234,4 +239,5 @@
 	}
 </script>
 <style scoped>
+
 </style>

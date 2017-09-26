@@ -5,9 +5,9 @@
 	</div>
 </template>
 <script>
-import Scroll from '@/components/scroll'
+//import Scroll from '@/components/scroll'
 	export default{
-		components: {Scroll},
+		//components: {Scroll},
 		 data(){
 		 	return{
 		 		transmitpersonauto:"01",

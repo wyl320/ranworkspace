@@ -57,14 +57,14 @@
 //     }
 // }
 
-
+//威协情报
 {
     "code":"0",
     "message":"",
     "data":{
         "informationList":[
                        {   
-                            "id":"01",
+                            "id":"1001",
                             "title":"最新发布按全漏洞01",
                             "currentTime":"2017-08-24"
 
@@ -72,49 +72,30 @@
          ]
     }
 }
-//
+//安全响应
 {
     "code":"0",
     "message":"",
     "data":{
         "loopholeList":[
                        {   
-                            "id":"01",
+                            "id":"2001",
                             "loopholeNumber":"CNNVD-201708-983",
                             "currentTime":"2017-08-24",
                             "levl":"diwei"
 
-                        },
-                        {   
-                            "id":"02",
-                            "loopholeNumber":"CNNVD-201708-984",
-                            "currentTime":"2017-08-24",
-                            "levl":"zhongwei"
-                        },
-                        {   
-                            "id":"03",
-                            "loopholeNumber":"CNNVD-201708-985",
-                            "currentTime":"2017-08-24",
-                            "levl":"gaowei"
-                        },
-                        {   
-                            "id":"04",
-                            "loopholeNumber":"CNNVD-201708-986",
-                            "currentTime":"2017-08-24",
-                            "levl":"jingji"
                         }
          ]
     }
 }
-
-
+//设备信息
 {
     "code":"0",
     "message":"",
     "data":{
         "sebeiList":[
                        {   
-                            "id":"1001",
+                            "id":"3001",
                             "ip":"192.168.3.66",
                             "sebeiName":"SB-01-101主机",
                             "freeSoftware":"16",
@@ -135,144 +116,19 @@
                                     {"id":"2004","month":"4月","allNoudong":"80","repairNoudong":"32"}
                                 ]
                             }
-                        },
-                        {   
-                            "id":"1002",
-                            "ip":"192.168.3.67",
-                            "sebeiName":"SB-02-101主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"zhongwei",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"24",
-                            "watchSoft":"16",
-                            "charData":{
-                                "seriesType":["所有漏洞数量","已修复漏洞数量","存在漏洞数量"]
-                                "list":[
-                                    {"id":"2001","month":"5月","allNoudong":"100","repairNoudong":"23"},
-                                    {"id":"2002","month":"7月","allNoudong":"10","repairNoudong":"25"},
-                                    {"id":"2003","month":"9月","allNoudong":"50","repairNoudong":"12"},
-                                    {"id":"2004","month":"5月","allNoudong":"80","repairNoudong":"32"}
-                                ]
-                            }
-                        },
-                        {   
-                            "ip":"192.168.3.68",
-                            "sebeiName":"SB-03-108主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"gaowei",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"9",
-                             "mounthA":{"allNoudong":"40","repairNoudong":"0"},
-                             "mounthB":{"allNoudong":"70","repairNoudong":"20"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-
-                        },
-                        {   
-                            "ip":"192.168.3.69",
-                            "sebeiName":"SB-04-107主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"jingji",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"6",
-                             "mounthA":{"allNoudong":"70","repairNoudong":"0"},
-                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-
-                        },
-                        {   
-                            "ip":"192.168.3.70",
-                            "sebeiName":"SB-05-106主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"anquan",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"6",
-                             "mounthA":{"allNoudong":"10","repairNoudong":"0"},
-                             "mounthB":{"allNoudong":"50","repairNoudong":"20"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-
-                        },
-                        {   
-                            "ip":"192.168.3.71",
-                            "sebeiName":"SB-03-208主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"gaowei",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"9",
-                             "mounthA":{"allNoudong":"40","repairNoudong":"0"},
-                             "mounthB":{"allNoudong":"70","repairNoudong":"30"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-
-                        },
-                        {   
-                            "ip":"192.168.3.72",
-                            "sebeiName":"SB-05-107主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"jingji",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"6",
-                             "mounthA":{"allNoudong":"70","repairNoudong":"0"},
-                             "mounthB":{"allNoudong":"10","repairNoudong":"20"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-
-                        },
-                        {   
-                            "ip":"192.168.3.73",
-                            "sebeiName":"SB-05-109主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"anquan",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"6",
-                             "mounthA":{"allNoudong":"10","repairNoudong":"0"},
-                             "mounthB":{"allNoudong":"20","repairNoudong":"20"},
-                             "mounthC":{"allNoudong":"60","repairNoudong":"40"}
-
                         }
+                       
          ]
     }
 }
-
-
+//修复情况
 {
     "code":"0",
     "message":"",
     "data":{
         "list":[
             {
-                "id":"101",
+                "id":"4001",
                 "icon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg",
                 "name":"jquery",
                 "repaired":"70",
@@ -280,47 +136,7 @@
                 "pcent":"70%",
                 "expanded":true,
                 "ulexpanded":false
-            },
-            {
-                "id":"102",
-                "icon":"http://bpic.588ku.com/element_origin_min_pic/22/04/20/165719ab05c30d4.jpg",
-                "name":"vue.js",
-                "repaired":"10",
-                "unrepaired":"90",
-                "pcent":"10%",
-                "expanded":true,
-                "ulexpanded":false
-            },
-            {
-                "id":"103",
-                "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
-                "name":"GitHub",
-                "repaired":"20",
-                "unrepaired":"80",
-                "pcent":"20%",
-                "expanded":true,
-                "ulexpanded":false
-            },
-            {
-                "id":"105",
-                "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
-                "name":"js1001",
-                "repaired":"20",
-                "unrepaired":"80",
-                "pcent":"20%",
-                "expanded":true,
-                "ulexpanded":false
-            },
-            {
-                "id":"106",
-                "icon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg",
-                "name":"js1001",
-                "repaired":"20",
-                "unrepaired":"80",
-                "pcent":"20%",
-                "expanded":true,
-                "ulexpanded":false
-            }
+            } 
         ]
     }
 }
@@ -332,25 +148,10 @@
     "data":{
         "softlist":[
                        {   
-                            "id":"01",
+                            "id":"5001",
                             "sofeName":"jquery",
                             "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg"
 
-                        },
-                        {   
-                            "id":"02",
-                            "sofeName":"css",
-                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/22/04/20/165719ab05c30d4.jpg"
-                        },
-                        {   
-                            "id":"03",
-                            "sofeName":"js",
-                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/00/93/24/0956f27ddba2a20.jpg"
-                        },
-                        {   
-                            "id":"04",
-                            "sofeName":"ai",
-                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/00/01/60/565680db71cd9b5.jpg"
                         }
          ]
     }
