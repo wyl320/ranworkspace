@@ -1153,3 +1153,4 @@ body{overflow:hidden;}
 .midwat{position:relative;}
 .midwat ul{position:absolute;top:36px;left:0;z-index:9;width:1rem;}
 .midwat ul li{padding: 0.03rem;border-bottom: 1px solid #424851;background-color: #424851;cursor:pointer;border-bottom:1px solid #25313f;}
+.midwat span.choose{border: 1px solid #394555;width: 0.99rem;height: 0.18rem;}

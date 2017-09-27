@@ -5,7 +5,7 @@
       <span><i class="watch1">{{watchSebei}}</i>台设备已监测</span><em>|</em><span><i class="watch2">{{threaTen}}</i>受威胁</span><em>|</em><span><i class="watch3">{{urgentRepaired}}</i>紧急修复</span><em>|</em> 
     </div>
     <div class="midwat">
-      <span><i>状态筛选</i><em></em></span>
+      <span class="choose"><i>状态筛选</i><em></em></span>
       <ul>
         <li>中危</li>
         <li>低危</li>
