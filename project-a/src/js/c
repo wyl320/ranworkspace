@@ -64,9 +64,9 @@
     "data":{
         "informationList":[
                        {   
-                            "id":"1001",
-                            "title":"最新发布按全漏洞01",
-                            "currentTime":"2017-08-24"
+                            "id":"1001",//id
+                            "title":"最新发布按全漏洞01",//标题
+                            "currentTime":"2017-08-24"//时间
 
                         }
          ]
@@ -79,11 +79,10 @@
     "data":{
         "loopholeList":[
                        {   
-                            "id":"2001",
-                            "loopholeNumber":"CNNVD-201708-983",
-                            "currentTime":"2017-08-24",
-                            "levl":"diwei"
-
+                            "id":"2001",//id
+                            "loopholeNumber":"CNNVD-201708-983",//漏洞编号
+                            "currentTime":"2017-08-24",//时间
+                            "levl":"diwei"//安全等级
                         }
          ]
     }
@@ -93,20 +92,24 @@
     "code":"0",
     "message":"",
     "data":{
+        "watchSebei":"230",//已监测
+        "threaTen":"43",//受威胁
+        "urgentRepaired":"16",//紧急修复
         "sebeiList":[
                        {   
-                            "id":"3001",
-                            "ip":"192.168.3.66",
-                            "sebeiName":"SB-01-101主机",
-                            "freeSoftware":"16",
-                            "loopholeNumber":"22",
-                            "levl":"diwei",
-                            "timer":"2017-08-24",
-                            "macAdress":"00-01-6C-06-A6-29",
-                            "system":"win10",
-                            "core":"3.10.49",
-                            "totaLoophol":"14",
-                            "watchSoft":"6",
+                            "id":"3001", //id名称
+                            "ip":"192.168.3.66",//ip地址
+                            "isconnect":true,//连接状态
+                            "sebeiName":"SB-01-101主机",//设备名称
+                            "freeSoftware":"16",//开源软件
+                            "loopholeNumber":"22",//漏洞
+                            "levl":"diwei",//安全等级
+                            "timer":"2017-08-24",//时间
+                            "macAdress":"00-01-6C-06-A6-29",//mac 地址
+                            "system":"win10",//操作系统
+                            "core":"3.10.49",//内核版本
+                            "totaLoophol":"14",//漏洞总数量
+                            "watchSoft":"6",//监测开源软件
                             "charData":{
                                 "seriesType":["所有漏洞数量","已修复漏洞数量","存在漏洞数量"]
                                 "list":[
@@ -128,45 +131,55 @@
     "data":{
         "list":[
             {
-                "id":"4001",
-                "icon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg",
-                "name":"jquery",
-                "repaired":"70",
-                "unrepaired":"30",
-                "pcent":"70%",
+                "id":"4001",//id
+                "icon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg",//图标地址
+                "name":"jquery",//名称
+                "repaired":"70",//已修复
+                "unrepaired":"30",//末修复
+                "pcent":"70%",//百分比
                 "expanded":true,
                 "ulexpanded":false
             } 
         ]
     }
 }
-
-
+//情报中心
 {
     "code":"0",
     "message":"",
     "data":{
-        "softlist":[
+        "numList":[
                        {   
-                            "id":"5001",
-                            "sofeName":"jquery",
-                            "sofeIcon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg"
+                            "id":"01",
+                            "maxNumber":"60000",
+                            "currentNumber":"12963",
+                            "currentTime":"2017-08-24",
+                            "text":"情报总量"
 
+                        },
+                        {   
+                            "id":"02",
+                            "maxNumber":"60000",
+                            "currentNumber":"35554",
+                            "currentTime":"2017-07-24",
+                            "text":"软件监测总量"
                         }
-         ]
+         ],
+        "totalDatas":354655,//数据源总量
+        "updatDatas":43455,//更新总量
+        "freeSoftware":34//维护开源软件总量
     }
 }
-
+//个人中心
 {
     "code":"0",
     "message":"",
     "data":{
         "userMation":[
                        {   
-                            "id":"01",
-                            "userName":"admin",
-                            "useIcon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg"
-
+                            "id":"01",//id
+                            "userName":"admin",//名称
+                            "useIcon":"http://bpic.588ku.com/element_origin_min_pic/17/06/01/3b1a8efc35a023b743bd442d93f001f1.jpg"//图片
                         }
          ]
     }

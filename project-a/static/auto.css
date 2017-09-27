@@ -1130,9 +1130,9 @@ margin-top: 0.03rem;border:1px solid #424851;width:1.32rem;padding-left:0;paddin
 .ln2{left: 228px;top:141px;}
 body{overflow:hidden;}
 /*设备列表*/
-.toolBars{height:7.5%;}
-.listSbeict{height:90.75%;}
-.cardItem{float:left;background:#394555;width:2.1rem; height:0.94rem;border:1px solid #252c35;border-radius:5px;margin-left:0.2rem;margin-bottom:0.12rem;}
+.toolBars{/*padding-bottom:0.05rem;*/height:7.5%;}
+.listSbeict{/*height:90.75%;*/height:100%;}
+.cardItem{float:left;background:#394555;width:2.1rem; height:0.82rem;border:1px solid #252c35;border-radius:5px;margin-left:0.2rem;margin-bottom:0.12rem;}
 .cardItem h2{border-bottom:1px solid #424649;padding-left:0.2rem;height:0.28rem;line-height: 0.28rem;border-bottom:1px solid #25313f;}
 .ipname{position:relative;padding-left:0.43rem;margin-top:0.1rem;}
 .ipname span{display:inline-block;width:0.18rem;height:0.3rem;position:absolute;top:0.03rem;left:0.2rem;}
@@ -1144,3 +1144,12 @@ body{overflow:hidden;}
 .toolBars span,.toolBars em{display:inline-block;vertical-align: middle;margin-top:0.07rem;}
 .toolBars em{color:#636466;margin-left:0.1rem;margin-right:0.1rem;}
 .toolBars {padding-left:0.14rem;}
+.gray{background:#4b4f52;}
+.watch1{color:#42a5ff;display:inline-block;margin-right:5px;}
+.watch2{color:#ffce0f;display:inline-block;margin-right:5px;}
+.watch3{color:#f66b58;display:inline-block;margin-right:5px;}
+.leftwat,.midwat,.ritwat{float:left;}
+.leftwat{width:3.6rem;}
+.midwat{position:relative;}
+.midwat ul{position:absolute;top:36px;left:0;z-index:9;width:1rem;}
+.midwat ul li{padding: 0.03rem;border-bottom: 1px solid #424851;background-color: #424851;cursor:pointer;border-bottom:1px solid #25313f;}

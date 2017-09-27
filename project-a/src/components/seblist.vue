@@ -1,8 +1,27 @@
 <template>
+<div class="akme">
+  <div class="toolBars clearfix" id="toolBars">
+    <div class="leftwat">
+      <span><i class="watch1">{{watchSebei}}</i>台设备已监测</span><em>|</em><span><i class="watch2">{{threaTen}}</i>受威胁</span><em>|</em><span><i class="watch3">{{urgentRepaired}}</i>紧急修复</span><em>|</em> 
+    </div>
+    <div class="midwat">
+      <span><i>状态筛选</i><em></em></span>
+      <ul>
+        <li>中危</li>
+        <li>低危</li>
+        <li>高危</li>
+        <li>安全</li>
+        <li>失联</li>
+      </ul>
+    </div>
+    <div class="ritwat">
+      right
+    </div>
+  </div>
 	<div class="faster-dy">
 		<vueScrollbar class="my-scrollbar2">
 		<div class="scroll-me2">
-			<div class="cardItem" ref="cardItem" v-for="(item,index) in newCavalist" @mouseover="hoverStyle(item,$refs.cardItem,index)"  @mouseout="outStyle(item,$refs.cardItem,index)">
+			<div class="cardItem" ref="cardItem" v-for="(item,index) in newCavalist" @mouseover="hoverStyle(item,$refs.cardItem,index)"  @mouseout="outStyle(item,$refs.cardItem,index)" :class="{gray:item.isconnect==false}">
 				<h2>{{item.sebeiName}}</h2>
 				<div class="ipname">
 					<span class="blue" v-if="item.levl == 'anquan'"></span>
@@ -18,6 +37,7 @@
 	    </div>
 	    </vueScrollbar>
 	</div>
+</div>
 </template>
 <script>
 	import axios from 'axios'; 
@@ -28,24 +48,31 @@
                 cavalist:[],
                 newCavalist:[],
                 showCardblue:false,
-                colorAy:['blue','pers','pink']
+                watchSebei:"",
+                threaTen:"",
+                urgentRepaired:""
 			}
 		},
 		methods:{
             setcardItem(){
-            	var scrt = $(".cavemove").height()-$(".toolBars").height();
-            	$(".my-scrollbar2").css({"height":scrt-18+"px"})
+            	var scrt = $(".listSbeict").height();
+              var scrt2 = scrt*0.075;
+              $(".akme").height(scrt)
+            	$(".my-scrollbar2").css({"height":scrt-scrt2-18+"px"});
             },
              //请求设备信息
             loadcavaList:function(){
             	let self = this;
-            	axios.get(' http://www.mocky.io/v2/59c9cd293f0000210583f824', {
+            	axios.get('http://www.mocky.io/v2/59cb15282d00003a068069b0', {
                   params: {}
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
                       self.cavalist = response.data.data.sebeiList;
                       self.newCavalist = response.data.data.sebeiList;
+                      self.watchSebei = response.data.data.watchSebei;
+                      self.threaTen = response.data.data.threaTen;
+                      self.urgentRepaired = response.data.data.urgentRepaired
                   }else{
                       console.log(response.data.message);
                   }

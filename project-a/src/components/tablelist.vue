@@ -252,7 +252,7 @@
             //请求设备信息
             loadsebeiList:function(){
             	let _this = this;
-            	axios.get(' http://www.mocky.io/v2/59c9cd293f0000210583f824', {
+            	axios.get('http://www.mocky.io/v2/59cb15282d00003a068069b0', {
                   params: {}
                 })
                 .then(function (response) {

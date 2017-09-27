@@ -40,9 +40,6 @@
 		 <!--中间-->
 		 <div class="centerCt" :style="{height:setHeight+'px'}">
 		 	<div class="cavemove">
-		 		<div class="toolBars">
-           <span><i>230</i>台设备已监测</span><em>|</em><span><i>43</i>受威胁</span><em>|</em><span><i>16</i>紧急修复</span><em>|</em> 
-        </div>
         <div class="listSbeict">
             <Seblist></Seblist>
         </div>
