@@ -5,13 +5,16 @@
       <span><i class="watch1">{{watchSebei}}</i>台设备已监测</span><em>|</em><span><i class="watch2">{{threaTen}}</i>受威胁</span><em>|</em><span><i class="watch3">{{urgentRepaired}}</i>紧急修复</span><em>|</em> 
     </div>
     <div class="midwat">
-      <span class="choose"><i>状态筛选</i><em></em></span>
-      <ul>
-        <li v-for="(ite,index) in states" @click="choose_state(index)">{{ite.stge}}</li>
+      <span class="choose" @click="upDown" :class="{hasborder:isdown}"><i>状态筛选</i><em></em></span>
+      <ul v-show="isdown">
+        <li v-for="(ite,index) in states" @click="choose_state(index)"><a href="javascript:;">{{ite.stge}}</a></li>
       </ul>
     </div>
     <div class="ritwat">
-      right
+      <a href="javascript:;" class="zoom1"></a>
+      <a href="javascript:;" class="zoom2"></a>
+      <a href="javascript:;" class="zoom3"></a>
+      <a href="javascript:;" class="zoom4"></a>
     </div>
   </div>
 	<div class="faster-dy">
@@ -48,6 +51,7 @@
                 watchSebei:"",//监测的设备
                 threaTen:"",//受威胁的
                 urgentRepaired:"",//紧急修复
+                isdown:false,//显示下拉列表
                 states:[
                   {"stge":"中危"},
                   {"stge":"低位"},
@@ -140,7 +144,12 @@
                    break;
                    default:
                        this.newCavalist = this.cavalist
-               }
+               };
+               this.isdown = !this.isdown;
+               $(".my-scrollbar2 .vue-scrollbar__area").css({"marginTop":"0"})
+            },
+            upDown(){
+              this.isdown = !this.isdown
             }
 		},
 		mounted(){
@@ -157,4 +166,12 @@
 	.cardItem span.orange{background:url(../assets/images/orange.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
 	.cardItem span.pink{background:url(../assets/images/pink.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
 	.cardItem span.blue{background:url(../assets/images/blue.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
+  .zoom1{display:inline-block;background:url(../assets/images/zom2.png) no-repeat;width:0.23rem;height:0.14rem;margin-top:0.05rem;}
+  .zoom2{display:inline-block;background:url(../assets/images/zom4.png) no-repeat;width:0.22rem;height:0.22rem;margin-top:0.06rem;}
+  .zoom3{display:inline-block;background:url(../assets/images/zom3.png) no-repeat;width:0.22rem;height:0.22rem;margin-top:0.05rem;}
+  .zoom4{display:inline-block;background:url(../assets/images/zom1.png) no-repeat;width:0.2rem;height:0.2rem;margin-top:0.05rem;}
+  .zoom1:hover{background:url(../assets/images/zom2a.png) no-repeat;}
+  .zoom2:hover{background:url(../assets/images/zom4a.png) no-repeat;}
+  .zoom3:hover{background:url(../assets/images/zom3a.png) no-repeat;}
+  .zoom4:hover{background:url(../assets/images/zom1a.png) no-repeat;}
 </style>

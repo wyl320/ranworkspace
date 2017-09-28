@@ -251,15 +251,23 @@
 		methods:{
             //请求设备信息
             loadsebeiList:function(){
-            	let _this = this;
+            	let self = this;
             	axios.get('http://www.mocky.io/v2/59cb15282d00003a068069b0', {
                   params: {}
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
-                      _this.sebeiList = response.data.data.sebeiList;
-                      _this.newSebeiList = response.data.data.sebeiList;
-                      _this.tubiao.push(response.data.data.sebeiList[0]);
+                      //self.sebeiList = response.data.data.sebeiList;
+                      //过滤掉原数据中失联的主机
+                      self.sebeiList = response.data.data.sebeiList.filter(function(item) { 
+                          return  item.levl !== ''; 
+                      });
+                      //self.newSebeiList = response.data.data.sebeiList;
+                      //过滤掉原数据中失联的主机并复给渲染到页面的新数组
+                      self.newSebeiList = response.data.data.sebeiList.filter(function(item) { 
+                          return  item.levl !== ''; 
+                      });
+                      self.tubiao.push(response.data.data.sebeiList[0]);
                   }else{
                       console.log(response.data.message);
                   }
@@ -287,7 +295,7 @@
                 this.time = setTimeout(function(){
                   self.getSearch();
                 },1000); 
-                $(".vue-scrollbar__area").css({"marginTop":"0"})         
+                $(".my-scrollbar .vue-scrollbar__area").css({"marginTop":"0"})         
             },
             getSearch(){
               if(!this.sebeiList)return;

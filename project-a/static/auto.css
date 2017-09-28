@@ -1151,6 +1151,14 @@ body{overflow:hidden;}
 .leftwat,.midwat,.ritwat{float:left;}
 .leftwat{width:3.6rem;}
 .midwat{position:relative;}
-.midwat ul{position:absolute;top:36px;left:0;z-index:9;width:1rem;}
-.midwat ul li{padding: 0.03rem;border-bottom: 1px solid #424851;background-color: #424851;cursor:pointer;border-bottom:1px solid #25313f;}
-.midwat span.choose{border: 1px solid #394555;width: 0.99rem;height: 0.18rem;}
+.midwat ul{position:absolute;top:0.26rem;left:0;z-index:9;width:0.81rem;}
+.midwat ul li{border-bottom: 1px solid #424851;background-color: #424851;cursor:pointer;border-bottom:1px solid #25313f;}
+.midwat span.choose{width: 0.8rem;height: 0.18rem; border: 1px solid #020204;}
+.choose em{display: inline-block;
+    width: 0px;height: 0px;border-color: #a6b3bc transparent transparent transparent;border-style: solid;border-width: 0.05rem;vertical-align: top;margin-top: 0.05rem;}
+.choose i{vertical-align: top;display: inline-block;margin-left:0.04rem;}
+.midwat span.hasborder{border: 1px solid #394555;}
+.midwat ul li a{display:inline-block;padding: 0.03rem;padding-left:0.07rem;color:#fff;width:89%;}
+.midwat ul li a:hover{background:#2e3540;width:89%;}
+.ritwat a{display:inline-block;vertical-align: middle}
+.ritwat{margin-left:1.4rem;}
