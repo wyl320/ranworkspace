@@ -7,11 +7,7 @@
     <div class="midwat">
       <span class="choose"><i>状态筛选</i><em></em></span>
       <ul>
-        <li>中危</li>
-        <li>低危</li>
-        <li>高危</li>
-        <li>安全</li>
-        <li>失联</li>
+        <li v-for="(ite,index) in states" @click="choose_state(index)">{{ite.stge}}</li>
       </ul>
     </div>
     <div class="ritwat">
@@ -40,7 +36,8 @@
 </div>
 </template>
 <script>
-	import axios from 'axios'; 
+	import axios from 'axios'
+  import _ from 'lodash'
 	export default{
 		components: {  vueScrollbar: Vue2Scrollbar },
 		data(){
@@ -48,9 +45,18 @@
                 cavalist:[],
                 newCavalist:[],
                 showCardblue:false,
-                watchSebei:"",
-                threaTen:"",
-                urgentRepaired:""
+                watchSebei:"",//监测的设备
+                threaTen:"",//受威胁的
+                urgentRepaired:"",//紧急修复
+                states:[
+                  {"stge":"中危"},
+                  {"stge":"低位"},
+                  {"stge":"高危"},
+                  {"stge":"紧急"},
+                  {"stge":"安全"},
+                  {"stge":"失联"},
+                  {"stge":"全部"}
+                ]
 			}
 		},
 		methods:{
@@ -98,6 +104,43 @@
             },
             outStyle(item,a,index){
             	$(a[index]).css({"borderColor":"#252c35"}); 
+            },
+            //choose
+            choose_state(index){
+               switch(index){
+                   case 0:
+                       this.newCavalist = this.cavalist.filter(function(item) { 
+                          return  item.levl == 'zhongwei'; 
+                       });
+                   break;
+                   case 1:
+                       this.newCavalist = this.cavalist.filter(function(item) { 
+                       return  item.levl=="diwei";
+                       });
+                   break;
+                   case 2:
+                       this.newCavalist = this.cavalist.filter(function(item) { 
+                       return item.levl=="gaowei";
+                       });
+                   break;
+                   case 3:
+                       this.newCavalist = this.cavalist.filter(function(item) { 
+                       return item.levl=="jingji";
+                       });
+                   break;
+                   case 4:
+                       this.newCavalist = this.cavalist.filter(function(item) { 
+                       return item.levl=="anquan";
+                       });
+                   break;
+                   case 5:
+                       this.newCavalist = this.cavalist.filter(function(item) { 
+                       return item.levl=="";
+                       });
+                   break;
+                   default:
+                       this.newCavalist = this.cavalist
+               }
             }
 		},
 		mounted(){
