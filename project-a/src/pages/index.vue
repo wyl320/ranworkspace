@@ -208,7 +208,7 @@
                       console.log(screen.height)
                   }
             }
-		},
+		 },
 		watch: {
 		 	//监控页面高度
 		    setHeight() {

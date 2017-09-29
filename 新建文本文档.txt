@@ -63,3 +63,16 @@ http://www.mocky.io/v2/58be947b260000bc16f07bb9(数据格式1)
 http://www.mocky.io/v2/58c22c7911000076045abb29（数据格式2）
 
 http://www.mocky.io/   Access-Control-Allow-Origin
+
+
+
+https://aotu.io/notes/2017/07/10/Random-Circles/index.html(随机生成图)
+http://www.jianshu.com/p/1ea1b42d04bf
+http://www.cnblogs.com/axes/p/3501424.html
+http://www.cnblogs.com/axes/p/3529561.html
+http://jsfiddle.net/pleasureswx123/tfnmnue7/(d3)
+http://jsfiddle.net/4081svrp/3/(d3)
+https://github.com/EugeneOne/atom-canvas/blob/master/src/components/canvas.vue(知乎)
+
+
+http://www.cnblogs.com/koala2016/archive/2016/12/01/6123003.html(关系图)
