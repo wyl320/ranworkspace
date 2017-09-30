@@ -76,3 +76,5 @@ https://github.com/EugeneOne/atom-canvas/blob/master/src/components/canvas.vue(Ö
 
 
 http://www.cnblogs.com/koala2016/archive/2016/12/01/6123003.html(¹ØÏµÍ¼)
+
+http://gallery.echartsjs.com/editor.html?c=xrkQJnJWpe

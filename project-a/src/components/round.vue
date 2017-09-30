@@ -1,6 +1,6 @@
 <template>
 <div>
-	<div id="relation" style="width:500px;height:500px;background:#fff;"></div>
+	<div id="relation" style="width:720px;height:500px;background:#fff;"></div>
 </div>
 </template>
 <script>
@@ -13,16 +13,16 @@ export default {
 			            draggable: false,
 			            roam: true,
 			            nodeScaleRatio: 1,
-			            force: {
-			                layoutAnimation: true,
-			                repulsion: 200,
-			                gravity: 0.3
-			            },
+			            // force: {
+			            //     layoutAnimation: true,
+			            //     repulsion: 200,
+			            //     gravity: 0.3
+			            // },
 			            force : { //力引导图基本配置
 		                        //initLayout: ,//力引导的初始化布局，默认使用xy轴的标点
-		                        repulsion : 100,//节点之间的斥力因子。支持数组表达斥力范围，值越大斥力越大。
-		                        gravity : 0.03,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
-		                        edgeLength :80,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
+		                        repulsion : 400,//节点之间的斥力因子。支持数组表达斥力范围，值越大斥力越大。
+		                        gravity : 0.01,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
+		                        edgeLength :20,//边的两个节点之间的距离，这个距离也会受 repulsion。[10, 50] 。值越小则长度越长
 		                        layoutAnimation : true
 		                    //因为力引导布局会在多次迭代后才会稳定，这个参数决定是否显示布局的迭代动画，在浏览器端节点数据较多（>100）的时候不建议关闭，布局过程会造成浏览器假死。                        
                         },
@@ -47,7 +47,7 @@ export default {
 	                            color : '#FFF',
 	                            width : '3',
 	                            type : 'dotted', //线的类型 'solid'（实线）'dashed'（虚线）'dotted'（点线）
-	                            curveness : 0.3, //线条的曲线程度，从0到1
+	                            curveness : 0, //线条的曲线程度，从0到1
 	                            opacity : 1
 	                        // 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。默认0.5
 	                        },
@@ -96,88 +96,183 @@ export default {
 			                    "id": 0, 
 			                    "name": "安全盾0,0", 
 			                    "symbol": "",
-			                    "symbolSize" :40,
+			                    "symbolSize" :100,
 			                    "category" : 0,
+			                     itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#fff'
+                                    }
+                                }
+
 			                }, 
 			                {
 			                    "id": 1, 
-			                    "name": "高危1,1", 
+			                    "name": "已联接", 
 			                    "symbol": "",
-			                    "symbolSize" : 40,
-			                    "category" : 1,
-			                },
+			                    "symbolSize" :70,
+			                    "category" : 0,
+			                     itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#fff'
+                                    }
+                                }
+
+			                }, 
 			                {
 			                    "id": 2, 
-			                    "name": "安全2,2", 
+			                    "name": "未连接", 
 			                    "symbol": "",
-			                    "symbolSize" :40,
-			                    "category" : 2,
+			                    "symbolSize" :70,
+			                    "category" : 0,
+			                     itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#fff'
+                                    }
+                                }
+
 			                }, 
 			                {
 			                    "id": 3, 
-			                    "name": "中危3,3", 
-			                    "symbol": "",
-			                    "symbolSize" : 40,
-			                    "category" : 3,
+			                    "name": "高危1,1", 
+			                    "symbol": "roundRect",
+			                    "symbolSize" : 60,
+			                    "category" : 1,
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#ff6356'
+                                    }
+                                }
 			                },
 			                {
 			                    "id": 4, 
-			                    "name": "低危4,4", 
-			                    "symbol": "",
-			                    "symbolSize" :40,
-			                    "category" : 4,
-			                },
+			                    "name": "安全2,2", 
+			                    "symbol": "roundRect",
+			                    "symbolSize" :60,
+			                    "category" : 1,
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#45a4ff'
+                                    }
+                                }
+			                }, 
 			                {
 			                    "id": 5, 
-			                    "name": "紧急5,5", 
-			                    "symbol": "",
-			                    "symbolSize" :40,
-			                    "category" : 5,
+			                    "name": "中危3,3", 
+			                    "symbol": "roundRect",
+			                    "symbolSize" : 60,
+			                    "category" : 1,
+			                     itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#f1da6f'
+                                    }
+                                }
 			                },
 			                {
 			                    "id": 6, 
+			                    "name": "低危4,4", 
+			                    "symbol": "roundRect",
+			                    "symbolSize" :60,
+			                    "category" : 1,
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#ff954f'
+                                    }
+                                }
+			                },
+			                {
+			                    "id": 7, 
+			                    "name": "紧急5,5", 
+			                    "symbol": "roundRect",
+			                    "symbolSize" :60,
+			                    "category" : 1,
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#b45cf8'
+                                    }
+                                }
+			                },
+			                {
+			                    "id": 8, 
 			                    "name": "失联6,6", 
-			                    "symbol": "",
-			                    "symbolSize" :40,
-			                    "category" : 6,
-			                },
-			                {
-			                    "id": 7, //source要指的num
-			                    "name": "8,1", 
-			                    "symbol": "",
-			                    "symbolSize" :40,
-			                    //"category" : 1,//"target"要指的num
-			                },
-			                {
-			                    "id": 8, //source要指的num
-			                    "name": "9,1", 
-			                    "symbol": "",
-			                    "symbolSize" :40,
-			                    //"category" : 1,//"target"要指的num
+			                    "symbol": "roundRect",
+			                    "symbolSize" :60,
+			                    "category" : 2,
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#f82454'
+                                    }
+                                }
 			                },
 			                {
 			                    "id": 9, //source要指的num
-			                    "name": "10,1", 
+			                    "name": "8,1", 
 			                    "symbol": "",
-			                    "symbolSize" :40,
+			                    "symbolSize" :60,
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#505455'
+                                    }
+                                }
 			                    //"category" : 1,//"target"要指的num
 			                },
 			                {
 			                    "id": 10, //source要指的num
-			                    "name": "11,1", 
+			                    "name": "9,1", 
 			                    "symbol": "",
 			                    "symbolSize" :40,
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#505455'
+                                    }
+                                }
 			                    //"category" : 1,//"target"要指的num
 			                },
 			                {
 			                    "id": 11, //source要指的num
+			                    "name": "10,1", 
+			                    "symbol": "",
+			                    "symbolSize" :40,
+			                    //"category" : 1,//"target"要指的num
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#f1da6f'
+                                    }
+                                }
+			                },
+			                {
+			                    "id": 12, //source要指的num
+			                    "name": "11,1", 
+			                    "symbol": "",
+			                    "symbolSize" :40,
+			                    //"category" : 1,//"target"要指的num
+			                    itemStyle: {
+                                    normal: {
+                                        color: '#2e3540',
+                                        borderColor:'#ff6356'
+                                    }
+                                }
+			                },
+			                {
+			                    "id": 13, //source要指的num
 			                    "name": "12,1", 
 			                    "symbol": "",
 			                    "symbolSize" :40,
 			                    //"category" : 1,//"target"要指的num
 			                },
 			                {
-			                    "id": 12, //source要指的num
+			                    "id": 14, //source要指的num
 			                    "name": "13,1", 
 			                    "symbol": "",
 			                    "symbolSize" :40,
@@ -195,19 +290,19 @@ export default {
 			                }, 
 			                {
 			                    "source": 3, 
-			                    "target": 0
+			                    "target": 1
 			                },
 			                {
 			                    "source": 4, 
-			                    "target": 0
+			                    "target": 1
 			                },
 			                {
 			                    "source": 5, 
-			                    "target": 0
+			                    "target": 1
 			                },
 			                {
 			                    "source": 6, 
-			                    "target": 0
+			                    "target": 1
 			                },
 			                {
 			                    "source": 7, 
@@ -215,15 +310,15 @@ export default {
 			                },
 			                {
 			                    "source": 8, 
-			                    "target": 2
+			                    "target": 1
 			                },
 			                {
 			                    "source": 9, 
-			                    "target": 3
+			                    "target": 2
 			                },
 			                {
 			                    "source": 10, 
-			                    "target": 4
+			                    "target": 2
 			                },
 			                {
 			                    "source": 11, 
@@ -236,116 +331,362 @@ export default {
 			            ]
 			        }]
             }; 
-      //    let option = {
-				  //   title : {
-				  //       text: '人物关系：乔布斯',
-				  //       subtext: '数据来自人立方',
-				  //       x:'right',
-				  //       y:'bottom'
-				  //   },
-				  //   tooltip : {
-				  //       trigger: 'item',
-				  //       formatter: '{a} : {b}'
-				  //   },
-				  //   toolbox: {
-				  //       show : true,
-				  //       feature : {
-				  //           restore : {show: true},
-				  //           magicType: {show: true, type: ['force', 'chord']},
-				  //           saveAsImage : {show: true}
-				  //       }
-				  //   },
-				  //   legend: {
-				  //       x: 'left',
-				  //       data:['家人','朋友']
-				  //   },
-				  //   series : [{
-				  //           type:'force',
-				  //           name : "人物关系",
-				  //           ribbonType: false,
-				  //           categories : [
-				  //               {
-				  //                   name: '人物'
-				  //               },
-				  //               {
-				  //                   name: '家人'
-				  //               },
-				  //               {
-				  //                   name:'朋友'
-				  //               }
-				  //           ],
-				  //           itemStyle: {
-				  //               normal: {
-				  //                   label: {
-				  //                       show: true,
-				  //                       textStyle: {
-				  //                           color: '#333'
-				  //                       }
-				  //                   },
-				  //                   nodeStyle : {
-				  //                       brushType : 'both',
-				  //                       borderColor : 'rgba(255,215,0,0.4)',
-				  //                       borderWidth : 1
-				  //                   },
-				  //                   linkStyle: {
-				  //                       type: 'curve'
-				  //                   }
-				  //               },
-				  //               emphasis: {
-				  //                   label: {
-				  //                       show: false
-				  //                       // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
-				  //                   },
-				  //                   nodeStyle : {
-				  //                       //r: 30
-				  //                   },
-				  //                   linkStyle : {}
-				  //               }
-				  //           },
-				  //           useWorker: false,
-				  //           minRadius : 15,
-				  //           maxRadius : 25,
-				  //           gravity: 1.1,
-				  //           scaling: 1.1,
-				  //           roam: 'move',
-				  //           nodes:[
-				  //               {"category":0, "name": '乔布斯', "value" : 10, "label": '乔布斯\n（主要）'},
-				  //               {"category":1, "name": '丽萨-乔布斯',"value" : 2},
-				  //               {"category":1, "name": '保罗-乔布斯',"value" : 3},
-				  //               {"category":1, "name": '克拉拉-乔布斯',"value" : 3},
-				  //               {"category":1, "name": '劳伦-鲍威尔',"value" : 7},
-				  //               {"category":2, "name": '史蒂夫-沃兹尼艾克',"value ": 5},
-				  //               {"category":2, "name": '奥巴马',"value" : 8},
-				  //               {"category":2, "name": '比尔-盖茨',"value" : 9},
-				  //               {"category":2, "name": '乔纳森-艾夫',"value" : 4},
-				  //               {"category":2, "name": '蒂姆-库克',"value" : 4},
-				  //               {"category":2, "name": '龙-韦恩',"value" : 1},
-				  //           ],
-				  //           links : [
-				  //               {"source" : '丽萨-乔布斯', "target" : '乔布斯', "weight" : 1, "name": '女儿'},
-				  //               {"source" : '保罗-乔布斯', "target" : '乔布斯', "weight" : 2, "name": '父亲'},
-				  //               {"source" : '克拉拉-乔布斯', "target" : '乔布斯', "weight" : 1, "name": '母亲'},
-				  //               {"source" : '劳伦-鲍威尔', "target" : '乔布斯', "weight" : 2},
-				  //               {"source" : '史蒂夫-沃兹尼艾克', "target" : '乔布斯', "weight" : 3, "name": '合伙人'},
-				  //               {"source" : '奥巴马', "target" : '乔布斯', "weight" : 1},
-				  //               {"source": '比尔-盖茨', "target" : '乔布斯', "weight" : 6, "name": '竞争对手'},
-				  //               {"source" : '乔纳森-艾夫', "target" : '乔布斯', "weight" : 1, "name": '爱将'},
-				  //               {"source" : '蒂姆-库克', "target" : '乔布斯', "weight" : 1},
-				  //               {"source" : '龙-韦恩', "target" : '乔布斯', "weight" : 1},
-				  //               {"source" : '克拉拉-乔布斯', "target" : '保罗-乔布斯', "weight" : 1},
-				  //               {"source" : '奥巴马', "target" : '保罗-乔布斯', "weight" : 1},
-				  //               {"source" : '奥巴马', "target" : '克拉拉-乔布斯', "weight" : 1},
-				  //               {"source" : '奥巴马', "target" : '劳伦-鲍威尔', "weight" : 1},
-				  //               {"source" : '奥巴马', "target" : '史蒂夫-沃兹尼艾克', "weight" : 1},
-				  //               {"source" : '比尔-盖茨', "target" : '奥巴马', "weight" : 6},
-				  //               {"source" : '比尔-盖茨', "target" : '克拉拉-乔布斯', "weight" : 1},
-				  //               {"source" : '蒂姆-库克', "target" : '奥巴马', "weight" : 1}
-				  //           ]
-				  //   }]
-		    // };
-			return{
+		 // let   option = {
+			//     backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+			//         offset: 0,
+			//         color: '#2e3540'
+			//     }, {
+			//         offset: 1,
+			//         color: '#2e3540'
+			//     }]),
+			//     tooltip: {},
+			// 	    animationDuration: 3000,
+			// 	    animationEasingUpdate: 'quinticInOut',
+			// 	    series: [{
+			// 	        name: '安全盾',
+			// 	        type: 'graph',
+			// 	        layout: 'force',
+			// 	        force: {
+			// 	            repulsion: 300
+			// 	        },
+			// 	        data: [{
+			// 	            "name": "安全盾",
+			// 	            "symbolSize": 140,
+			// 	            "draggable": "true",
+			// 	            "value": 27,
+			// 	             itemStyle: {
+			// 	                normal: {
+			// 	                    color: '#2e3540',
+			// 	                    borderColor:'#fff'
+			// 	                }
+			// 	             }
+			// 	        }, {
+			// 	            "name": "安全001",
+			// 	            "value": 15,
+			// 	            "symbolSize": 60,
+			// 	            "category": "安全001",
+			// 	            "draggable": "true",
+			// 		         itemStyle: {
+			// 		            normal: {
+			// 		                color: '#45a4ff',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "安全设备01",
+			// 	            "symbolSize":13,
+			// 	            "category": "安全001",
+			// 	            "draggable": "true",
+			// 	            "value": 1,
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#45a4ff',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "安全设备02",
+			// 	            "symbolSize": 13,
+			// 	            "category": "安全001",
+			// 	            "draggable": "true",
+			// 	            "value": 1,
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#45a4ff',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "安全设备03",
+			// 	            "symbolSize": 15,
+			// 	            "category": "安全001",
+			// 	            "draggable": "true",
+			// 	            "value": 1,
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#45a4ff',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "高危002",
+			// 	            "value": 60,
+			// 	            "symbolSize": 60,
+			// 	            "category": "高危002",
+			// 	            "draggable": "true",
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#ff6356',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "高危01",
+			// 	            "symbolSize": 13,
+			// 	            "category": "高危002",
+			// 	            "draggable": "true",
+			// 	            "value": 1,
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#ff6356',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "高危02",
+			// 	            "symbolSize": 13,
+			// 	            "category": "高危002",
+			// 	            "draggable": "true",
+			// 	            "value": 1,
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#ff6356',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "中危003",
+			// 	            "value": 5,
+			// 	            "symbolSize": 60,
+			// 	            "category": "中危003",
+			// 	            "draggable": "true",
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#ff954f',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "孟德29",
+			// 	            "symbolSize": 3,
+			// 	            "category": "中危003",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }, {
+			// 	            "name": "曹公44",
+			// 	            "symbolSize": 7,
+			// 	            "category": "中危003",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }, {
+			// 	            "name": "失联006",
+			// 	            "value": 40,
+			// 	            "symbolSize": 60,
+			// 	            "category": "失联006",
+			// 	            "draggable": "true",
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#505455',
+			// 		                borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "云长431",
+			// 	            "symbolSize": 20,
+			// 	            "category": "失联006",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }, {
+			// 	            "name": "关公508",
+			// 	            "symbolSize": 25,
+			// 	            "category": "失联006",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }, {
+			// 	            "name": "低危004",
+			// 	            "value": 30,
+			// 	            "symbolSize": 60,
+			// 	            "category": "低危004",
+			// 	            "draggable": "true",
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#f1da6f',
+			// 		               borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "仲谋10",
+			// 	            "symbolSize": 3,
+			// 	            "category": "低危004",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }, {
+			// 	            "name": "吴侯72",
+			// 	            "symbolSize": 10,
+			// 	            "category": "低危004",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }, {
+			// 	            "name": "紧急005",
+			// 	            "value": 20,
+			// 	            "symbolSize": 60,
+			// 	            "category": "紧急005",
+			// 	            "draggable": "true",
+			// 	            itemStyle: {
+			// 		            normal: {
+			// 		                color: '#b45cf8',
+			// 		               borderColor:'#fff'
+			// 		            }
+			// 		         }
+			// 	        }, {
+			// 	            "name": "奉先15",
+			// 	            "symbolSize": 3,
+			// 	            "category": "紧急005",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }, {
+			// 	            "name": "温侯12",
+			// 	            "symbolSize": 3,
+			// 	            "category": "紧急005",
+			// 	            "draggable": "true",
+			// 	            "value": 1
+			// 	        }],
+			// 	        links: [{
+			// 	            "source": "安全盾",
+			// 	            "target": "安全001"
+			// 	        }, {
+			// 	            "source": "安全001",
+			// 	            "target": "使君70"
+			// 	        }, {
+			// 	            "source": "安全001",
+			// 	            "target": "安全设备02"
+			// 	        }, {
+			// 	            "source": "安全001",
+			// 	            "target": "安全设备03"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "高危002"
+			// 	        }, {
+			// 	            "source": "高危002",
+			// 	            "target": "高危01"
+			// 	        }, {
+			// 	            "source": "高危002",
+			// 	            "target": "高危02"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "中危003"
+			// 	        }, {
+			// 	            "source": "中危003",
+			// 	            "target": "孟德29"
+			// 	        }, {
+			// 	            "source": "中危003",
+			// 	            "target": "曹公44"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "失联006"
+			// 	        }, {
+			// 	            "source": "失联006",
+			// 	            "target": "云长431"
+			// 	        }, {
+			// 	            "source": "失联006",
+			// 	            "target": "关公508"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "张飞408"
+			// 	        }, {
+			// 	            "source": "张飞408",
+			// 	            "target": "翼德55"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "赵云393"
+			// 	        }, {
+			// 	            "source": "赵云393",
+			// 	            "target": "子龙95"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "低危004"
+			// 	        }, {
+			// 	            "source": "低危004",
+			// 	            "target": "仲谋10"
+			// 	        }, {
+			// 	            "source": "低危004",
+			// 	            "target": "吴侯72"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "紧急005"
+			// 	        }, {
+			// 	            "source": "紧急005",
+			// 	            "target": "奉先15"
+			// 	        }, {
+			// 	            "source": "紧急005",
+			// 	            "target": "温侯12"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "周瑜328"
+			// 	        }, {
+			// 	            "source": "周瑜328",
+			// 	            "target": "公瑾60"
+			// 	        }, {
+			// 	            "source": "周瑜328",
+			// 	            "target": "周郎35"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "魏延327"
+			// 	        }, {
+			// 	            "source": "魏延327",
+			// 	            "target": "文长12"
+			// 	        }, {
+			// 	            "source": "安全盾",
+			// 	            "target": "法学院"
+
+			// 	        }],
+			// 	        categories: [{
+			// 	            'name': '安全001'
+			// 	        }, {
+			// 	            'name': '高危002'
+			// 	        }, {
+			// 	            'name': '中危003'
+			// 	        }, {
+			// 	            'name': '失联006'
+			// 	        }, {
+			// 	            //'name': '张飞408'
+			// 	        }, {
+			// 	            //'name': '赵云393'
+			// 	        }, {
+			// 	            'name': '低危004'
+			// 	        }, {
+			// 	            'name': '紧急005'
+			// 	        }, {
+			// 	            //'name': '周瑜328'
+			// 	        }, {
+			// 	           // 'name': '魏延327'
+			// 	        }, {
+
+			// 	        }],
+			// 	        focusNodeAdjacency: true,
+			// 	        roam: true,
+			// 	        label: {
+			// 	            normal: {
+
+			// 	                show: true,
+			// 	                position: 'top',
+
+			// 	            }
+			// 	        },
+			// 	        lineStyle: {
+			// 	            normal: {
+			// 	                //color: 'source',
+			// 	                curveness: 0,
+			// 	                type: "solid"
+			// 	            }
+			// 	        }
+			// 	    }]
+   //       };
+ 			return{
                 relationOption:option,//图标一
 			}
+	   },
+	   methods:{
+   //          resizeChart () {
+			//     var w = $('body').width();
+			//     var h = $('body').height();
+			//     myChart.resize({
+			//         width: w,
+			//         height: h
+			//     });
+			//     option.series = getSeries();
+			//     myChart.setOption(option, true);
+			// }
 	   },
 	   mounted(){
             this._vue_charts = echarts.init(document.getElementById('relation'));
