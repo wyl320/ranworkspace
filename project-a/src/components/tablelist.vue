@@ -280,10 +280,12 @@
             search_list:function(){
                  this.ishow_seacher = !this.ishow_seacher;
                  $(".emlg input").focus();
+                 Object.assign(this.newSebeiList, this.sebeiList);
             },
             //清除值
             cleanValue:function(){
-               this.searchValue =""
+               this.searchValue ="";
+               Object.assign(this.newSebeiList, this.sebeiList);
             },
             //
             key_up(){
