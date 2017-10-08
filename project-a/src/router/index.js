@@ -21,8 +21,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Round',
-      component: Round
+      name: 'Map',
+      component: Map
     }
   ]
 });
