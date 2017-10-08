@@ -15,14 +15,14 @@ export default new Router({
       component: Index
     },
     {
-      path: 'c',
+      path: 'b',
       name: 'Map',
       component: Map
     },
     {
       path: '/',
-      name: 'Map',
-      component: Map
+      name: 'Round',
+      component: Round
     }
   ]
 });
