@@ -457,13 +457,13 @@ export default {
 			// 		            }
 			// 		         }
 			// 	        }, {
-			// 	            "name": "孟德29",
+			// 	            "name": "中危01",
 			// 	            "symbolSize": 3,
 			// 	            "category": "中危003",
 			// 	            "draggable": "true",
 			// 	            "value": 1
 			// 	        }, {
-			// 	            "name": "曹公44",
+			// 	            "name": "中危02",
 			// 	            "symbolSize": 7,
 			// 	            "category": "中危003",
 			// 	            "draggable": "true",
@@ -567,10 +567,10 @@ export default {
 			// 	            "target": "中危003"
 			// 	        }, {
 			// 	            "source": "中危003",
-			// 	            "target": "孟德29"
+			// 	            "target": "中危01"
 			// 	        }, {
 			// 	            "source": "中危003",
-			// 	            "target": "曹公44"
+			// 	            "target": "中危02"
 			// 	        }, {
 			// 	            "source": "安全盾",
 			// 	            "target": "失联006"

@@ -5,23 +5,30 @@ import test from '@/pages/test'
 import Autocomplate from '@/components/autocomplate'
 import Round from '@/components/round'
 import Map from '@/components/map'
+import Cloudetail from '@/pages/cloudetail'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
-      path: 'a',
-      name: 'Index',
+      path: '/',
+      name: 'index',
       component: Index
     },
     {
-      path: 'b',
-      name: 'Map',
+      path: '/cloudetail',
+      name: 'cloudetail',
+      component: Cloudetail
+    },
+    {
+      path: '/map',
+      name: 'map',
       component: Map
     },
     {
-      path: '/',
-      name: 'Round',
+      path: 'b',
+      name: 'round',
       component: Round
     }
   ]

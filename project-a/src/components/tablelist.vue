@@ -419,7 +419,6 @@
 
   /*The Wrapper*/
 .my-scrollbar{
-  /*width: 35%;*/
   min-width: 300px;
   /*max-height: 150px;*/
    /*height: 243px;*/
@@ -427,7 +426,6 @@
 
 /*The Content*/
 .scroll-me{
-  /*min-width: 300px;*/
   width: 100%;
 }
 .vue-scrollbar__wrapper{background:#2e3440;}

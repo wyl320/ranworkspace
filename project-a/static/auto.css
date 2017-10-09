@@ -1162,3 +1162,29 @@ body{overflow:hidden;}
 .midwat ul li a:hover{background:#2e3540;width:89%;}
 .ritwat a{display:inline-block;vertical-align: middle}
 .ritwat{margin-left:1.4rem;}
+/*云漏洞情报中心*/
+.makbox{border-top:1px solid #13161f;}
+.cloudTop{width:100%;height:0.3rem; background:#2e3440;border-top:1px solid #3e424b;color:#adb3bf;line-height: 0.3rem}
+.cloudTop a{color:#adb3bf;}
+.lgCn{margin-left:0.23rem;margin-right:0.05rem;}
+.cloudTop span{display:inline-block;margin-left:0.05rem;}
+.middlesMak{padding:0.1rem;}
+.map{height:71.5%;background:#2e3440;}
+.tabsg{height:26.8%;margin-top:1.4%;background:#2e3440;}
+.midMakLf{width:65.8%;float:left;}
+.midMakRt{margin-left:0.75%;width:33.45%;float:left;}
+.chatSoft,.lineSoft,.newSoft{background:#2e3440;}
+.chatSoft{height:27.1%;}
+.lineSoft{height:43.1%;    margin-top: 2%;}
+.newSoft{height: 26.8%;    margin-top: 2.6%;}
+.contHtion{position:relative;}
+.linkHbox{position:absolute;top:7%;right:10%;}
+.linkHbox span{display:inline-block;cursor:pointer;}
+.linkHbox em{display:inline-block;margin:0px 5px;}
+.linkHbox span.cur{color:#0ba9b2;}
+.some_dt{border-bottom:1px solid #3c424e;padding:0.05rem 0.05rem;height:0.5rem;}
+.some_dt span,.some_dt em,.some_dt i{display:block;vertical-align: middle;float:left;}
+.some_dt span{width:0.46rem;height:0.46rem;border-radius: 0.24rem;border:1px solid #3c424e;margin:0 0.12rem;margin-left:0.2rem;}
+.some_dt em{width:0.83rem;margin-right:0.1rem;margin-top:0.15rem;color:#7a818b;}
+.some_dt i{margin-top:0.15rem;}
+.some_dt i b{color:#0ba2ad;font-size: 18px;}

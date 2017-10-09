@@ -63,7 +63,7 @@ export default {
 			backgroundColor: '#000',
 			tooltip : {
 			    trigger : 'item',
-			    backgroundColor:'rgba(12, 204, 104, 0.92)',
+			    backgroundColor:'rgba(58, 70, 86, 0.92)',//提示背景
 			    borderColor:'#FFFFCC',
 			    showDelay : 0,
 			    hideDelay : 0,
@@ -71,7 +71,7 @@ export default {
 			    transitionDuration : 0,
 			    extraCssText:'z-index:100',
 			    formatter : function(params, ticket, callback) {
-			    	debugger;
+			    	//debugger;
 
 			        //根据业务自己拓展要显示的内容
 			        var res = "";
@@ -79,7 +79,11 @@ export default {
 			        var value = params.value;
 			        var title = params.data.item.title;
 
-			        res = "<span style='color:red;'>"+title+"</span><br/>坐标："+value;
+			        res = "<span style='color:red;'>"+title+
+			        "</span><br/>坐标："+value+
+			        "<div>更新数据数量—<i>"+value+"</i></div>"+
+			        "<div><span>情报类型—</span><em>"+title+"</em><i></i><b>"+title+"</b></div>"+
+			        "<div>"+value+"</div>";
 			        return res;
 			    }
 			    // textStyle:{
@@ -113,18 +117,28 @@ export default {
 		}
 	},
 	methods:{
-       
+        setMapwt:function() {
+        	  let allHt = $(window).height();
+        	  let allWt = $(window).width();
+              let c=document.documentElement.clientWidth*(100 / 1280);
+           	  let cloudTop = (c*0.3)+(c*0.2);
+           	  let cloudwt=c*0.2
+           	  let Mapht = parseInt((allHt-cloudTop)*0.715);
+           	  let Mapwt = parseInt((allWt-cloudwt)*0.658);
+           	  $("#main").css({"width":Mapwt+"px","height":Mapht+"px"});
+           	  $("#main div").css({"width":Mapwt+"px","height":Mapht+"px"});
+           	  console.log("/////")
+        } 
 	},
+	created(){
+    },
 	mounted(){
+		    this.setMapwt();
             this._vue_charts = echarts.init(document.getElementById('main'));
             this._vue_charts.setOption(this.relationOption);
     }
 }
 </script>
 <style scoped>
-	#main {
-        width: 820px;
-        height: 500px;
-        margin: 0;
-    }
+
 </style>

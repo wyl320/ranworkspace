@@ -16,8 +16,8 @@
               <div id="line"  style="width:180px;height:180px;"></div>
               <div id="line2" style="width:180px;height:180px;"></div>
               <template v-for="(item,index) in listArrysoce.numList">
-              <span class="leftNm" :class="{'ln':index ==1}">{{item.text}}</span>
-              <span class="rightNm":class="{'ln2':index ==1}">{{item.currentTime}}</span>
+              <router-link to="/cloudetail"><span class="leftNm" :class="{'ln':index ==1}">{{item.text}}</span></router-link>
+              <router-link to="/cloudetail"><span class="rightNm":class="{'ln2':index ==1}">{{item.currentTime}}</span></router-link>
               </template>
            </div>
       </div>
@@ -209,7 +209,7 @@
                   }
             }
 		 },
-		watch: {
+		 watch: {
 		 	//监控页面高度
 		    setHeight() {
 		        return this.setHeight;
