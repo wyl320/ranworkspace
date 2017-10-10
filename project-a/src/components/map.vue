@@ -13,7 +13,7 @@ export default {
 		    '埃及':[31.12,30.01]
         };
 		let BJData = [
-		    {name:'上海',value:30,color:'#c52c1e',num:'169',title:'google',detail:'描述信息',leixin:'高危'},
+		    {name:'上海',value:30,color:'#c52c1e',num:'169',title:'google',detail:'描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息',leixin:'高危'},
 		    {name:'广州',value:30,color:'#3e8cd6',num:'800',title:'android',detail:'描述信息',leixin:'低危'},
 		    {name:'乌鲁木齐',value:35,color:'#d06215',num:'900',title:'baidu',detail:'描述信息',leixin:'中危'},
 		    {name:'美国',value:45,color:'#d06215',num:'900',title:'baidu',detail:'美国',leixin:'中危'},
@@ -104,6 +104,12 @@ export default {
 			geo: {
 				map: 'world',
 				label: {
+					normal:{
+						show:false,
+						textStyle:{
+							color:'#fff'
+						}
+					},
 					emphasis: {
 					    show: false
 					}

@@ -276,3 +276,17 @@
          ]
     }
 }
+
+{
+    "code":"0",
+    "message":"",
+    "data":[
+        {"id":"7001","xlabel":"周一","loopholeNumber":"96","repaired":"40"},
+        {"id":"7002","xlabel":"周二","loopholeNumber":"224","repaired":"155"},
+        {"id":"7003","xlabel":"周三","loopholeNumber":"164","repaired":"95"},
+        {"id":"7004","xlabel":"周四","loopholeNumber":"124","repaired":"75"},
+        {"id":"7005","xlabel":"周五","loopholeNumber":"100","repaired":"50"},
+        {"id":"7006","xlabel":"周六","loopholeNumber":"100","repaired":"20"},
+        {"id":"7007","xlabel":"周日","loopholeNumber":"150","repaired":"50"}
+    ]
+}

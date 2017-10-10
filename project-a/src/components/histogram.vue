@@ -8,7 +8,7 @@
 		<em>/</em>
 		<span class="cur" @click="setweekData(2)">周</span> -->
 		<template v-for="(item,index) in day">
-			<span @click="setweekData(index)" :class="{cur:index==noindex}">{{item}}</span>
+			<span @click="setClick(index)" :class="{cur:index==noindex}">{{item}}</span>
 		    <em>/</em>
 		</template>
 	</div>
@@ -35,7 +35,7 @@ import axios from 'axios'
 							xAxis : [
 								{
 								    type : 'category',
-								    data : ['周一','周二','周三','周四','周五','周六','周日'],
+								    data : ['a','v','周三','周四','周五','周六','周日'],
 								    //data:this.xAxisdata1,
 								    axisLabel:{
 			                                      show:true,
@@ -64,7 +64,7 @@ import axios from 'axios'
 								    axisLabel: {show:false},
 								    splitArea: {show:false},
 								    splitLine: {show:false},
-								    data : ['周一','周二','周三','周四','周五','周六','周日'],
+								    data : ['s','v','周三','周四','周五','周六','周日'],
 								    //data:this.xAxisdata1,
 								}
 							],
@@ -134,29 +134,26 @@ import axios from 'axios'
 				};
 			return{
                 Hisoption:Hisoption,
-                linegramData:[],
-                newlinegramData:[],
+                // linegramData:[],
+                // newlinegramData:[],
                 day:['年','月','周'],
                 noindex:2,
-                xAxisdata1:[], 
-                yAxisloop:[],
-                yAxisrepaid:[],
 			}
 		},
 		methods:{
             //请求图表数据
-            dataLoophole:function(){
+            dataLoophole:function(url){
             	let self = this;
             	let promise = $.Deferred();
-            	axios.get('http://www.mocky.io/v2/59dc87301000004b10ccd34c', {
+            	axios.get(url, {
                   params: {}
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
-                      self.linegramData = response.data.data.weekNumber[0].charData
+                      // self.linegramData = response.data.data.weekNumber[0].charData
                       promise.resolve(response);
                   }else{
-                      console.log(response.data.message);
+                      // console.log(response.data.message);
                       promise.resolve(response);
                       promise.reject();
                   }
@@ -168,73 +165,134 @@ import axios from 'axios'
                 return promise;
             },
             //设置周数据
-            setweekData:function(ua){
-            	this.noindex = ua;
-            	let self = this;
-                let promise = self.dataLoophole();
-                self.xAxisdata1=[];
-	              self.yAxisloop=[];
-	              self.yAxisrepaid=[];
-                //let xAxisdata1=[];
-                //let yAxisloop =[];
-                //let yAxisrepaid = [];
-                  //promise.done(function(res){
-                  	if(ua==0){
-                  		  self.newlinegramData = self.linegramData.yearlist;
-                  		  self.newlinegramData.forEach(function(da,i){
-		                  self.xAxisdata1.push(da.year);//x轴数据
-		                  self.yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		                  self.yAxisrepaid.push(da.repaired);//y已修复数据
-		                });
-                  	}else if(ua==1){
-                          self.newlinegramData = self.linegramData.monthlist;
-                  		  self.newlinegramData.forEach(function(da,i){
-		                  self.xAxisdata1.push(da.month);//x轴数据
-		                  self.yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		                  self.yAxisrepaid.push(da.repaired);//y已修复数据
-		                }); 
-                  	}else{
-                          self.newlinegramData = self.linegramData.weeklist;
-                  		  self.newlinegramData.forEach(function(da,i){
-		                  self.xAxisdata1.push(da.day);//x轴数据
-		                  self.yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		                  self.yAxisrepaid.push(da.repaired);//y已修复数据
-		                }); 
-                  	}     
-                  //});
-	              self.Hisoption.xAxis[1].data = [];
-	              self.Hisoption.xAxis[0].data = [];
-	              self.Hisoption.series[0].data = [];
-	              self.Hisoption.series[1].data = [];
-	              self.Hisoption.xAxis[1].data = self.xAxisdata1;
-	              self.Hisoption.xAxis[0].data = self.xAxisdata1;
-	              self.Hisoption.series[0].data = self.yAxisloop;
-	              self.Hisoption.series[1].data = self.yAxisrepaid;
-                  //console.log("yAxisrepaid")
-	              //console.log(self.Hisoption.series[0].data);
-	              self._vue_charts.setOption(self.Hisoption);             	
+            setClick:function(index){
+            	 this.noindex = index;
+            	if(index == 0 ){
+            		this.setweekData("");
+            	}else if(index == 1 ){ //
+					this.setweekData("");
+            	}else if(index == 2 ){
+            		this.setweekData("http://www.mocky.io/v2/59dc87301000004b10ccd34c");
+            	}
             },
-            setchartDay:function(){
-            	self.newlinegramData = self.linegramData.weeklist;
-            	self.xAxisdata1=[];
-	            self.yAxisloop=[];
-	            self.yAxisrepaid=[];
-            	self.newlinegramData.forEach(function(da,i){
-		                  self.xAxisdata1.push(da.day);//x轴数据
-		                  self.yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		                  self.yAxisrepaid.push(da.repaired);//y已修复数据
-		        }); 
-            }
+            setweekData:function(url){
+            	let self = this;
+            	 let promise = this.dataLoophole(url);
+            	 promise.done(function(res){
+            	 	res = {
+					    "code":"0",
+					    "message":"",
+					    "data":[
+					        {"id":"7001","xlabel":"周一","loopholeNumber":"96","repaired":"40"},
+					        {"id":"7002","xlabel":"周二","loopholeNumber":"224","repaired":"155"},
+					        {"id":"7003","xlabel":"周三","loopholeNumber":"164","repaired":"95"},
+					        {"id":"7004","xlabel":"周四","loopholeNumber":"124","repaired":"75"},
+					        {"id":"7005","xlabel":"周五","loopholeNumber":"100","repaired":"50"},
+					        {"id":"7006","xlabel":"周六","loopholeNumber":"100","repaired":"20"},
+					        {"id":"7007","xlabel":"周日","loopholeNumber":"150","repaired":"50"}
+					    ]
+					};
+            	 	let xAxisdata1=[];
+		            let yAxisloop=[];
+		            let yAxisrepaid=[];
+              		res.data.forEach(function(da,i){
+	                  xAxisdata1.push(da.xlabel);//x轴数据
+	                  yAxisloop.push(da.loopholeNumber);//y漏洞数据
+	                  yAxisrepaid.push(da.repaired);//y已修复数据
+		             });
+
+              		  self.Hisoption.xAxis[1].data = [];
+		              self.Hisoption.xAxis[0].data = [];
+		              self.Hisoption.series[0].data = [];
+		              self.Hisoption.series[1].data = [];
+		              self.Hisoption.xAxis[1].data = xAxisdata1;
+		              self.Hisoption.xAxis[0].data = xAxisdata1;
+		              self.Hisoption.series[0].data = yAxisloop;
+		              self.Hisoption.series[1].data = yAxisrepaid;
+		              self._vue_charts.setOption(self.Hisoption);        
+            	 })
+            },
+           //  setweekData_back:function(ua,dataList,type){
+           //  	this.noindex = ua;
+           //  	let self = this;
+           //      let promise = self.dataLoophole();
+           //      let xAxisdata1=[];
+	          //   let yAxisloop=[];
+	          //   let yAxisrepaid=[];
+
+		         // //  self.newlinegramData = self.linegramData.yearlist;
+	      		  // // self.newlinegramData.forEach(function(da,i){
+	          // //     xAxisdata1.push(da.year);//x轴数据
+	          // //     yAxisloop.push(da.loopholeNumber);//y漏洞数据
+	          // //     yAxisrepaid.push(da.repaired);//y已修复数据
+ 
+           //        	if(ua==0){
+           //        		  self.newlinegramData = self.linegramData.yearlist;
+           //        		  self.newlinegramData.forEach(function(da,i){
+		         //          xAxisdata1.push(da.year);//x轴数据
+		         //          yAxisloop.push(da.loopholeNumber);//y漏洞数据
+		         //          yAxisrepaid.push(da.repaired);//y已修复数据
+		         //        });
+           //        	}else if(ua==1){
+           //                self.newlinegramData = self.linegramData.monthlist;
+           //        		  self.newlinegramData.forEach(function(da,i){
+		         //          xAxisdata1.push(da.month);//x轴数据
+		         //          yAxisloop.push(da.loopholeNumber);//y漏洞数据
+		         //          yAxisrepaid.push(da.repaired);//y已修复数据
+		         //        }); 
+           //        	}else{
+           //                self.newlinegramData = self.linegramData.weeklist;
+           //        		  self.newlinegramData.forEach(function(da,i){
+		         //          xAxisdata1.push(da.day);//x轴数据
+		         //          yAxisloop.push(da.loopholeNumber);//y漏洞数据
+		         //          yAxisrepaid.push(da.repaired);//y已修复数据
+		         //        }); 
+           //        	}     
+	          //     self.Hisoption.xAxis[1].data = [];
+	          //     self.Hisoption.xAxis[0].data = [];
+	          //     self.Hisoption.series[0].data = [];
+	          //     self.Hisoption.series[1].data = [];
+	          //     self.Hisoption.xAxis[1].data = xAxisdata1;
+	          //     self.Hisoption.xAxis[0].data = xAxisdata1;
+	          //     self.Hisoption.series[0].data = yAxisloop;
+	          //     self.Hisoption.series[1].data = yAxisrepaid;
+	          //     self._vue_charts.setOption(self.Hisoption);             	
+           //  },
+  //           setChartWeek:function(){
+  //           	let self = this;
+  //           	self.newlinegramData = self.linegramData.weeklist;
+  //           	let xAxisdata1=[];
+	 //            let yAxisloop=[];
+	 //            let yAxisrepaid=[];
+  //           	self.newlinegramData.forEach(function(da,i){
+		//                   xAxisdata1.push(da.day);//x轴数据
+		//                   yAxisloop.push(da.loopholeNumber);//y漏洞数据
+		//                   yAxisrepaid.push(da.repaired);//y已修复数据
+		//         }); 
+		       
+		//         self.Hisoption.xAxis[1].data = [];
+	 //              self.Hisoption.xAxis[0].data = [];
+	 //              self.Hisoption.series[0].data = [];
+	 //              self.Hisoption.series[1].data = [];
+	 //              self.Hisoption.xAxis[1].data = xAxisdata1;
+	 //              self.Hisoption.xAxis[0].data = xAxisdata1;
+	 //              self.Hisoption.series[0].data = yAxisloop;
+	 //              self.Hisoption.series[1].data = yAxisrepaid;
+	 //              self._vue_charts.setOption(self.Hisoption);      
+  //              }
 		},
 		created(){
-            this.dataLoophole();
-            //this.setweekData()
+			this.setweekData("http://www.mocky.io/v2/59dc87301000004b10ccd34c");
+			// let promise = this.dataLoophole();
+   //          promise.done(function(res){
+   //          	 self.setChartWeek();
+   //          	//let softseach = res.data.data.list;
+   //          });
 		},
 		mounted(){
-			//this.setchartDay();
             this._vue_charts = echarts.init(document.getElementById('Hisoption'));
             this._vue_charts.setOption(this.Hisoption);
-            
+            console.log("aaaa") 
 		}
 	}
 </script>

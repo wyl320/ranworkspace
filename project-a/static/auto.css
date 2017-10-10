@@ -1195,7 +1195,7 @@ body{overflow:hidden;}
 .numberdate i{color:#fdb046;}
 .leixi{color:#78a4d3;}
 .leixiem{display:inline-block; border:1px solid #67737f;color:#fff;padding:3px 8px 4px 8px;background:#2b333e;margin-right:8px;}
-.curmgn .leixitem2{display:inline-block;width:13px;height:15px;background:url(../assets/images/dot.png) top center;overflow:hidden;margin-right:8px;}
+.curmgn .leixitem2{display:inline-block;width:13px;height:15px;background:url(img/dot.png) top center;overflow:hidden;margin-right:8px;}
 .curmgn .leibstyle{display:inline-block;font-weight: normal;}
 .magn{width: 300px;}
-.magn .detan{display:block;width: 300px;font-weight: normal;overflow:hidden;}
+.magn .detan{display:block;width: 300px;font-weight: normal;overflow:hidden;white-space: pre-wrap;}
