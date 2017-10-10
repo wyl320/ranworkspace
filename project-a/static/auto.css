@@ -1175,8 +1175,8 @@ body{overflow:hidden;}
 .midMakRt{margin-left:0.75%;width:33.45%;float:left;}
 .chatSoft,.lineSoft,.newSoft{background:#2e3440;}
 .chatSoft{height:27.1%;}
-.lineSoft{height:43.1%;    margin-top: 2%;}
-.newSoft{height: 26.8%;    margin-top: 2.6%;}
+.lineSoft{height:43.1%;margin-top: 2%;}
+.newSoft{height: 26.8%;margin-top: 2.6%;}
 .contHtion{position:relative;}
 .linkHbox{position:absolute;top:7%;right:10%;}
 .linkHbox span{display:inline-block;cursor:pointer;}
@@ -1188,3 +1188,14 @@ body{overflow:hidden;}
 .some_dt em{width:0.83rem;margin-right:0.1rem;margin-top:0.15rem;color:#7a818b;}
 .some_dt i{margin-top:0.15rem;}
 .some_dt i b{color:#0ba2ad;font-size: 18px;}
+.titmins{border-bottom:1px solid #222b3a;color:#fff;font-size: 14px;height:30px;}
+.titsan{display:block;margin-left:8px;}
+.magn{margin:8px 15px 0px 15px;}
+.numberdate{color:#78a4d3;}
+.numberdate i{color:#fdb046;}
+.leixi{color:#78a4d3;}
+.leixiem{display:inline-block; border:1px solid #67737f;color:#fff;padding:3px 8px 4px 8px;background:#2b333e;margin-right:8px;}
+.curmgn .leixitem2{display:inline-block;width:13px;height:15px;background:url(../assets/images/dot.png) top center;overflow:hidden;margin-right:8px;}
+.curmgn .leibstyle{display:inline-block;font-weight: normal;}
+.magn{width: 300px;}
+.magn .detan{display:block;width: 300px;font-weight: normal;overflow:hidden;}

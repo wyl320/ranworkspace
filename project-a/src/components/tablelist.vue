@@ -268,6 +268,7 @@
                           return  item.levl !== ''; 
                       });
                       self.tubiao.push(response.data.data.sebeiList[0]);
+                      self.installline.push(response.data.data.sebeiList[0])
                   }else{
                       console.log(response.data.message);
                   }
@@ -349,20 +350,8 @@
               this.lineUptionDatas.series[2].name = item.charData.seriesType[2];
 
               this._vue_charts3.setOption(this.lineUptionDatas);
-              // debugger;
-              // console.log(this.lineUptionDatas);
-                // let ALndata = item.mounthA;
-                // let BLndata = item.mounthB;
-                // let CLndata = item.mounthC;
                 this.tubiao = [];
                 this.tubiao.push(item);
-
-                // this.mounthAdata = [];
-                // this.mounthBdata = [];
-                // this.mounthCdata = [];
-                // this.mounthAdata.push(ALndata.allNoudong,ALndata.repairNoudong,ALndata.allNoudong-ALndata.repairNoudong);
-                // this.mounthBdata.push(BLndata.allNoudong,BLndata.repairNoudong,BLndata.allNoudong-BLndata.repairNoudong);
-                // this.mounthCdata.push(CLndata.allNoudong,CLndata.repairNoudong,CLndata.allNoudong-CLndata.repairNoudong);
             },
             lognt(item){
                  console.log("dddddss")
@@ -389,7 +378,8 @@
 			      echarts.registerTheme('customed', this.lineUptionDatas)
             this._vue_charts3 = echarts.init(document.getElementById('line3'));
             this._vue_charts3.setOption(this.lineUptionDatas);
-            this.setline3()
+            this.setline3();
+            //this.changeDatas(this.installline);
 		},
 		watch:{
 			sebeiList(){
