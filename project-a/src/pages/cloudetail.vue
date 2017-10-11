@@ -31,7 +31,15 @@
 	    			<div class="lineSoft">
 	    				<Histogram></Histogram>
 	    			</div>
-	    			<div class="newSoft">neirong3</div>
+	    			<div class="newSoft">
+	    				<ul>
+	    					<li><router-link to="">安全事件新闻信息更新情况件新闻信息更新情况</router-link><span>2017-8-24</span></li>
+	    					<li><router-link to="">安全事件新闻信息更新情况</router-link><span>2017-8-24</span></li>
+	    					<li><router-link to="">安全事件新闻况</router-link><span>2017-8-24</span></li>
+	    					<li><router-link to="">安全事件新闻信息更新情况</router-link><span>2017-8-24</span></li>
+	    					<li><router-link to="">安全事件新闻况</router-link><span>2017-8-24</span></li>
+	    				</ul>
+	    			</div>
 	    	</div>
 	    </div>
     </div>

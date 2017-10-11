@@ -26,32 +26,34 @@
   		 					</tr>
                </table> 
              </div>
-            <vueScrollbar class="my-scrollbar" ref="Scrollbar">
-    	            <div class="carvbar scroll-me">
-    	                  <table>
-    	                          <template v-for="item in newSebeiList">
-    	                            <tr @click="changeDatas(item)">
-    	                              <td :style="{width:'35%'}" class="setLf">{{item.sebeiName}}</td>
-    	                              <td :style="{width:'12%'}">{{item.freeSoftware}}</td>
-    	                              <td :style="{width:'13%'}">{{item.loopholeNumber}}</td>
-    	                              <td :style="{width:'14%'}">
-    	                                <em :class="{blue:item.levl=='anquan'}"></em>
-    	                                <em :class="{yellow:item.levl=='diwei'}"></em>
-    	                                <em :class="{orange:item.levl=='zhongwei'}"></em>
-    	                                <em :class="{red:item.levl=='gaowei'}"></em>
-    	                                <em :class="{pers:item.levl=='jingji'}"></em>
-    	                              </td>
-    	                              <td :style="{width:'21%'}">{{item.timer}}</td>
-    	                              </tr>
-    	                          </template>
-    	                  </table>
-    	            </div>  
-            </vueScrollbar>
+             <div class="setYle">
+              <vueScrollbar class="my-scrollbar" ref="Scrollbar">
+      	            <div class="carvbar scroll-me">
+      	                  <table>
+      	                          <template v-for="item in newSebeiList">
+      	                            <tr @click="changeDatas(item)">
+      	                              <td :style="{width:'35%'}" class="setLf">{{item.sebeiName}}</td>
+      	                              <td :style="{width:'12%'}">{{item.freeSoftware}}</td>
+      	                              <td :style="{width:'13%'}">{{item.loopholeNumber}}</td>
+      	                              <td :style="{width:'14%'}">
+      	                                <em :class="{blue:item.levl=='anquan'}"></em>
+      	                                <em :class="{yellow:item.levl=='diwei'}"></em>
+      	                                <em :class="{orange:item.levl=='zhongwei'}"></em>
+      	                                <em :class="{red:item.levl=='gaowei'}"></em>
+      	                                <em :class="{pers:item.levl=='jingji'}"></em>
+      	                              </td>
+      	                              <td :style="{width:'21%'}">{{item.timer}}</td>
+      	                              </tr>
+      	                          </template>
+      	                  </table>
+      	            </div>  
+              </vueScrollbar>
+             </div>
 		 			</div>
 	</div>
 	<!--图表-->
-	<div class="cpmessage">
-		<div class="mg_tab">
+	<div class="cpmessage" ref="cpmessage">
+		<div class="mg_tab" ref="mg_tab">
 			<h2>主机名称</h2>
         <template v-for="item in tubiao">
 	 				<div class="adress"><span>Mac地址 </span><em>{{item.macAdress}}</em></div>
@@ -64,7 +66,7 @@
 		</div>
       <!--柱状图-->
       <div class="echarts">
-          <div id="line3" :style="{width:'350px',height:'200px'}"></div>
+          <div class="line3" ref="line3"><div id="line3" ref="linechart"></div></div>
       </div>
       <ul class="tuli">
         <li><em class="blue"></em>已修复漏洞数量的分布统计</li>
@@ -98,7 +100,7 @@
                           show : false,
                       },
                       calculable : true,
-                      grid: {x:30, y2:30, x2:3,borderColor:'#383e47'},
+                      grid: {x:30, y2:30, x2:3,borderColor:'#383e47',left: '35',top:'15'},
                       xAxis : [
                                   {
                                     type : 'category',
@@ -252,30 +254,39 @@
             //请求设备信息
             loadsebeiList:function(){
             	let self = this;
+              let promise = $.Deferred();
             	axios.get('http://www.mocky.io/v2/59cb15282d00003a068069b0', {
                   params: {}
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
-                      //self.sebeiList = response.data.data.sebeiList;
-                      //过滤掉原数据中失联的主机
-                      self.sebeiList = response.data.data.sebeiList.filter(function(item) { 
-                          return  item.levl !== ''; 
-                      });
-                      //self.newSebeiList = response.data.data.sebeiList;
-                      //过滤掉原数据中失联的主机并复给渲染到页面的新数组
-                      self.newSebeiList = response.data.data.sebeiList.filter(function(item) { 
-                          return  item.levl !== ''; 
-                      });
-                      self.tubiao.push(response.data.data.sebeiList[0]);
-                      self.installline.push(response.data.data.sebeiList[0])
+                      promise.resolve(response);
                   }else{
                       console.log(response.data.message);
+                      promise.resolve(response);
+                      promise.reject();
                   }
                 })
                 .catch(function (error) {
                   console.log(error);
+                  promise.reject();
                 });
+                return promise;
+            },
+            //渲染数据
+            setupdate:function(){
+                 let self = this;
+                 let promise = self.loadsebeiList();
+                 promise.done(function(res){  
+                      res.data.data.sebeiList.forEach(function(da,i){
+                          if(da.levl !== ''){
+                            self.sebeiList.push(da);
+                            self.newSebeiList.push(da);
+                          }
+                      });
+                      self.tubiao.push(res.data.data.sebeiList[0]);
+                      self.changeDatas(res.data.data.sebeiList[0]);
+                 });
             },
             //搜索框
             search_list:function(){
@@ -318,12 +329,10 @@
             },
             //点击列表切换数据
             changeDatas(item){
-              
               let mouth = [];
               let allAeriesY = [];
               let repairAeriesY = [];
               let otherAeriesY = [];
-
               item.charData.list.forEach(function(da,i){
                   console.log("   ===== "+da.month);
                   mouth.push(da.month);
@@ -350,44 +359,39 @@
               this.lineUptionDatas.series[2].name = item.charData.seriesType[2];
 
               this._vue_charts3.setOption(this.lineUptionDatas);
-                this.tubiao = [];
-                this.tubiao.push(item);
+              this.tubiao = [];
+              this.tubiao.push(item);
             },
-            lognt(item){
-                 console.log("dddddss")
-            },
-            //设置图表
+            //设置图表box
             setline3(){
-                 let b=document.documentElement.clientWidth;
-                 let c=document.documentElement.clientWidth*(100 / 1280);
-                 let wt=2.6*(b* (100 / 1280));
-                 let ht=1.6*(b* (100 / 1280));
-                 let top = 0.35*(b* (100 / 1280));
+                 let self = this;
                  let tabela =$(".toptb").height();
                  let tableb =$(".searchTb").height();
-                 let scrollHt=$(".severcont").height()-(tabela+tableb-3);
-                 $("#line3").css({"width":wt+"px","height":ht+"px"});
-                 $("#line3 canvas").css({"width":wt+"px","height":ht+"px","marginTop":-top+"px"});
+                 let scrollHt = $(window).height()*0.63*0.54;
+                 //let scrollHt=$(".severcont").height()-(tabela+tableb-3);
+                 console.log(tabela);
+
                  $(".my-scrollbar").css({"height":scrollHt+"px"})
+            },
+            //渲染图表
+            setline3Size:function(){
+                 let self = this;
+                 let wt = $(window).width()*0.56*0.36-15;
+                 let ht = $(window).height()*0.431*0.45;
+                 self.$refs.linechart.style.width = wt + 'px';
+                 self.$refs.linechart.style.height = ht + 'px';  
             }
 		},
 		created(){
             this.loadsebeiList();
+            this.setupdate();
 		},
 		mounted(){
-			      echarts.registerTheme('customed', this.lineUptionDatas)
+            this.setline3();
+            this.setline3Size();
+            echarts.registerTheme('customed', this.lineUptionDatas);
             this._vue_charts3 = echarts.init(document.getElementById('line3'));
             this._vue_charts3.setOption(this.lineUptionDatas);
-            this.setline3();
-            //this.changeDatas(this.installline);
-		},
-		watch:{
-			sebeiList(){
-		    	return this.sebeiList;
-		  },
-      lineUptionDatas(){
-         return this.lineUptionDatas;
-      }
 		}
 	}
 </script>

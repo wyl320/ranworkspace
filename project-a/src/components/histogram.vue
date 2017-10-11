@@ -1,12 +1,7 @@
 <template>
 <div class="contHtion">
-	<div id="Hisoption"></div>
+	<div class="Hisoption" ref="chartbox"><div id="Hisoption" ref="maychart"></div></div>
 	<div class="linkHbox">
-		<!-- <span @click="setweekData(0)">年</span>
-		<em>/</em>
-		<span @click="setweekData(1)">月</span>
-		<em>/</em>
-		<span class="cur" @click="setweekData(2)">周</span> -->
 		<template v-for="(item,index) in day">
 			<span @click="setClick(index)" :class="{cur:index==noindex}">{{item}}</span>
 		    <em>/</em>
@@ -21,6 +16,8 @@ import axios from 'axios'
 			    let Hisoption = {
 			    	        title: {
 						        text: '数据更新趋势统计',
+						        left: '15',
+						        top:'15',
 						        textStyle:{
 						        	color:"#fff",
 						        	fontSize:"14",
@@ -30,13 +27,12 @@ import axios from 'axios'
 							tooltip : {
 							  trigger: 'axis'
 							},
-                            grid: {x:30, y2:30, x2:3,borderColor:'#383e47'},
+                            grid: {x:30, y2:30, x2:3,borderColor:'#383e47',left: '50',bottom:'25'},
 							calculable : true,
 							xAxis : [
 								{
 								    type : 'category',
-								    data : ['a','v','周三','周四','周五','周六','周日'],
-								    //data:this.xAxisdata1,
+								    data : ['周一','周二','周三','周四','周五','周六','周日'],
 								    axisLabel:{
 			                                      show:true,
 			                                      interval:'auto',
@@ -64,8 +60,7 @@ import axios from 'axios'
 								    axisLabel: {show:false},
 								    splitArea: {show:false},
 								    splitLine: {show:false},
-								    data : ['s','v','周三','周四','周五','周六','周日'],
-								    //data:this.xAxisdata1,
+								    data : ['周一','周二','周三','周四','周五','周六','周日'],
 								}
 							],
 							yAxis : [
@@ -119,7 +114,6 @@ import axios from 'axios'
 								    barWidth: '35%',
 								    itemStyle: {normal: {color:'#fb6362', label:{show:false}}},
 								    data:[96,224,164,124,100,100,150]
-								    //data:this.yAxisloop,
 								},
 								{
 								    name:'已修复漏洞数量',
@@ -128,7 +122,6 @@ import axios from 'axios'
 								    xAxisIndex:1,
 								    itemStyle: {normal: {color:'#0ba9b2', label:{show:false}}},
 								    data:[40,155,95,75, 50,20,50]
-								    //data:this.yAxisloop,
 								},
 							]
 				};
@@ -150,10 +143,8 @@ import axios from 'axios'
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
-                      // self.linegramData = response.data.data.weekNumber[0].charData
                       promise.resolve(response);
                   }else{
-                      // console.log(response.data.message);
                       promise.resolve(response);
                       promise.reject();
                   }
@@ -168,30 +159,18 @@ import axios from 'axios'
             setClick:function(index){
             	 this.noindex = index;
             	if(index == 0 ){
-            		this.setweekData("");
+            		this.setweekData("http://www.mocky.io/v2/59dd7294100000ef04a84d6d");
             	}else if(index == 1 ){ //
-					this.setweekData("");
+					this.setweekData("http://www.mocky.io/v2/59dd7249100000e004a84d6b");
             	}else if(index == 2 ){
-            		this.setweekData("http://www.mocky.io/v2/59dc87301000004b10ccd34c");
+            		this.setweekData("http://www.mocky.io/v2/59dd71a6100000e304a84d6a");
             	}
             },
             setweekData:function(url){
-            	let self = this;
+            	 let self = this;
             	 let promise = this.dataLoophole(url);
-            	 promise.done(function(res){
-            	 	res = {
-					    "code":"0",
-					    "message":"",
-					    "data":[
-					        {"id":"7001","xlabel":"周一","loopholeNumber":"96","repaired":"40"},
-					        {"id":"7002","xlabel":"周二","loopholeNumber":"224","repaired":"155"},
-					        {"id":"7003","xlabel":"周三","loopholeNumber":"164","repaired":"95"},
-					        {"id":"7004","xlabel":"周四","loopholeNumber":"124","repaired":"75"},
-					        {"id":"7005","xlabel":"周五","loopholeNumber":"100","repaired":"50"},
-					        {"id":"7006","xlabel":"周六","loopholeNumber":"100","repaired":"20"},
-					        {"id":"7007","xlabel":"周日","loopholeNumber":"150","repaired":"50"}
-					    ]
-					};
+            	 promise.done(function(res){      	 	
+					res=res.data;
             	 	let xAxisdata1=[];
 		            let yAxisloop=[];
 		            let yAxisrepaid=[];
@@ -212,90 +191,31 @@ import axios from 'axios'
 		              self._vue_charts.setOption(self.Hisoption);        
             	 })
             },
-           //  setweekData_back:function(ua,dataList,type){
-           //  	this.noindex = ua;
-           //  	let self = this;
-           //      let promise = self.dataLoophole();
-           //      let xAxisdata1=[];
-	          //   let yAxisloop=[];
-	          //   let yAxisrepaid=[];
-
-		         // //  self.newlinegramData = self.linegramData.yearlist;
-	      		  // // self.newlinegramData.forEach(function(da,i){
-	          // //     xAxisdata1.push(da.year);//x轴数据
-	          // //     yAxisloop.push(da.loopholeNumber);//y漏洞数据
-	          // //     yAxisrepaid.push(da.repaired);//y已修复数据
- 
-           //        	if(ua==0){
-           //        		  self.newlinegramData = self.linegramData.yearlist;
-           //        		  self.newlinegramData.forEach(function(da,i){
-		         //          xAxisdata1.push(da.year);//x轴数据
-		         //          yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		         //          yAxisrepaid.push(da.repaired);//y已修复数据
-		         //        });
-           //        	}else if(ua==1){
-           //                self.newlinegramData = self.linegramData.monthlist;
-           //        		  self.newlinegramData.forEach(function(da,i){
-		         //          xAxisdata1.push(da.month);//x轴数据
-		         //          yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		         //          yAxisrepaid.push(da.repaired);//y已修复数据
-		         //        }); 
-           //        	}else{
-           //                self.newlinegramData = self.linegramData.weeklist;
-           //        		  self.newlinegramData.forEach(function(da,i){
-		         //          xAxisdata1.push(da.day);//x轴数据
-		         //          yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		         //          yAxisrepaid.push(da.repaired);//y已修复数据
-		         //        }); 
-           //        	}     
-	          //     self.Hisoption.xAxis[1].data = [];
-	          //     self.Hisoption.xAxis[0].data = [];
-	          //     self.Hisoption.series[0].data = [];
-	          //     self.Hisoption.series[1].data = [];
-	          //     self.Hisoption.xAxis[1].data = xAxisdata1;
-	          //     self.Hisoption.xAxis[0].data = xAxisdata1;
-	          //     self.Hisoption.series[0].data = yAxisloop;
-	          //     self.Hisoption.series[1].data = yAxisrepaid;
-	          //     self._vue_charts.setOption(self.Hisoption);             	
-           //  },
-  //           setChartWeek:function(){
-  //           	let self = this;
-  //           	self.newlinegramData = self.linegramData.weeklist;
-  //           	let xAxisdata1=[];
-	 //            let yAxisloop=[];
-	 //            let yAxisrepaid=[];
-  //           	self.newlinegramData.forEach(function(da,i){
-		//                   xAxisdata1.push(da.day);//x轴数据
-		//                   yAxisloop.push(da.loopholeNumber);//y漏洞数据
-		//                   yAxisrepaid.push(da.repaired);//y已修复数据
-		//         }); 
-		       
-		//         self.Hisoption.xAxis[1].data = [];
-	 //              self.Hisoption.xAxis[0].data = [];
-	 //              self.Hisoption.series[0].data = [];
-	 //              self.Hisoption.series[1].data = [];
-	 //              self.Hisoption.xAxis[1].data = xAxisdata1;
-	 //              self.Hisoption.xAxis[0].data = xAxisdata1;
-	 //              self.Hisoption.series[0].data = yAxisloop;
-	 //              self.Hisoption.series[1].data = yAxisrepaid;
-	 //              self._vue_charts.setOption(self.Hisoption);      
-  //              }
+            //根据分变率设置box高和宽
+            setMapwt:function() { 
+        	  let allHt = $(window).height()*0.431-40;//动态设置box的高
+        	  let allWt = $(window).width()*0.3345-40;//动态设置box的宽
+           	  $(".Hisoption").css({"width":allWt+"px","height":allHt+"px"});
+            },
+            //渲染图表
+            setCartsize:function(){
+            	 let self = this;
+            	 let wt = $(".Hisoption").width();
+                 let ht = $(".Hisoption").height();
+                 self.$refs.maychart.style.width = wt + 'px';
+                 self.$refs.maychart.style.height = ht + 'px';
+            }
 		},
 		created(){
-			this.setweekData("http://www.mocky.io/v2/59dc87301000004b10ccd34c");
-			// let promise = this.dataLoophole();
-   //          promise.done(function(res){
-   //          	 self.setChartWeek();
-   //          	//let softseach = res.data.data.list;
-   //          });
+			this.setweekData("http://www.mocky.io/v2/59dd71a6100000e304a84d6a");
 		},
 		mounted(){
+            this.setMapwt();
+            this.setCartsize();             
             this._vue_charts = echarts.init(document.getElementById('Hisoption'));
-            this._vue_charts.setOption(this.Hisoption);
-            console.log("aaaa") 
+            this._vue_charts.setOption(this.Hisoption);  
 		}
 	}
 </script>
 <style>
-	#Hisoption{width:513px;height:338px;padding:20px;}
 </style>
