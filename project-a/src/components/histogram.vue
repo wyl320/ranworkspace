@@ -170,11 +170,10 @@ import axios from 'axios'
             	 let self = this;
             	 let promise = this.dataLoophole(url);
             	 promise.done(function(res){      	 	
-					res=res.data;
             	 	let xAxisdata1=[];
 		            let yAxisloop=[];
 		            let yAxisrepaid=[];
-              		res.data.forEach(function(da,i){
+              		res.data.data.forEach(function(da,i){
 	                  xAxisdata1.push(da.xlabel);//x轴数据
 	                  yAxisloop.push(da.loopholeNumber);//y漏洞数据
 	                  yAxisrepaid.push(da.repaired);//y已修复数据

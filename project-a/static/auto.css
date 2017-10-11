@@ -1151,9 +1151,9 @@ body{overflow:hidden;}
 .leftwat,.midwat,.ritwat{float:left;}
 .leftwat{width:3.6rem;}
 .midwat{position:relative;}
-.midwat ul{position:absolute;top:0.26rem;left:0;z-index:9;width:0.81rem;}
+.midwat ul{position:absolute;top:0.26rem;left:0;z-index:9;width:0.92rem;}
 .midwat ul li{border-bottom: 1px solid #424851;background-color: #424851;cursor:pointer;border-bottom:1px solid #25313f;}
-.midwat span.choose{width: 0.8rem;height: 0.18rem; border: 1px solid #020204;}
+.midwat span.choose{width: 0.9rem;height: 0.18rem; border: 1px solid #020204;}
 .choose em{display: inline-block;
     width: 0px;height: 0px;border-color: #a6b3bc transparent transparent transparent;border-style: solid;border-width: 0.05rem;vertical-align: top;margin-top: 0.05rem;}
 .choose i{vertical-align: top;display: inline-block;margin-left:0.04rem;}
@@ -1207,7 +1207,6 @@ body{overflow:hidden;}
 .tuli{margin-top:0.05rem;}
 .toptb{height:10.1%;}
 .newSoft li{padding:0.15rem;padding-bottom:0;}
-.newSoft li a{color:#fff;}
 .newSoft ul{padding-top:0.08rem;}
-.newSoft li a{display:inline-block;width:85%;margin-right:0.05rem;}
+.newSoft li a{color:#fff;display:inline-block;width:84%;margin-right:0.05rem;}
 .newSoft li span{font-size:12px;color:#90979f;}

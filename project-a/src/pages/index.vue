@@ -180,7 +180,7 @@
                 .then(function (response) {
                   if(response.data.code=="0"){
                       self.listArrysoce = response.data.data;
-                      console.log(self.listArrysoce);
+                      console.log(response);
                       let newArrysocenumList = self.listArrysoce.numList;
                       self.chartDataOption.series[0].data[0].name = self.listArrysoce.numList[0].currentNumber;
                       self.chartDataOption.series[0].data[1] = self.listArrysoce.numList[0].currentNumber/self.listArrysoce.numList[0].maxNumber;

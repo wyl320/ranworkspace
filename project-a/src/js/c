@@ -200,3 +200,12 @@
         {"id":"7007","xlabel":"周日","loopholeNumber":"150","repaired":"50"}
     ]
 }
+
+
+{
+    "code":"0",
+    "message":"",
+    "data":[
+         {"name":"上海","num":169,"up_num":354655,"title":"agoogle","detail":"描","leval":"高危","degXdata":121.4648,"degYdata":31.2891,"size":30} 
+    ] 
+}
