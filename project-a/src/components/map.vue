@@ -126,8 +126,7 @@ export default {
 			series:this.getSeries(BJData)
 		};
 		return{
-			relationOption:relationOption,//图标一
-			newMaparry:[]
+			relationOption:relationOption//图标一
 		}
 	},
 	methods:{
@@ -215,40 +214,30 @@ export default {
 	        };
 	        return series;
         },
-        bianli:function(){
-        	    let self =this;
-                for (let i=0;i<self.newMaparry.length;i++){
-                    if(self.newMaparry[i].levl==="gaowei"){
-                    	self.newMaparry[i].color = "#f82454";
-                    };
-                    if(self.newMaparry[i].levl==="zhongwei"){
-                        self.newMaparry[i].color = "#ff7214";
-        			};
-        			if(self.newMaparry[i].levl==="diwei"){
-        				self.newMaparry[i].color = "#ffe60f";
-        			};
-        			if(self.newMaparry[i].levl==="anquan"){
-                        self.newMaparry[i].color = "#3f8fce";
-        			};
-        			if(self.newMaparry[i].levl==="jingji"){
-                        self.newMaparry[i].color = "#de00ff";
-        			}
-                };
-                console.log("11111")
+        setDataColor:function(data){ 
+        	data.forEach(function(da,i){
+                if(da.levl =="gaowei"){
+                 da.color = "#f82454";
+                }else if(da.levl =="zhongwei"){
+                    da.color = "#ff7214";
+                }else if(da.levl =="diwei"){
+                 da.color = "#ffe60f";
+                }else if(da.levl =="anquan"){
+                    da.color = "#3f8fce";
+                }else if(da.levl =="jingji"){
+                    da.color = "#de00ff";
+                }else{}
+        	});
+        	return data;
         },
         //set数据
         setMaption:function(){
         	let self = this;
         	let promise = self.loadMap();
-        	promise.done(function(res){ 
-        		console.log("22222");
-        		console.log(res.data.data);
-        		console.log("555")
-        	    self.newMaparry = res.data.data;
-        	    console.log("3333")
-        		self.bianli();
-        		console.log("4444")
-        		let _series = self.getSeries(res.data.data);
+        	promise.done(function(res){
+        		let _data = res.data.data;
+		        self.setDataColor(_data);
+        		let _series = self.getSeries(_data);
         		self.relationOption.series = _series;
         		self._vue_charts2.setOption(self.relationOption);
         	});
