@@ -1213,7 +1213,7 @@ body{overflow:hidden;}
 .toptb{height:10.1%;}
 .newSoft li{padding:0.15rem;padding-bottom:0;}
 .newSoft ul{padding-top:0.08rem;}
-.newSoft li a{color:#fff;display:inline-block;width:84%;margin-right:0.05rem;}
+.newSoft li a{color:#fff;display:inline-block;width:82%;margin-right:0.05rem;overflow:hidden;}
 .newSoft li span{font-size:12px;color:#90979f;}
 
 @media screen and (max-height:767px){
