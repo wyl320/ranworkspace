@@ -371,7 +371,8 @@
                  //let scrollHt=$(".severcont").height()-(tabela+tableb-3);
                  console.log(tabela);
 
-                 $(".my-scrollbar").css({"height":scrollHt+"px"})
+                 $(".my-scrollbar").css({"height":scrollHt+"px"});
+                 $(".sebeilist").css({"height":$(window).height()*0.435+"px"})
             },
             //渲染图表
             setline3Size:function(){

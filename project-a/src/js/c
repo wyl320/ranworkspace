@@ -206,6 +206,8 @@
     "code":"0",
     "message":"",
     "data":[
-         {"name":"上海","num":169,"up_num":354655,"title":"agoogle","detail":"描","leval":"高危","degXdata":121.4648,"degYdata":31.2891,"size":30} 
+         {"name":"上海","num":169,"up_num":354655,"leixin":"类型","title":"agoogle","detail":"描","levl":"gaowei","degYdata":121.4648,"degXdata":31.2891,"size":30},
+         {"name":"美国","num":169,"up_num":354655,"leixin":"类型","title":"agoogle","detail":"描","levl":"diwei","degYdata":91.08,"degXdata":30.27,"size":60},
+         {"name":"埃及","num":169,"up_num":354655,"leixin":"类型","title":"agoogle","detail":"描","levl":"anquan","degYdata":31.12,"degXdata":30.01,"size":20}
     ] 
 }

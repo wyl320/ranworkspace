@@ -13,12 +13,12 @@
        </div> -->
       <div class="mation">
           <div class="echarts-cont">
-              <div id="line"  style="width:180px;height:180px;"></div>
-              <div id="line2" style="width:180px;height:180px;"></div>
-              <template v-for="(item,index) in listArrysoce.numList">
-              <router-link to="/cloudetail"><span class="leftNm" :class="{'ln':index ==1}">{{item.text}}</span></router-link>
-              <router-link to="/cloudetail"><span class="rightNm":class="{'ln2':index ==1}">{{item.currentTime}}</span></router-link>
-              </template>
+              <router-link to="/cloudetail" class="roundline"><div id="line" ref="roundline" style="width:180px;height:180px;"></div></router-link>
+              <router-link to="/cloudetail" class="roundline2"><div id="line2" ref="roundline2" style="width:180px;height:180px;"></div></router-link>
+              <div class="text_curtdy" v-for="(item,index) in listArrysoce.numList" :class="{'ln':index ==1}"> 
+                <router-link to="/cloudetail"><span class="leftNm">{{item.text}}</span></router-link>
+                <router-link to="/cloudetail"><span class="rightNm">{{item.currentTime}}</span></router-link>
+              </div>
            </div>
       </div>
       <div class="numlist">
@@ -97,9 +97,10 @@
        let liquidfillOption = {
         series: [{
             type: 'liquidFill',
-            data: [{name: '28374'},0.6],
+            data: [{name: '123'},0.6],
             color: ['#916f44'],
-            center: ['45%', '35%','10%', '10%'],
+            center:['50%','75'],
+            //center: ['45%', '35%','10%', '10%'],
             label: {
                 normal: {
                     color: '#ffffff',
@@ -127,8 +128,8 @@
             type: 'liquidFill',
             data: [{name: '315'},0.4],
             color: ['#10a8ab'],
-            center: ['40%', '35%','10%', '10%'],
-            //center:['50%','35%'],
+            center:['50%','75'],
+            //center:['50%','40%'],
             label: {
                 normal: {
                     color: '#ffffff',
@@ -171,16 +172,33 @@
             	this.setHeight = $(window).height();
             },
             //请求水球图数据
-            loadList() {
-                console.log("初始化加载数据开始...");
+            loadList(){
                 let self = this;
-                axios.get('http://www.mocky.io/v2/59c8b8f3110000fe0bc39ced', {
-                  params: {}
+                let promise = $.Deferred();
+                axios.get("http://www.mocky.io/v2/59c8b8f3110000fe0bc39ced", {
+                        params: {}
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
-                      self.listArrysoce = response.data.data;
-                      console.log(response);
+                    promise.resolve(response);
+                  }else{
+                    promise.resolve(response);
+                    promise.reject();
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                  promise.reject();
+                });
+                return promise;
+            },
+            //setoptions
+            setWaterlist(){
+                  let self = this;
+                  let promise = self.loadList();
+                  promise.done(function(res){
+                      self.listArrysoce = res.data.data;
+                      console.log(res);
                       let newArrysocenumList = self.listArrysoce.numList;
                       self.chartDataOption.series[0].data[0].name = self.listArrysoce.numList[0].currentNumber;
                       self.chartDataOption.series[0].data[1] = self.listArrysoce.numList[0].currentNumber/self.listArrysoce.numList[0].maxNumber;
@@ -189,24 +207,44 @@
                       //重新渲染
                       self._vue_charts.setOption(self.chartDataOption);
                       self._vue_charts2.setOption(self.chartUpdateOption2);
-                  }else{
-                      console.log(response.data.message) 
-                  }
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
+                  });           
             },
+            // loadList() {
+            //     console.log("初始化加载数据开始...");
+            //     let self = this;
+            //     axios.get('http://www.mocky.io/v2/59c8b8f3110000fe0bc39ced', {
+            //       params: {}
+            //     })
+            //     .then(function (response) {
+            //       if(response.data.code=="0"){
+            //           self.listArrysoce = response.data.data;
+            //           console.log(response);
+            //           let newArrysocenumList = self.listArrysoce.numList;
+            //           self.chartDataOption.series[0].data[0].name = self.listArrysoce.numList[0].currentNumber;
+            //           self.chartDataOption.series[0].data[1] = self.listArrysoce.numList[0].currentNumber/self.listArrysoce.numList[0].maxNumber;
+            //           self.chartUpdateOption2.series[0].data[0].name = self.listArrysoce.numList[1].currentNumber;
+            //           self.chartUpdateOption2.series[0].data[1] = self.listArrysoce.numList[1].currentNumber/self.listArrysoce.numList[1].maxNumber;
+            //           //重新渲染
+            //           self._vue_charts.setOption(self.chartDataOption);
+            //           self._vue_charts2.setOption(self.chartUpdateOption2);
+            //       }else{
+            //           console.log(response.data.message) 
+            //       }
+            //     })
+            //     .catch(function (error) {
+            //       console.log(error);
+            //     });
+            // },
             setRound(){
-                  if((screen.width == 1680) && (screen.height == 1050)){
-                     $("#line canvas").css({"width":"190px","height":"190px"});
-                     $("#line2 canvas").css({"width":"190px","height":"190px"});
-                  }else if ((screen.width == 1280) && (screen.height == 800)){
-                     $("#line canvas").css({"top":"-16px"});
-                     $("#line2 canvas").css({"left":"11px","top":"-16px"});
-                  }else{
-                      console.log(screen.height)
-                  }
+                  let self = this;
+                  let minws = $(window).width()*0.22-10;
+                  let hegts = $(window).height()*0.176;
+                  self.$refs.roundline.style.width = minws/2 + 'px';
+                  self.$refs.roundline.style.height = hegts + 'px';
+                  self.$refs.roundline2.style.width = minws/2 + 'px';
+                  self.$refs.roundline2.style.height = hegts + 'px';
+                  $("#line canvas").css({"width":minws/2-10,"height":hegts});
+                  $("#line2 canvas").css({"width":minws/2-10,"height":hegts});
             }
 		 },
 		 watch: {
@@ -224,7 +262,7 @@
      },
 		 created(){
             this.fullHeight();
-            this.loadList();
+            this.setWaterlist();
 		 },
      mounted(){
             this._vue_charts = echarts.init(document.getElementById('line'));

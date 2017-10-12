@@ -13,7 +13,7 @@ export default {
 		    '埃及':[31.12,30.01]
         };
         let BJData=[
-             {name:'上2海',num:'169',up_num:'354655',title:'agoogle',detail:'描',leval:'高危',degXdata:'121.4648',degYdata:'31.2891',size:30}      
+             {name:'上2海',num:'169',up_num:'354655',title:'agoogle',detail:'描',leixin:'类型',levl:'gaowei',degXdata:'121.4648',degYdata:'31.2891',size:30}      
         ];
 		// let BJData = [
 		//     {name:'上海',num:'169',up_num:'354655',title:'google',detail:'描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息',leval:'高危',size:30,color:'#c52c1e',},
@@ -88,11 +88,11 @@ export default {
 			        //console.log(params);
 			        let title = params.data.item.title;
 			        let detail = params.data.item.detail;
-                    let leval = params.data.item.leval
+                    let leixin = params.data.item.leixin;
 			        res = "<div class='titmins'><span class='titsan'>"+title+
 			        "</span></div>"+
 			        "<div class='magn numberdate'>更新数据数量&nbsp;-&nbsp;<i>"+up_num+"</i></div>"+
-			        "<div class='magn curmgn'><span class='leixi'>情报类型&nbsp;-&nbsp;</span><em class='leixiem'>"+leval+"</em><i class='leixitem2'>"+title+"</i><b class='leibstyle'>"+name+"</b></div>"+
+			        "<div class='magn curmgn'><span class='leixi'>情报类型&nbsp;-&nbsp;</span><em class='leixiem'>"+leixin+"</em><i class='leixitem2'>"+title+"</i><b class='leibstyle'>"+name+"</b></div>"+
 			        "<div class='magn'><span class='detan'>"+detail+"</span></div>";
 			        return res;
 			    }
@@ -127,6 +127,7 @@ export default {
 		};
 		return{
 			relationOption:relationOption,//图标一
+			newMaparry:[]
 		}
 	},
 	methods:{
@@ -153,7 +154,7 @@ export default {
         loadMap:function(){
         	let self = this;
         	let promise = $.Deferred();
-        	axios.get(" http://www.mocky.io/v2/59de1974100000150da8500a", {
+        	axios.get("http://www.mocky.io/v2/59ded9dd0f00002c031739bb", {
                   params: {}
             })
 			.then(function (response) {
@@ -206,7 +207,7 @@ export default {
 							        data:[{
 							            name: item.name,
 							            // value: geoCoordMap[item.name].concat([item.size]),
-							            value:[item.degXdata,item.degYdata,item.size],
+							            value:[item.degYdata,item.degXdata,item.size],
 							            item:item
 							        }]
 							    }
@@ -214,26 +215,39 @@ export default {
 	        };
 	        return series;
         },
+        bianli:function(){
+        	    let self =this;
+                for (let i=0;i<self.newMaparry.length;i++){
+                    if(self.newMaparry[i].levl==="gaowei"){
+                    	self.newMaparry[i].color = "#f82454";
+                    };
+                    if(self.newMaparry[i].levl==="zhongwei"){
+                        self.newMaparry[i].color = "#ff7214";
+        			};
+        			if(self.newMaparry[i].levl==="diwei"){
+        				self.newMaparry[i].color = "#ffe60f";
+        			};
+        			if(self.newMaparry[i].levl==="anquan"){
+                        self.newMaparry[i].color = "#3f8fce";
+        			};
+        			if(self.newMaparry[i].levl==="jingji"){
+                        self.newMaparry[i].color = "#de00ff";
+        			}
+                };
+                console.log("11111")
+        },
         //set数据
         setMaption:function(){
         	let self = this;
         	let promise = self.loadMap();
         	promise.done(function(res){ 
-        		//res = res.data.data;
-        		res.data.data.forEach(function(da,i){
-        			// if(da.leval=="高危"){
-        			// 	da.color="rgb(255, 99, 84)";
-        			// }else if(da.leval=="中危"){
-        			// 	da.color="rgb(253, 150, 81)";
-        			// }else if(da.leval=="低危"){
-        			// 	da.color="rgb(244, 216, 116)";
-        			// }else if(da.leval=="紧急"){
-        			// 	da.color="rgb(183, 103, 214)";
-        			// }else( da.leval =="安全"){
-           			//   da.color="rgb(69, 164, 254)"; 
-        			// }
-        			da.color = "rgb(69, 164, 254)";
-        		})
+        		console.log("22222");
+        		console.log(res.data.data);
+        		console.log("555")
+        	    self.newMaparry = res.data.data;
+        	    console.log("3333")
+        		self.bianli();
+        		console.log("4444")
         		let _series = self.getSeries(res.data.data);
         		self.relationOption.series = _series;
         		self._vue_charts2.setOption(self.relationOption);

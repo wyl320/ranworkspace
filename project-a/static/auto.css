@@ -150,7 +150,8 @@
     /*自定义*/
     .sofelist a{display:inline-block;width:0.38rem;height:0.38rem;margin:0.24rem 0.2rem 0rem 0.2rem;}
     .echarts-cont{display:-webkit-box;position:relative;}
-    .echarts-cont>div{ -webkit-box-flex:1; box-flex:1;}
+    .echarts-cont>div,.echarts-cont .roundline,.echarts-cont .roundline2{ -webkit-box-flex:1; box-flex:1;display:inline-block;}
+    .text_curtdy{}
 .sbx-facebook {
   display: inline-block;
   position: relative;
@@ -1122,12 +1123,16 @@ margin-top: 0.03rem;border:1px solid #424851;width:1.32rem;padding-left:0;paddin
 .tuli li em.yellow{background:#fbb150;}
 .tuli li em.pink{background:#d2254f;}
 /*水球图图例*/
-.rightNm{position: absolute; left: 33px;top: 144px;color:#7e848c;}
+/*.rightNm{position: absolute; left: 33px;top: 144px;color:#7e848c;}
 .leftNm{position: absolute;}
 .leftNm{top:120px;left:54px;color:#7e848c;}
 .rightNm{left:46px;}
 .ln{left:222px;top:119px;}
-.ln2{left: 228px;top:141px;}
+.ln2{left: 228px;top:141px;}*/
+.text_curtdy{width:48%;position:absolute;top:68%;left:0;}
+.ln{left:50%;}
+.text_curtdy a{color:#7e848c;}
+.text_curtdy span{display:block;width:100%; text-align: center;}
 body{overflow:hidden;}
 /*设备列表*/
 .toolBars{/*padding-bottom:0.05rem;*/height:7.5%;}
@@ -1210,3 +1215,17 @@ body{overflow:hidden;}
 .newSoft ul{padding-top:0.08rem;}
 .newSoft li a{color:#fff;display:inline-block;width:84%;margin-right:0.05rem;}
 .newSoft li span{font-size:12px;color:#90979f;}
+
+@media screen and (max-height:767px){
+   /*.userame i{color:yellow;}
+   .text_curtdy{top:45%;}
+   .dangerlist ul li span{width:65%;}
+   .sebei{width:66%;}
+   .safelist{height:39%;}
+   .leftwat{width: 4rem;}
+   .ritwat{margin-left: 0.6rem;}
+   .midwat span.choose{width:1.1rem;}
+   .choose em{margin-top:0.1rem;}*/
+}
+
+.mark_rest{height:;background:#2e3540;}
