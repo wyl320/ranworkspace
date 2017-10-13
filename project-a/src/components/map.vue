@@ -15,52 +15,6 @@ export default {
         let BJData=[
              {name:'上2海',num:'169',up_num:'354655',title:'agoogle',detail:'描',leixin:'类型',levl:'gaowei',degXdata:'121.4648',degYdata:'31.2891',size:30}      
         ];
-		// let BJData = [
-		//     {name:'上海',num:'169',up_num:'354655',title:'google',detail:'描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息',leval:'高危',size:30,color:'#c52c1e',},
-		//     {name:'广州',num:'800',up_num:'254655',title:'android',detail:'描述',leval:'低危',size:30,color:'#3e8cd6',},
-		//     {name:'乌鲁木齐',num:'900',up_num:'154655',title:'baidu',detail:'描述',leval:'中危',size:35,color:'#d06215'},
-		//     {name:'美国',num:'900',up_num:'300',title:'baidu',detail:'美国',leval:'中危',size:45,color:'#d06215',},
-		//     {name:'埃及',num:'900',up_num:'200',title:'baidu',detail:'埃及',leval:'中危',size:15,color:'#3e8cd6',}
-		// ];
-        // let series = [];
-        // for(var i=0;i<BJData.length;i++){
-				    // var item = BJData[i];
-				    // series.push(
-						  //      {
-						  //       type: 'effectScatter',
-						  //       coordinateSystem: 'geo',
-						  //       zlevel: 2,
-						  //       rippleEffect: {//涟漪特效
-						  //           period:4,//动画时间，值越小速度越快
-						  //           brushType: 'stroke', //波纹绘制方式 stroke, fill
-						  //           scale:3 //波纹圆环最大限制，值越大波纹越大
-						  //       },
-						  //       label: {
-						  //           normal: {
-						  //               show: true,
-						  //               formatter: function (obj) {
-        //                                      return obj.data.item.num; //圆环大小
-        //                                 },
-						  //           },
-						  //           emphasis: {
-						  //               show: true
-						  //           }
-						  //       },
-						  //       symbol: 'circle',
-						  //       symbolSize: item.size,
-						  //       itemStyle: {
-						  //           normal: {
-						  //               color: item.color
-						  //           }
-						  //       },
-						  //       data:[{
-						  //           name: item.name,
-						  //           value: geoCoordMap[item.name].concat([item.size]),
-						  //           item:item
-						  //       }]
-						  //   }
-				    // );
-        // };
 		let relationOption = {
 			backgroundColor: '#000',
 			rich: {
@@ -92,7 +46,7 @@ export default {
 			        res = "<div class='titmins'><span class='titsan'>"+title+
 			        "</span></div>"+
 			        "<div class='magn numberdate'>更新数据数量&nbsp;-&nbsp;<i>"+up_num+"</i></div>"+
-			        "<div class='magn curmgn'><span class='leixi'>情报类型&nbsp;-&nbsp;</span><em class='leixiem'>"+leixin+"</em><i class='leixitem2'>"+title+"</i><b class='leibstyle'>"+name+"</b></div>"+
+			        "<div class='magn curmgn'><span class='leixi'>情报类型&nbsp;-&nbsp;</span><em class='leixiem'>"+leixin+"</em><i class='leixitem2'></i><b class='leibstyle'>"+name+"</b></div>"+
 			        "<div class='magn'><span class='detan'>"+detail+"</span></div>";
 			        return res;
 			    }
@@ -170,7 +124,7 @@ export default {
 			});
 			return promise;
         },
-        //
+        //循环series
         getSeries:function(Data){
         	let series = [];
 	        for(let i=0;i<Data.length;i++){

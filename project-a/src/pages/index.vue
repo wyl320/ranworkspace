@@ -3,7 +3,7 @@
 		 <!--左侧-->
 		 <div class="leftCt" :style="{height:setHeight+'px'}">
 		 	 <div class="user">
-		 	 	<span class="userlg"><img src="../assets/images/admin.png"></span>
+		 	 	<span class="userlg"><img src="../../static/images/admin.png"></span>
 		 	 	<span class="userame"><i>admin</i></span>
 		 	 	<span class="rightname"><em></em></span>
 		 	 </div>
@@ -66,15 +66,15 @@
 		 	</div>
 		 	<!--自定义-->
 		 	<div class="sofelist">
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
-		 		<a href="javascript:;"><img src="../assets/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
+		 		<a href="javascript:;"><img src="../../static/images/qq.png" alt=""></a>
 		 	</div>
 		 </div>
 	</div>

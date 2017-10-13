@@ -1,0 +1,10 @@
+.numlist ul li{padding-top: 0.12rem;}
+.dangerlist h2,.safelist h2{height: 0.3rem;line-height: 0.3rem;}
+.dangerlist ul li {padding-top: 0.136rem;}
+.lister {
+    padding: 0.18rem 0.01rem 0.18rem 0.14rem;
+}
+.safelist{height:39.5%;}
+.ranges{margin: 0.1rem 0;}
+.cort_nums {
+    padding: 0.2rem 0.12rem;}

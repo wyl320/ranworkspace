@@ -127,8 +127,6 @@ import axios from 'axios'
 				};
 			return{
                 Hisoption:Hisoption,
-                // linegramData:[],
-                // newlinegramData:[],
                 day:['年','月','周'],
                 noindex:2,
 			}

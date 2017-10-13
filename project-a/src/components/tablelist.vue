@@ -39,7 +39,7 @@
       	                                <em :class="{blue:item.levl=='anquan'}"></em>
       	                                <em :class="{yellow:item.levl=='diwei'}"></em>
       	                                <em :class="{orange:item.levl=='zhongwei'}"></em>
-      	                                <em :class="{red:item.levl=='gaowei'}"></em>
+      	                                <em :class="{pink:item.levl=='gaowei'}"></em>
       	                                <em :class="{pers:item.levl=='jingji'}"></em>
       	                              </td>
       	                              <td :style="{width:'21%'}">{{item.timer}}</td>
@@ -368,9 +368,6 @@
                  let tabela =$(".toptb").height();
                  let tableb =$(".searchTb").height();
                  let scrollHt = $(window).height()*0.63*0.54;
-                 //let scrollHt=$(".severcont").height()-(tabela+tableb-3);
-                 console.log(tabela);
-
                  $(".my-scrollbar").css({"height":scrollHt+"px"});
                  $(".sebeilist").css({"height":$(window).height()*0.435+"px"})
             },
@@ -397,28 +394,19 @@
 	}
 </script>
 <style scoped>
-.searchTb a{vertical-align:middle;display:inline-block; width:0.12rem;height:0.12rem;background:url(../assets/images/det.png) top center;background-repeat: no-repeat;}
-.searchTb button{width:0.21rem;height:0.21rem;background:url(../assets/images/seach.png) top center;background-repeat: no-repeat;}
 .scrollbar-main{
-    /*width: 200px;*/
-    /*height:240px;*/
     margin: 0 auto;
-        /*width: 630px;*/
-        overflow: hidden;
-        height: 243px;
-        background: gray;
+    overflow: hidden;
+    height: 243px;
+    background: gray;
   }
 .tuli{
   font-size: 10px;
 }
-
-  /*The Wrapper*/
+ /*The Wrapper*/
 .my-scrollbar{
   min-width: 300px;
-  /*max-height: 150px;*/
-   /*height: 243px;*/
 }
-
 /*The Content*/
 .scroll-me{
   width: 100%;

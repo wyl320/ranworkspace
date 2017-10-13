@@ -15,7 +15,7 @@
 	    		    	<div class="some_dt clearfix" v-for="item in Anewsoftlist">
 	    		    		<span></span>
 	    		    		<em>{{item.text}}</em>
-                            <i>网络帐户数量- <b>{{item.accent}}</b></i>
+                  <i>网络帐户数量- <b>{{item.accent}}</b></i>
 	    		    	</div>
 	    		    </div>
 	    			<div class="lineSoft">

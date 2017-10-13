@@ -29,87 +29,7 @@
         }
 			}
 		},
-		methods:{
-            // Softkey_up(ev,index){
-            //     let self = this;
-            //     if(this.time != null ){
-            //       clearTimeout(this.time);
-            //       this.time = null;
-            //     }
-            //     this.time = setTimeout(function(){
-            //       self.getSoft(index);
-            //     },1000);          
-            // },
-            
-            // getSoft(index){
-            //    console.log("index:------------------ "+index);
-            //    this.time = null;
-            //    let self = this;
-            //    if(self.newsoftseach[index].length != 0 ){
-            //       self.newsoftseach[index] = [];
-            //    }
-
-            //    let value = this.softvalue[index].value;
-            //    if(self.softvalue.length == 0){
-            //       Object.assign(self.newsoftseach[index], self.softseach);
-            //     }else{
-            //       let promise = self.getlist({
-            //         value:value,
-            //         url:self.url.soft
-            //       });
-            //       promise.done(function(res){
-            //           let softseach = res.data.data.list;
-            //           let dataList = [];
-            //           for(var i=0;i<softseach.length;i++){
-            //             let da = softseach[i];
-            //             if(da.name.indexOf(self.softvalue[index].value) != -1){
-            //                 dataList.push(da);
-            //             }
-            //           }
-            //           self.newsoftseach[index] = dataList;
-            //            console.log(index+" ================ ");
-            //           console.log(self.newsoftseach);
-            //       })
-            //     }
-            // },
-             //保存数据 
-            // updateRepaire(id,name){
-            //    let self = this;
-            //    let promise = $.Deferred();
-            //    axios.get(self.url.save, {
-            //        params: {
-            //          id:id,
-            //          name:name
-            //        }
-            //    })
-            //    .then(function (response) {
-            //       if(response.data.code=="0"){ 
-            //           self.loadrepaireList();
-            //       }else{
-            //           //保存失败code
-            //       }
-            //    })
-            //    .catch(function (error) {
-            //         console.log(error); 
-            //     }); 
-            // },
-            // modfined(item){
-            //   item.expanded = !item.expanded
-            // },
-            // addItem(item,its){
-            //   item.ulexpanded = false;
-            //   item.expanded = true;
-            //   console.log(its.name);
-            //   console.log(item.id);
-            //   // this.updateRepaire(item.id,item.name);
-            // },
-            // Allpulldown(item){
-            //     item.ulexpanded = true
-            // },
-            // Hidepulldown(item){
-            //     item.ulexpanded = false;
-            //     item.expanded = true;
-            // },
+		methods:{           
              //焦点取数据 
             getlist({value = "" , pageSize = 0,url = ""}){
                let _this = this;
@@ -145,8 +65,6 @@
                 Object.assign(dataList,res.data.data.list);
                 dataList.forEach(function(da,i){
                   if(i < 3){
-                    //self.newsoftseach[i] = [];
-                    //self.softvalue.push({value:da.name});
                     self.repaireList.push(da);
                   }
                 })
@@ -161,9 +79,6 @@
 	        repaireList(){
 	          return this.repaireList;
 	        },
-          // newsoftseach(){
-          //   return this.newsoftseach;
-          // }
 		}
 	}
 </script>
