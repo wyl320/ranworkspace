@@ -4,7 +4,7 @@
 		 <div class="leftCt" :style="{height:setHeight+'px'}">
 		 	 <div class="user">
 		 	 	<span class="userlg"><img src="../../static/images/admin.png"></span>
-		 	 	<span class="userame"><i>admin</i></span>
+		 	 	<span class="userame"><i>{{name}}</i></span>
 		 	 	<span class="rightname"><em></em></span>
 		 	 </div>
        <!--水球图,数据总量-->
@@ -89,6 +89,7 @@
   import Dangerlist from '@/components/dangerlist'
   import Liquid from '@/components/liquid'
   import Seblist from '@/components/seblist'
+  import { setCookie,getCookie,delCookie } from '../assets/js/cookie.js'
   // import {liquidfillOption}  from '@/chart-data/chartData';
 
 	export default {
@@ -163,7 +164,8 @@
         listArrysoce:"",//水球图模块数据变量
         chartDataOption:liquidfillOption,//图标一
         chartUpdateOption2:liquidfillOption2,//图标二
-        userMation:[]
+        userMation:[],
+        name: ""
 		 	 }
 		 },
 		 methods:{
@@ -209,32 +211,6 @@
                       self._vue_charts2.setOption(self.chartUpdateOption2);
                   });           
             },
-            // loadList() {
-            //     console.log("初始化加载数据开始...");
-            //     let self = this;
-            //     axios.get('http://www.mocky.io/v2/59c8b8f3110000fe0bc39ced', {
-            //       params: {}
-            //     })
-            //     .then(function (response) {
-            //       if(response.data.code=="0"){
-            //           self.listArrysoce = response.data.data;
-            //           console.log(response);
-            //           let newArrysocenumList = self.listArrysoce.numList;
-            //           self.chartDataOption.series[0].data[0].name = self.listArrysoce.numList[0].currentNumber;
-            //           self.chartDataOption.series[0].data[1] = self.listArrysoce.numList[0].currentNumber/self.listArrysoce.numList[0].maxNumber;
-            //           self.chartUpdateOption2.series[0].data[0].name = self.listArrysoce.numList[1].currentNumber;
-            //           self.chartUpdateOption2.series[0].data[1] = self.listArrysoce.numList[1].currentNumber/self.listArrysoce.numList[1].maxNumber;
-            //           //重新渲染
-            //           self._vue_charts.setOption(self.chartDataOption);
-            //           self._vue_charts2.setOption(self.chartUpdateOption2);
-            //       }else{
-            //           console.log(response.data.message) 
-            //       }
-            //     })
-            //     .catch(function (error) {
-            //       console.log(error);
-            //     });
-            // },
             setRound(){
                   let self = this;
                   let minws = $(window).width()*0.22-10;
@@ -245,6 +221,19 @@
                   self.$refs.roundline2.style.height = hegts + 'px';
                   $("#line canvas").css({"width":minws/2-10,"height":hegts});
                   $("#line2 canvas").css({"width":minws/2-10,"height":hegts});
+            },
+            //取用户数据
+            userInfomation (){
+                let uname = getCookie('username');
+                this.name = uname;
+                /*如果cookie不存在，则跳转到登录页*/
+                if(uname == ""){
+                    this.$router.push('/login');
+                }
+            },
+            quit(){
+                /*删除cookie*/
+                delCookie('username')
             }
 		 },
 		 watch: {
@@ -269,7 +258,8 @@
             this._vue_charts.setOption(this.chartDataOption);
             this._vue_charts2 = echarts.init(document.getElementById('line2'));
             this._vue_charts2.setOption(this.chartUpdateOption2);
-            this.setRound()
+            this.setRound();
+            this.userInfomation();
      }
 	}
 </script>

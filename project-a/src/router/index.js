@@ -4,13 +4,14 @@ import Index from '@/pages/index'
 import Round from '@/components/round'
 import Map from '@/components/map'
 import Cloudetail from '@/pages/cloudetail'
+import Login from '@/pages/login'
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/index',
       name: 'index',
       component: Index
     },
@@ -25,9 +26,9 @@ export default new Router({
       component: Map
     },
     {
-      path: 'b',
-      name: 'round',
-      component: Round
+      path: '/',
+      name: 'login',
+      component: Login
     }
   ]
 });

@@ -23,8 +23,9 @@
                 })
                 .then(function (response) {
                   if(response.data.code=="0"){
+                  	 //console.log("api/apinformationList");
+                     //console.log(response.data[0].code);
                       _this.mationList = response.data.data.informationList;
-                      //console.log(_this.mationList)
                   }else{
                       console.log(response.data.message) 
                   }
