@@ -36,7 +36,7 @@
     .dangerlist h2 a{color:#65758d;}
     .dangerlist ul{padding:0rem 0.14rem;}
     .dangerlist ul li{padding-top:0.09rem;font-size: 0.1rem;}
-    .dangerlist ul li span{display:inline-block;width:73%;/*width:1.8rem;*/padding-right:0.02rem;}
+    .dangerlist ul li span{display:inline-block;width:70%;/*width:1.8rem;*/padding-right:0.02rem;}
     .dangerlist ul li em{color:#92969b;font-size: 0.01rem;}
     .dangerlist ul li a{color:#fff;}
     /*安全响应*/
@@ -149,7 +149,7 @@
     margin-top: 0.03rem;border:1px solid #424851;width:1.32rem;padding-left:0;padding-right:0;}
     /*自定义*/
     .sofelist a{display:inline-block;width:0.38rem;height:0.38rem;margin:0.24rem 0.2rem 0rem 0.2rem;}
-    .echarts-cont{display:-webkit-box;position:relative;}
+    .echarts-cont{display:-webkit-box;}
     .echarts-cont>div,.echarts-cont .roundline,.echarts-cont .roundline2{ -webkit-box-flex:1; box-flex:1;display:inline-block;}
     .text_curtdy{}
 .sbx-facebook {
@@ -1154,6 +1154,7 @@ body{overflow:hidden;}
 .watch2{color:#ffce0f;display:inline-block;margin-right:5px;}
 .watch3{color:#f66b58;display:inline-block;margin-right:5px;}
 .leftwat,.midwat,.ritwat{float:left;}
+.ritwat{float:right;padding-right:0.2rem;}
 .leftwat{width:3.6rem;}
 .midwat{position:relative;}
 .midwat ul{position:absolute;top:0.26rem;left:0;z-index:9;width:0.92rem;}
@@ -1166,7 +1167,6 @@ body{overflow:hidden;}
 .midwat ul li a{display:inline-block;padding: 0.03rem;padding-left:0.07rem;color:#fff;width:89%;}
 .midwat ul li a:hover{background:#2e3540;width:89%;}
 .ritwat a{display:inline-block;vertical-align: middle}
-.ritwat{margin-left:1.4rem;}
 /*云漏洞情报中心*/
 .makbox{border-top:1px solid #13161f;}
 .cloudTop{width:100%;height:0.3rem; background:#2e3440;border-top:1px solid #3e424b;color:#adb3bf;line-height: 0.3rem}
@@ -1236,17 +1236,7 @@ body{overflow:hidden;}
 .zoom3:hover{background:url(../images/zom3a.png) no-repeat;}
 .zoom4:hover{background:url(../images/zom1a.png) no-repeat;}
 
-/*.cardItem span{background:url(../images/gray.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
-.cardItem span.yellow{background:url(../images/yellow.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
-.cardItem span.pers{background:url(../images/per.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
-.cardItem span.orange{background:url(../images/orange.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
-.cardItem span.pink{background:url(../images/pink.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
-.cardItem span.blue{background:url(../images/blue.png) no-repeat;width:0.18rem;height:0.3rem;display: block;}
-.zoom1{display:inline-block;background:url(../images/zom2.png) no-repeat;width:0.23rem;height:0.14rem;margin-top:0.05rem;}
-.zoom2{display:inline-block;background:url(../images/zom4.png) no-repeat;width:0.22rem;height:0.22rem;margin-top:0.06rem;}
-.zoom3{display:inline-block;background:url(../images/zom3.png) no-repeat;width:0.22rem;height:0.22rem;margin-top:0.05rem;}
-.zoom4{display:inline-block;background:url(../images/zom1.png) no-repeat;width:0.2rem;height:0.2rem;margin-top:0.05rem;}
-.zoom1:hover{background:url(../images/zom2a.png) no-repeat;}
-.zoom2:hover{background:url(../images/zom4a.png) no-repeat;}
-.zoom3:hover{background:url(../images/zom3a.png) no-repeat;}
-.zoom4:hover{background:url(../images/zom1a.png) no-repeat;}*/
+.mation{position:relative;}
+.text_curtdy{top:75%;}
+.newSoft li a,.dangerlist ul li span{ white-space: nowrap; text-overflow: ellipsis;overflow:hidden;}
+.newSoft li span,.newSoft li a{display:inline-block;vertical-align: middle;}
