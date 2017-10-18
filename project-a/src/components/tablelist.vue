@@ -400,9 +400,6 @@
     height: 243px;
     background: gray;
   }
-.tuli{
-  font-size: 10px;
-}
  /*The Wrapper*/
 .my-scrollbar{
   min-width: 300px;

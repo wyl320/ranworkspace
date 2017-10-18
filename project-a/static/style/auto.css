@@ -37,7 +37,7 @@
     .dangerlist ul{padding:0rem 0.14rem;}
     .dangerlist ul li{padding-top:0.09rem;font-size: 0.1rem;}
     .dangerlist ul li span{display:inline-block;width:70%;/*width:1.8rem;*/padding-right:0.02rem;}
-    .dangerlist ul li em{color:#92969b;font-size: 0.01rem;}
+    .dangerlist ul li em{color:#92969b;/*font-size: 0.01rem;*/}
     .dangerlist ul li a{color:#fff;}
     /*安全响应*/
     .safelist h2 {height:0.26rem;border-bottom:1px solid #424851;}
@@ -46,7 +46,7 @@
     .lister {border-bottom: 1px solid #424851;padding: 0.12rem 0.01rem 0.11rem 0.14rem;}
     .lister div{float:left;}
     .sebei{padding-right:0.01rem;line-height: 0.24rem;line-height: 0.18rem;width:70%;}
-    .curver{color:#7e848c;font-size: 0.01rem;text-align:right;}
+    .curver{color:#7e848c;/*font-size: 0.01rem;*/text-align:right;}
     .sebei a{color:#fff;}
     .curver em{display:inline-block;width:0.07rem;height:0.06rem;margin-left:0.02rem;border:0.01rem solid #424852;margin-bottom:0.05rem;}
     .curver em.blue{background:#0f9ec7;border:0.01rem solid #0f9ec7;}
@@ -1116,7 +1116,7 @@ margin-top: 0.03rem;border:1px solid #424851;width:1.32rem;padding-left:0;paddin
 .pulldown2{width:1.6rem;float:left;}
 
 /*图表三样式*/
-.tuli{padding-left:0.14rem;margin-top:-0.22rem;}
+.tuli{padding-left:0.14rem;margin-top:-0.22rem;font-size: 12px;}
 .tuli li{margin-bottom:0.05rem;}
 .tuli li em{display:inline-block;width:0.05rem;height:0.05rem;background:red;margin-right:0.05rem;margin-left:0.05rem;border-radius:20px;}
 .tuli li em.blue{background:#4fc5f7;}
@@ -1155,7 +1155,6 @@ body{overflow:hidden;}
 .watch3{color:#f66b58;display:inline-block;margin-right:5px;}
 .leftwat,.midwat,.ritwat{float:left;}
 .ritwat{float:right;padding-right:0.2rem;}
-.leftwat{width:3.6rem;}
 .midwat{position:relative;}
 .midwat ul{position:absolute;top:0.26rem;left:0;z-index:9;width:0.92rem;}
 .midwat ul li{border-bottom: 1px solid #424851;background-color: #424851;cursor:pointer;border-bottom:1px solid #25313f;}
@@ -1240,3 +1239,4 @@ body{overflow:hidden;}
 .text_curtdy{top:75%;}
 .newSoft li a,.dangerlist ul li span{ white-space: nowrap; text-overflow: ellipsis;overflow:hidden;}
 .newSoft li span,.newSoft li a{display:inline-block;vertical-align: middle;}
+.my-scrollbar2{clear:both;}
